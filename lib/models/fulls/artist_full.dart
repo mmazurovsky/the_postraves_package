@@ -1,4 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/dto/image_dimensions.dart';
+import 'package:the_postraves_package/dto/wiki_data_dto.dart';
+import 'package:the_postraves_package/dto/wiki_followable_type.dart';
+import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 import '../geo/country.dart';
 
 part 'artist_full.freezed.dart';
@@ -7,8 +11,7 @@ part 'artist_full.g.dart';
 @freezed
 class ArtistFull
     with _$ArtistFull
-        {
-
+    implements GeneralFollowableInterface, BaseNameInterface {
   const ArtistFull._();
   const factory ArtistFull({
     required int id,
@@ -26,27 +29,15 @@ class ArtistFull
   factory ArtistFull.fromJson(Map<String, dynamic> json) =>
       _$ArtistFullFromJson(json);
 
-  // TODO
-  // @override
-  // String getEntityNameSingularFormString(BuildContext context) {
-  //   return AppLocalizations.of(context)!.artistEntityNameSingular;
-  // }
-  // TODO
-  // @override
-  // String getEntityNamePluralFormString(BuildContext context) {
-  //   return AppLocalizations.of(context)!.artistEntityNamePlural;
-  // }
-
-  // TODO
-  //   @override
-  // WikiDataDto convertToWikiDataDto(ImageDimensions? imageDimensions) {
-  //   return WikiDataDto(
-  //     id: id,
-  //     name: name,
-  //     imageLink: imageLink,
-  //     country: country,
-  //     imageDimensions: imageDimensions,
-  //     type: WikiFollowableType.ARTIST,
-  //   );
-  // }
+  @override
+  WikiDataDto convertToWikiDataDto(ImageDimensions? imageDimensions) {
+    return WikiDataDto(
+      id: id,
+      name: name,
+      imageLink: imageLink,
+      country: country,
+      imageDimensions: imageDimensions,
+      type: WikiFollowableType.ARTIST,
+    );
+  }
 }

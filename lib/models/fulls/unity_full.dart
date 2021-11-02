@@ -1,14 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/dto/image_dimensions.dart';
+import 'package:the_postraves_package/dto/wiki_data_dto.dart';
+import 'package:the_postraves_package/dto/wiki_followable_type.dart';
+import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 import '../geo/country.dart';
 
 part 'unity_full.freezed.dart';
 part 'unity_full.g.dart';
 
 @freezed
-class UnityFull
-    with _$UnityFull
-    // implements GeneralFollowableInterface, EntityNamesInterface 
-    {
+class UnityFull with _$UnityFull implements GeneralFollowableInterface {
   const UnityFull._();
   const factory UnityFull({
     String? about,
@@ -27,26 +28,15 @@ class UnityFull
   factory UnityFull.fromJson(Map<String, dynamic> json) =>
       _$UnityFullFromJson(json);
 
-//todo
-  // @override
-  // String getEntityNameSingularFormString(BuildContext context) {
-  //   return AppLocalizations.of(context)!.unityEntityNameSingular;
-  // }
-//todo
-  // @override
-  // String getEntityNamePluralFormString(BuildContext context) {
-  //   return AppLocalizations.of(context)!.unityEntityNamePlural;
-  // }
-//todo
-  // @override
-  // WikiDataDto convertToWikiDataDto(ImageDimensions? imageDimensions) {
-  //   return WikiDataDto(
-  //     id: id,
-  //     name: name,
-  //     imageLink: imageLink,
-  //     country: country,
-  //     imageDimensions: imageDimensions,
-  //     type: WikiFollowableType.UNITY,
-  //   );
-  // }
+  @override
+  WikiDataDto convertToWikiDataDto(ImageDimensions? imageDimensions) {
+    return WikiDataDto(
+      id: id,
+      name: name,
+      imageLink: imageLink,
+      country: country,
+      imageDimensions: imageDimensions,
+      type: WikiFollowableType.UNITY,
+    );
+  }
 }

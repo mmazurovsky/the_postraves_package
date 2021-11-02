@@ -1,14 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 
 part 'country.freezed.dart';
 part 'country.g.dart';
 
 @freezed
-class Country with _$Country 
-// implements LocationInterface 
-{
-
+class Country with _$Country implements LocationInterface {
   const Country._();
   const factory Country({
     required String name,
@@ -17,12 +15,12 @@ class Country with _$Country
     required String emojiCode,
   }) = _Country;
 
-  factory Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
+  factory Country.fromJson(Map<String, dynamic> json) =>
+      _$CountryFromJson(json);
 
-//todo
-  // @override
-  // Country get country => this;
-//todo
-  // @override
-  // String get emojiCode => emojiCode;
+  @override
+  Country get country => this;
+
+  @override
+  String get emojiCode => emojiCode;
 }
