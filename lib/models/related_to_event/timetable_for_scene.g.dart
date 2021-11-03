@@ -18,6 +18,6 @@ _$_TimetableForScene _$_$_TimetableForSceneFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_TimetableForSceneToJson(
         _$_TimetableForScene instance) =>
     <String, dynamic>{
-      'scene': instance.scene,
-      'performances': instance.performances,
+      'scene': instance.scene.toJson(),
+      'performances': instance.performances.map((e) => e.toJson()).toList(),
     };

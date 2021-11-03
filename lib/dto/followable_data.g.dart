@@ -27,8 +27,8 @@ Map<String, dynamic> _$_$_FollowableDataDtoToJson(
     <String, dynamic>{
       'name': instance.name,
       'imageLink': instance.imageLink,
-      'imageDimensions': instance.imageDimensions,
-      'country': instance.country,
+      'imageDimensions': instance.imageDimensions?.toJson(),
+      'country': instance.country?.toJson(),
       'id': instance.id,
       'type': _$FollowableTypeEnumMap[instance.type],
     };

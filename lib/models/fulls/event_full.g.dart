@@ -38,11 +38,11 @@ Map<String, dynamic> _$_$_EventFullToJson(_$_EventFull instance) =>
       'status': _$EventStatusEnumMap[instance.status],
       'startDateTime': const DateTimeConverter().toJson(instance.startDateTime),
       'endDateTime': const DateTimeConverter().toJson(instance.endDateTime),
-      'place': instance.place,
+      'place': instance.place.toJson(),
       'imageLink': instance.imageLink,
       'about': instance.about,
       'ticketsLink': instance.ticketsLink,
-      'ticketPrices': instance.ticketPrices,
+      'ticketPrices': instance.ticketPrices?.map((e) => e.toJson()).toList(),
     };
 
 K _$enumDecode<K, V>(
