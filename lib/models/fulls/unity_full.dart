@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/dto/followable_data.dart';
 import 'package:the_postraves_package/dto/image_dimensions.dart';
-import 'package:the_postraves_package/dto/wiki_data_dto.dart';
-import 'package:the_postraves_package/dto/wiki_followable_type.dart';
+import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 import '../geo/country.dart';
 
@@ -29,14 +29,17 @@ class UnityFull with _$UnityFull implements GeneralFollowableInterface {
       _$UnityFullFromJson(json);
 
   @override
-  WikiDataDto convertToWikiDataDto(ImageDimensions? imageDimensions) {
-    return WikiDataDto(
+  FollowableData convertToFollowableData(ImageDimensions? imageDimensions) {
+    return FollowableData(
       id: id,
       name: name,
       imageLink: imageLink,
       country: country,
       imageDimensions: imageDimensions,
-      type: WikiFollowableType.UNITY,
+      type: type,
     );
   }
+
+  @override
+  FollowableType get type => FollowableType.UNITY;
 }

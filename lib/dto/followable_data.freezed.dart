@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'wiki_data_dto.dart';
+part of 'followable_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,22 +12,22 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-WikiDataDto _$WikiDataDtoFromJson(Map<String, dynamic> json) {
-  return _WikiDataDto.fromJson(json);
+FollowableData _$FollowableDataFromJson(Map<String, dynamic> json) {
+  return _FollowableDataDto.fromJson(json);
 }
 
 /// @nodoc
-class _$WikiDataDtoTearOff {
-  const _$WikiDataDtoTearOff();
+class _$FollowableDataTearOff {
+  const _$FollowableDataTearOff();
 
-  _WikiDataDto call(
+  _FollowableDataDto call(
       {required String name,
       required String? imageLink,
       ImageDimensions? imageDimensions = null,
       Country? country = null,
       required int id,
-      required WikiFollowableType type}) {
-    return _WikiDataDto(
+      required FollowableType type}) {
+    return _FollowableDataDto(
       name: name,
       imageLink: imageLink,
       imageDimensions: imageDimensions,
@@ -37,53 +37,54 @@ class _$WikiDataDtoTearOff {
     );
   }
 
-  WikiDataDto fromJson(Map<String, Object> json) {
-    return WikiDataDto.fromJson(json);
+  FollowableData fromJson(Map<String, Object> json) {
+    return FollowableData.fromJson(json);
   }
 }
 
 /// @nodoc
-const $WikiDataDto = _$WikiDataDtoTearOff();
+const $FollowableData = _$FollowableDataTearOff();
 
 /// @nodoc
-mixin _$WikiDataDto {
+mixin _$FollowableData {
   String get name => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
   ImageDimensions? get imageDimensions => throw _privateConstructorUsedError;
   Country? get country => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
-  WikiFollowableType get type => throw _privateConstructorUsedError;
+  FollowableType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WikiDataDtoCopyWith<WikiDataDto> get copyWith =>
+  $FollowableDataCopyWith<FollowableData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WikiDataDtoCopyWith<$Res> {
-  factory $WikiDataDtoCopyWith(
-          WikiDataDto value, $Res Function(WikiDataDto) then) =
-      _$WikiDataDtoCopyWithImpl<$Res>;
+abstract class $FollowableDataCopyWith<$Res> {
+  factory $FollowableDataCopyWith(
+          FollowableData value, $Res Function(FollowableData) then) =
+      _$FollowableDataCopyWithImpl<$Res>;
   $Res call(
       {String name,
       String? imageLink,
       ImageDimensions? imageDimensions,
       Country? country,
       int id,
-      WikiFollowableType type});
+      FollowableType type});
 
   $ImageDimensionsCopyWith<$Res>? get imageDimensions;
   $CountryCopyWith<$Res>? get country;
 }
 
 /// @nodoc
-class _$WikiDataDtoCopyWithImpl<$Res> implements $WikiDataDtoCopyWith<$Res> {
-  _$WikiDataDtoCopyWithImpl(this._value, this._then);
+class _$FollowableDataCopyWithImpl<$Res>
+    implements $FollowableDataCopyWith<$Res> {
+  _$FollowableDataCopyWithImpl(this._value, this._then);
 
-  final WikiDataDto _value;
+  final FollowableData _value;
   // ignore: unused_field
-  final $Res Function(WikiDataDto) _then;
+  final $Res Function(FollowableData) _then;
 
   @override
   $Res call({
@@ -118,7 +119,7 @@ class _$WikiDataDtoCopyWithImpl<$Res> implements $WikiDataDtoCopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as WikiFollowableType,
+              as FollowableType,
     ));
   }
 
@@ -146,11 +147,11 @@ class _$WikiDataDtoCopyWithImpl<$Res> implements $WikiDataDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$WikiDataDtoCopyWith<$Res>
-    implements $WikiDataDtoCopyWith<$Res> {
-  factory _$WikiDataDtoCopyWith(
-          _WikiDataDto value, $Res Function(_WikiDataDto) then) =
-      __$WikiDataDtoCopyWithImpl<$Res>;
+abstract class _$FollowableDataDtoCopyWith<$Res>
+    implements $FollowableDataCopyWith<$Res> {
+  factory _$FollowableDataDtoCopyWith(
+          _FollowableDataDto value, $Res Function(_FollowableDataDto) then) =
+      __$FollowableDataDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {String name,
@@ -158,7 +159,7 @@ abstract class _$WikiDataDtoCopyWith<$Res>
       ImageDimensions? imageDimensions,
       Country? country,
       int id,
-      WikiFollowableType type});
+      FollowableType type});
 
   @override
   $ImageDimensionsCopyWith<$Res>? get imageDimensions;
@@ -167,14 +168,15 @@ abstract class _$WikiDataDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$WikiDataDtoCopyWithImpl<$Res> extends _$WikiDataDtoCopyWithImpl<$Res>
-    implements _$WikiDataDtoCopyWith<$Res> {
-  __$WikiDataDtoCopyWithImpl(
-      _WikiDataDto _value, $Res Function(_WikiDataDto) _then)
-      : super(_value, (v) => _then(v as _WikiDataDto));
+class __$FollowableDataDtoCopyWithImpl<$Res>
+    extends _$FollowableDataCopyWithImpl<$Res>
+    implements _$FollowableDataDtoCopyWith<$Res> {
+  __$FollowableDataDtoCopyWithImpl(
+      _FollowableDataDto _value, $Res Function(_FollowableDataDto) _then)
+      : super(_value, (v) => _then(v as _FollowableDataDto));
 
   @override
-  _WikiDataDto get _value => super._value as _WikiDataDto;
+  _FollowableDataDto get _value => super._value as _FollowableDataDto;
 
   @override
   $Res call({
@@ -185,7 +187,7 @@ class __$WikiDataDtoCopyWithImpl<$Res> extends _$WikiDataDtoCopyWithImpl<$Res>
     Object? id = freezed,
     Object? type = freezed,
   }) {
-    return _then(_WikiDataDto(
+    return _then(_FollowableDataDto(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -209,15 +211,15 @@ class __$WikiDataDtoCopyWithImpl<$Res> extends _$WikiDataDtoCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as WikiFollowableType,
+              as FollowableType,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_WikiDataDto extends _WikiDataDto {
-  const _$_WikiDataDto(
+class _$_FollowableDataDto extends _FollowableDataDto {
+  const _$_FollowableDataDto(
       {required this.name,
       required this.imageLink,
       this.imageDimensions = null,
@@ -226,8 +228,8 @@ class _$_WikiDataDto extends _WikiDataDto {
       required this.type})
       : super._();
 
-  factory _$_WikiDataDto.fromJson(Map<String, dynamic> json) =>
-      _$_$_WikiDataDtoFromJson(json);
+  factory _$_FollowableDataDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_FollowableDataDtoFromJson(json);
 
   @override
   final String name;
@@ -242,17 +244,17 @@ class _$_WikiDataDto extends _WikiDataDto {
   @override
   final int id;
   @override
-  final WikiFollowableType type;
+  final FollowableType type;
 
   @override
   String toString() {
-    return 'WikiDataDto(name: $name, imageLink: $imageLink, imageDimensions: $imageDimensions, country: $country, id: $id, type: $type)';
+    return 'FollowableData(name: $name, imageLink: $imageLink, imageDimensions: $imageDimensions, country: $country, id: $id, type: $type)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WikiDataDto &&
+        (other is _FollowableDataDto &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.imageLink, imageLink) ||
@@ -282,27 +284,27 @@ class _$_WikiDataDto extends _WikiDataDto {
 
   @JsonKey(ignore: true)
   @override
-  _$WikiDataDtoCopyWith<_WikiDataDto> get copyWith =>
-      __$WikiDataDtoCopyWithImpl<_WikiDataDto>(this, _$identity);
+  _$FollowableDataDtoCopyWith<_FollowableDataDto> get copyWith =>
+      __$FollowableDataDtoCopyWithImpl<_FollowableDataDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_WikiDataDtoToJson(this);
+    return _$_$_FollowableDataDtoToJson(this);
   }
 }
 
-abstract class _WikiDataDto extends WikiDataDto {
-  const factory _WikiDataDto(
+abstract class _FollowableDataDto extends FollowableData {
+  const factory _FollowableDataDto(
       {required String name,
       required String? imageLink,
       ImageDimensions? imageDimensions,
       Country? country,
       required int id,
-      required WikiFollowableType type}) = _$_WikiDataDto;
-  const _WikiDataDto._() : super._();
+      required FollowableType type}) = _$_FollowableDataDto;
+  const _FollowableDataDto._() : super._();
 
-  factory _WikiDataDto.fromJson(Map<String, dynamic> json) =
-      _$_WikiDataDto.fromJson;
+  factory _FollowableDataDto.fromJson(Map<String, dynamic> json) =
+      _$_FollowableDataDto.fromJson;
 
   @override
   String get name => throw _privateConstructorUsedError;
@@ -315,9 +317,9 @@ abstract class _WikiDataDto extends WikiDataDto {
   @override
   int get id => throw _privateConstructorUsedError;
   @override
-  WikiFollowableType get type => throw _privateConstructorUsedError;
+  FollowableType get type => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$WikiDataDtoCopyWith<_WikiDataDto> get copyWith =>
+  _$FollowableDataDtoCopyWith<_FollowableDataDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

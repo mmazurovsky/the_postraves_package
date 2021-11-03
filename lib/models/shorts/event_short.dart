@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:the_postraves_package/client/date_time_converter.dart';
 import 'package:the_postraves_package/dto/image_dimensions.dart';
-import 'package:the_postraves_package/dto/wiki_data_dto.dart';
-import 'package:the_postraves_package/dto/wiki_followable_type.dart';
+import 'package:the_postraves_package/dto/followable_data.dart';
+import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/geo/country.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 import 'package:the_postraves_package/models/related_to_event/event_status.dart';
@@ -37,14 +37,17 @@ class EventShort with _$EventShort implements GeneralFollowableInterface {
   }
 
   @override
-  WikiDataDto convertToWikiDataDto(ImageDimensions? imageDimensions) {
-    return WikiDataDto(
+  FollowableData convertToFollowableData(ImageDimensions? imageDimensions) {
+    return FollowableData(
       id: id,
       name: name,
       imageLink: imageLink,
       country: country,
       imageDimensions: imageDimensions,
-      type: WikiFollowableType.EVENT,
+      type: type,
     );
   }
+
+  @override
+  FollowableType get type => FollowableType.EVENT;
 }

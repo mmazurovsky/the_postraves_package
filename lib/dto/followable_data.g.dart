@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'wiki_data_dto.dart';
+part of 'followable_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WikiDataDto _$_$_WikiDataDtoFromJson(Map<String, dynamic> json) {
-  return _$_WikiDataDto(
+_$_FollowableDataDto _$_$_FollowableDataDtoFromJson(Map<String, dynamic> json) {
+  return _$_FollowableDataDto(
     name: json['name'] as String,
     imageLink: json['imageLink'] as String?,
     imageDimensions: json['imageDimensions'] == null
@@ -18,18 +18,19 @@ _$_WikiDataDto _$_$_WikiDataDtoFromJson(Map<String, dynamic> json) {
         ? null
         : Country.fromJson(json['country'] as Map<String, dynamic>),
     id: json['id'] as int,
-    type: _$enumDecode(_$WikiFollowableTypeEnumMap, json['type']),
+    type: _$enumDecode(_$FollowableTypeEnumMap, json['type']),
   );
 }
 
-Map<String, dynamic> _$_$_WikiDataDtoToJson(_$_WikiDataDto instance) =>
+Map<String, dynamic> _$_$_FollowableDataDtoToJson(
+        _$_FollowableDataDto instance) =>
     <String, dynamic>{
       'name': instance.name,
       'imageLink': instance.imageLink,
-      'imageDimensions': instance.imageDimensions?.toJson(),
-      'country': instance.country?.toJson(),
+      'imageDimensions': instance.imageDimensions,
+      'country': instance.country,
       'id': instance.id,
-      'type': _$WikiFollowableTypeEnumMap[instance.type],
+      'type': _$FollowableTypeEnumMap[instance.type],
     };
 
 K _$enumDecode<K, V>(
@@ -58,10 +59,10 @@ K _$enumDecode<K, V>(
   ).key;
 }
 
-const _$WikiFollowableTypeEnumMap = {
-  WikiFollowableType.ARTIST: 'ARTIST',
-  WikiFollowableType.UNITY: 'UNITY',
-  WikiFollowableType.PLACE: 'PLACE',
-  WikiFollowableType.EVENT: 'EVENT',
-  WikiFollowableType.USER: 'USER',
+const _$FollowableTypeEnumMap = {
+  FollowableType.ARTIST: 'ARTIST',
+  FollowableType.UNITY: 'UNITY',
+  FollowableType.PLACE: 'PLACE',
+  FollowableType.EVENT: 'EVENT',
+  FollowableType.USER: 'USER',
 };

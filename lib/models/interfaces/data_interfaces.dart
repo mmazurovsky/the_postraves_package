@@ -1,6 +1,6 @@
 import 'package:the_postraves_package/dto/image_dimensions.dart';
-import 'package:the_postraves_package/dto/wiki_data_dto.dart';
-import 'package:the_postraves_package/dto/wiki_followable_type.dart';
+import 'package:the_postraves_package/dto/followable_data.dart';
+import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/geo/country.dart';
 
 abstract class BaseIdInterface {
@@ -22,14 +22,19 @@ abstract class FollowableInterfaceWithType
     implements BaseIdInterface, BaseNameInterface {
   String? get imageLink;
   Country? get country;
-  WikiFollowableType get type;
+  FollowableType get type;
+}
+
+abstract class WithTypeInterface {
+  FollowableType get type;
 }
 
 abstract class GeneralFollowableInterface
     implements
         BaseIdInterface,
         BaseNameInterface,
-        ConvertableToWikiDataDtoInterface {
+        ConvertableToFollowableDataInterface,
+        WithTypeInterface {
   String? get imageLink;
   Country? get country;
   int get overallFollowers;
@@ -38,6 +43,6 @@ abstract class GeneralFollowableInterface
   Map<String, dynamic> toJson();
 }
 
-abstract class ConvertableToWikiDataDtoInterface {
-  WikiDataDto convertToWikiDataDto(ImageDimensions? imageDimensions);
+abstract class ConvertableToFollowableDataInterface {
+  FollowableData convertToFollowableData(ImageDimensions? imageDimensions);
 }
