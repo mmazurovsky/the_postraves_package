@@ -1,1 +1,9 @@
-class MyServerException implements Exception {}
+class MyServerException implements Exception {
+  final String? message;
+  MyServerException([this.message]);
+}
+
+class MyCacheException implements Exception {
+  final String? message;
+  MyCacheException([this.message]);
+}
