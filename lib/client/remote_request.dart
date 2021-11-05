@@ -5,76 +5,31 @@ import 'package:http/http.dart' as http_client;
 
 import 'http_method_enum.dart';
 
-class RemoteClient {
-  static Future<dynamic> makeGetRequestAndReturnResponse(
-      {required String host,
+abstract class RemoteRequest {
+  Future<dynamic> call(
+      {required HttpMethod httpMethod,
+      required String host,
       String? hostPath,
       required String endpointWithPath,
       required Map<String, String> httpHeaders,
-      Map<String, dynamic>? queryParameters}) async {
-    final httpRequest = _MyHttpRequest(
-      host: host,
-      hostPath: hostPath,
-      httpMethod: HttpMethod.get,
-      endpointWithPath: endpointWithPath,
-      queryParameters: queryParameters,
-      httpHeaders: httpHeaders,
-    );
+      Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? body});
+}
 
-    return httpRequest();
-  }
-
-  static Future<dynamic> makePostRequestAndReturnResponse(
-      {required String host,
+class RemoteRequestImpl implements RemoteRequest {
+  @override
+  Future<dynamic> call(
+      {required HttpMethod httpMethod,
+      required String host,
       String? hostPath,
       required String endpointWithPath,
       required Map<String, String> httpHeaders,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? body}) async {
     final httpRequest = _MyHttpRequest(
+      httpMethod: httpMethod,
       host: host,
       hostPath: hostPath,
-      httpMethod: HttpMethod.post,
-      endpointWithPath: endpointWithPath,
-      httpHeaders: httpHeaders,
-      queryParameters: queryParameters,
-      body: body,
-    );
-
-    return httpRequest();
-  }
-
-  static Future<dynamic> makePutRequestAndReturnResponse(
-      {required String host,
-      String? hostPath,
-      required String endpointWithPath,
-      required Map<String, String> httpHeaders,
-      Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? body}) async {
-    final httpRequest = _MyHttpRequest(
-      host: host,
-      hostPath: hostPath,
-      httpMethod: HttpMethod.put,
-      endpointWithPath: endpointWithPath,
-      httpHeaders: httpHeaders,
-      queryParameters: queryParameters,
-      body: body,
-    );
-
-    return httpRequest();
-  }
-
-  static Future<dynamic> makeDeleteRequestAndReturnResponse(
-      {required String host,
-      String? hostPath,
-      required String endpointWithPath,
-      required Map<String, String> httpHeaders,
-      Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? body}) async {
-    final httpRequest = _MyHttpRequest(
-      host: host,
-      hostPath: hostPath,
-      httpMethod: HttpMethod.delete,
       endpointWithPath: endpointWithPath,
       httpHeaders: httpHeaders,
       queryParameters: queryParameters,
