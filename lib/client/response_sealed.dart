@@ -6,6 +6,5 @@ part 'response_sealed.freezed.dart';
 @freezed
 class ResponseSealed<DATA> with _$ResponseSealed {
   const factory ResponseSealed.success(DATA data) = SuccessResponse;
-  const factory ResponseSealed.failure(Failure failure,
-      [String? failureMessage]) = FailureResponse;
+  const factory ResponseSealed.failure(Failure failure) = FailureResponse;
 }

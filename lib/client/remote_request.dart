@@ -102,9 +102,9 @@ class _MyHttpRequest {
     if (response.statusCode.toString()[0] == '4' ||
         response.statusCode.toString()[0] == '5') {
       final exceptionMessage =
-          'Status code is: ${response.statusCode}, body: ${response.body}';
+          'Server exception, method: ${httpMethod.methodName}, uri: ${uri.toString()}, status code: ${response.statusCode}, body: ${response.body}';
       log(exceptionMessage);
-      throw MyServerException(); //TODO Exception
+      throw MyServerException(exceptionMessage);
     }
   }
 }

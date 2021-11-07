@@ -1,3 +1,5 @@
+import 'package:the_postraves_package/errors/exceptions.dart';
+
 import 'social_links_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -7,7 +9,7 @@ class OpenLinkService {
         ? await launch(urlString)
         : await canLaunch('https://$urlString')
             ? await launch('https://$urlString')
-            : throw 'Could not launch $urlString'; //TODO: exception
+            : throw MyOpenLinkException('Could not launch $urlString'); 
   }
 
   static void openInstagram(String instagramUsername) async {

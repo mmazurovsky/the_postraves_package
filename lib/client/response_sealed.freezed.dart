@@ -22,11 +22,9 @@ class _$ResponseSealedTearOff {
     );
   }
 
-  FailureResponse<DATA> failure<DATA>(Failure failure,
-      [String? failureMessage]) {
+  FailureResponse<DATA> failure<DATA>(Failure failure) {
     return FailureResponse<DATA>(
       failure,
-      failureMessage,
     );
   }
 }
@@ -39,13 +37,13 @@ mixin _$ResponseSealed<DATA> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DATA data) success,
-    required TResult Function(Failure failure, String? failureMessage) failure,
+    required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DATA data)? success,
-    TResult Function(Failure failure, String? failureMessage)? failure,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,7 +146,7 @@ class _$SuccessResponse<DATA> implements SuccessResponse<DATA> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DATA data) success,
-    required TResult Function(Failure failure, String? failureMessage) failure,
+    required TResult Function(Failure failure) failure,
   }) {
     return success(data);
   }
@@ -157,7 +155,7 @@ class _$SuccessResponse<DATA> implements SuccessResponse<DATA> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DATA data)? success,
-    TResult Function(Failure failure, String? failureMessage)? failure,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -203,7 +201,7 @@ abstract class $FailureResponseCopyWith<DATA, $Res> {
   factory $FailureResponseCopyWith(FailureResponse<DATA> value,
           $Res Function(FailureResponse<DATA>) then) =
       _$FailureResponseCopyWithImpl<DATA, $Res>;
-  $Res call({Failure failure, String? failureMessage});
+  $Res call({Failure failure});
 }
 
 /// @nodoc
@@ -220,17 +218,12 @@ class _$FailureResponseCopyWithImpl<DATA, $Res>
   @override
   $Res call({
     Object? failure = freezed,
-    Object? failureMessage = freezed,
   }) {
     return _then(FailureResponse<DATA>(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
-      failureMessage == freezed
-          ? _value.failureMessage
-          : failureMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -238,16 +231,14 @@ class _$FailureResponseCopyWithImpl<DATA, $Res>
 /// @nodoc
 
 class _$FailureResponse<DATA> implements FailureResponse<DATA> {
-  const _$FailureResponse(this.failure, [this.failureMessage]);
+  const _$FailureResponse(this.failure);
 
   @override
   final Failure failure;
-  @override
-  final String? failureMessage;
 
   @override
   String toString() {
-    return 'ResponseSealed<$DATA>.failure(failure: $failure, failureMessage: $failureMessage)';
+    return 'ResponseSealed<$DATA>.failure(failure: $failure)';
   }
 
   @override
@@ -255,18 +246,12 @@ class _$FailureResponse<DATA> implements FailureResponse<DATA> {
     return identical(this, other) ||
         (other is FailureResponse<DATA> &&
             (identical(other.failure, failure) ||
-                const DeepCollectionEquality()
-                    .equals(other.failure, failure)) &&
-            (identical(other.failureMessage, failureMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.failureMessage, failureMessage)));
+                const DeepCollectionEquality().equals(other.failure, failure)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(failure) ^
-      const DeepCollectionEquality().hash(failureMessage);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
   @JsonKey(ignore: true)
   @override
@@ -278,20 +263,20 @@ class _$FailureResponse<DATA> implements FailureResponse<DATA> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DATA data) success,
-    required TResult Function(Failure failure, String? failureMessage) failure,
+    required TResult Function(Failure failure) failure,
   }) {
-    return failure(this.failure, failureMessage);
+    return failure(this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DATA data)? success,
-    TResult Function(Failure failure, String? failureMessage)? failure,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(this.failure, failureMessage);
+      return failure(this.failure);
     }
     return orElse();
   }
@@ -320,11 +305,9 @@ class _$FailureResponse<DATA> implements FailureResponse<DATA> {
 }
 
 abstract class FailureResponse<DATA> implements ResponseSealed<DATA> {
-  const factory FailureResponse(Failure failure, [String? failureMessage]) =
-      _$FailureResponse<DATA>;
+  const factory FailureResponse(Failure failure) = _$FailureResponse<DATA>;
 
   Failure get failure => throw _privateConstructorUsedError;
-  String? get failureMessage => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $FailureResponseCopyWith<DATA, FailureResponse<DATA>> get copyWith =>
       throw _privateConstructorUsedError;

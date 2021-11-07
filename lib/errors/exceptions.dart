@@ -7,3 +7,8 @@ class MyCacheException implements Exception {
   final String? message;
   MyCacheException([this.message]);
 }
+
+class MyOpenLinkException implements Exception {
+  final String? message;
+  MyOpenLinkException([this.message]);
+}
