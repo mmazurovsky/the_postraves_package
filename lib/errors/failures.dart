@@ -1,5 +1,7 @@
 class Failure {
-  const Failure(FailureType type, [String? customMessage]);
+  final FailureType type;
+  final String? customMessage;
+  const Failure(this.type, [this.customMessage]);
 }
 
 enum FailureType {
