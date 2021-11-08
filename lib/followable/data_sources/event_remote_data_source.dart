@@ -1,6 +1,8 @@
 import 'package:the_postraves_package/client/localized_request.dart';
+import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/related_to_event/timetable_for_scene.dart';
 import 'package:the_postraves_package/models/shorts/artist_short.dart';
+import 'package:the_postraves_package/models/shorts/event_short.dart';
 import 'package:the_postraves_package/models/shorts/unity_short.dart';
 
 abstract class EventRemoteDataSource {
@@ -18,6 +20,9 @@ abstract class EventRemoteDataSource {
     required int id,
     required Map<String, String> httpHeaders,
   });
+
+  Future<List<EventShort>> searchByName(
+      {required String searchValue, required Map<String, String> httpHeaders});
 }
 
 class EventRemoteDataSourceImpl implements EventRemoteDataSource {
@@ -28,10 +33,9 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   @override
   Future<List<ArtistShort>> fetchLineupForEventById(
       {required int id, required Map<String, String> httpHeaders}) async {
-    final decodedResponse =
-        await _localizedGetRequest(
-            endpointWithPath: 'event/public/$id/lineup',
-            httpHeaders: httpHeaders) as List<dynamic>?;
+    final decodedResponse = await _localizedGetRequest(
+        endpointWithPath: 'event/public/$id/lineup',
+        httpHeaders: httpHeaders) as List<dynamic>?;
     final list =
         decodedResponse?.map((json) => ArtistShort.fromJson(json)).toList() ??
             [];
@@ -41,10 +45,9 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   @override
   Future<List<UnityShort>> fetchOrganizersForEventById(
       {required int id, required Map<String, String> httpHeaders}) async {
-    final decodedResponse =
-        await _localizedGetRequest(
-            endpointWithPath: 'event/public/$id/organizers',
-            httpHeaders: httpHeaders) as List<dynamic>?;
+    final decodedResponse = await _localizedGetRequest(
+        endpointWithPath: 'event/public/$id/organizers',
+        httpHeaders: httpHeaders) as List<dynamic>?;
     final list =
         decodedResponse?.map((json) => UnityShort.fromJson(json)).toList() ??
             [];
@@ -54,14 +57,29 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   @override
   Future<List<TimetableForScene>> fetchTimetableForEventById(
       {required int id, required Map<String, String> httpHeaders}) async {
-    final decodedResponse =
-        await _localizedGetRequest(
-            endpointWithPath: 'event/public/$id/timetable',
-            httpHeaders: httpHeaders) as List<dynamic>?;
+    final decodedResponse = await _localizedGetRequest(
+        endpointWithPath: 'event/public/$id/timetable',
+        httpHeaders: httpHeaders) as List<dynamic>?;
     final list = decodedResponse
             ?.map((json) => TimetableForScene.fromJson(json))
             .toList() ??
         [];
     return list;
+  }
+
+  @override
+  Future<List<EventShort>> searchByName(
+      {required String searchValue,
+      required Map<String, String> httpHeaders}) async {
+    final requestEvents = _localizedGetRequest(
+      endpointWithPath:
+          '${FollowableType.EVENT.endpoint}/public/search/$searchValue',
+      httpHeaders: httpHeaders,
+    );
+
+    final responseEvents = await requestEvents as List<dynamic>?;
+    final decodedEvents =
+        responseEvents?.map((json) => EventShort.fromJson(json)).toList() ?? [];
+    return decodedEvents;
   }
 }
