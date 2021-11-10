@@ -9,4 +9,5 @@ enum FailureType {
   serverFailure,
   cacheFailure,
   authFailure,
+  firebaseFailure,
 }
