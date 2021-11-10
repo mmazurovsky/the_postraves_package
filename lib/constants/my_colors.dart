@@ -8,6 +8,7 @@ class MyColors {
   static const Color mainOppositeColor = Colors.black;
   static const Color forDarkButtons = Color.fromRGBO(35, 37, 42, 1);
   static const Color forEventCard = Color.fromRGBO(28, 30, 34, 1);
+  static const Color forEventCardBrighter = Color.fromRGBO(73, 79, 90, 1);
   static const Color forInactiveStuff = Color.fromRGBO(166, 168, 169, 1);
   static const Color forInactiveStuffDarker = Color.fromRGBO(50, 51, 52, 1);
   static const Color forPositiveWeeklyRating = Color.fromRGBO(124, 223, 100, 1);
