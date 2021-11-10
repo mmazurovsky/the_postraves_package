@@ -20,7 +20,7 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
   @override
   Future<ResponseSealed<String>> uploadUserImageFile(File imageFile) async {
     final refr =
-        _firebaseStorage.ref('users/user-${DateTime.now().toUtc()}.png');
+        _firebaseStorage.ref('images/user/user-${DateTime.now().toUtc()}.png');
     try {
       String? imageLink;
       final uploadTask = refr.putFile(imageFile);
@@ -36,12 +36,14 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
 
   @override
   Future<ResponseSealed<String>> uploadImageFromInternet(
-      String folderName, String imageUrl) async {
+    String imageUrl,
+    String followableFolderName,
+  ) async {
     Uint8List downloadedImageData = await http_client
         .get(Uri.parse(imageUrl))
         .then((value) => value.bodyBytes);
-    final refr =
-        _firebaseStorage.ref('$folderName/image-${DateTime.now().toUtc()}.png');
+    final refr = _firebaseStorage.ref(
+        'images/$followableFolderName/image-${DateTime.now().toUtc()}.png');
     try {
       String? imageLink;
       final uploadTask = refr.putData(downloadedImageData);
