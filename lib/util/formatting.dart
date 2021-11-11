@@ -3,7 +3,7 @@ import 'package:sprintf/sprintf.dart';
 class Formatting {
     static String getFormattedDateAndTime({required DateTime dateTime}) {
     return getFormattedDateShort(dateTime: dateTime) +
-        ' ' +
+        '  —  ' +
         getFormattedTime(dateTime);
   }
 
@@ -15,10 +15,10 @@ class Formatting {
   }
 
   static String getFormattedDateShort({required DateTime dateTime}) {
-    return sprintf('%s — %02i.%02i.4i', [
+    return sprintf('%s, %02i.%02i.%4i', [
       getWeekdayName(
         weekdayNumber: dateTime.weekday,
-        isShortened: true,
+        isShortened: false,
       ),
       dateTime.day,
       dateTime.month,
