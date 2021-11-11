@@ -39,9 +39,10 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
     String imageUrl,
     String followableFolderName,
   ) async {
-    Uint8List downloadedImageData = await http_client
-        .get(Uri.parse(imageUrl))
-        .then((value) => value.bodyBytes);
+    final downloadedImage = await http_client.get(
+      Uri.parse('https://cors-proxy.htmldriven.com/?url=$imageUrl'),
+    );
+    final downloadedImageData = downloadedImage.bodyBytes;
     final refr = _firebaseStorage.ref(
         'images/$followableFolderName/image-${DateTime.now().toUtc()}.png');
     try {
