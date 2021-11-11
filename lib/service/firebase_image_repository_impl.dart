@@ -10,8 +10,10 @@ import 'package:http/http.dart' as http_client;
 
 abstract class FirebaseImageRepository {
   Future<ResponseSealed<String>> uploadUserImageFile(File imageFile);
-  Future<ResponseSealed<String>> uploadImageFromInternet(
-      String folderName, String imageUrl);
+  Future<ResponseSealed<String>> uploadImageFromInternet({
+    required String imageUrl,
+    required String folderName,
+  });
 }
 
 class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
@@ -37,10 +39,10 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
   }
 
   @override
-  Future<ResponseSealed<String>> uploadImageFromInternet(
-    String imageUrl,
-    String followableFolderName,
-  ) async {
+  Future<ResponseSealed<String>> uploadImageFromInternet({
+    required String imageUrl,
+    required String folderName,
+  }) async {
     final response = await http_client.get(
       Uri.parse('https://cors-panda-fze4k.ondigitalocean.app/$imageUrl'),
     );
@@ -56,8 +58,8 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
       );
     }
     final downloadedImageData = response.bodyBytes;
-    final refr = _firebaseStorage.ref(
-        'images/$followableFolderName/image-${DateTime.now().toUtc()}.png');
+    final refr = _firebaseStorage
+        .ref('images/$folderName/image-${DateTime.now().toUtc()}.png');
     try {
       String? imageLink;
       final uploadTask = refr.putData(
