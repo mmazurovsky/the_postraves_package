@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -39,15 +40,29 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
     String imageUrl,
     String followableFolderName,
   ) async {
-    final downloadedImage = await http_client.get(
-      Uri.parse('https://cors-proxy.htmldriven.com/?url=$imageUrl'),
+    final response = await http_client.get(
+      Uri.parse('https://cors-panda-fze4k.ondigitalocean.app/$imageUrl'),
     );
-    final downloadedImageData = downloadedImage.bodyBytes;
+    if (!response.statusCode.toString().startsWith('2')) {
+      final message =
+          'Getting image through proxy failed, status code: ${response.statusCode}, body: ${response.body}';
+      log(message);
+      ResponseSealed.failure(
+        Failure(
+          FailureType.serverFailure,
+          message,
+        ),
+      );
+    }
+    final downloadedImageData = response.bodyBytes;
     final refr = _firebaseStorage.ref(
         'images/$followableFolderName/image-${DateTime.now().toUtc()}.png');
     try {
       String? imageLink;
-      final uploadTask = refr.putData(downloadedImageData);
+      final uploadTask = refr.putData(
+        downloadedImageData,
+        SettableMetadata(contentType: 'image/png'),
+      );
       await uploadTask
           .whenComplete(() async => imageLink = await refr.getDownloadURL());
       return ResponseSealed.success(imageLink!);
