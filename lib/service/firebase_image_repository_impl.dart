@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/widgets.dart';
 import 'package:the_postraves_package/client/response_sealed.dart';
 import 'package:the_postraves_package/errors/failures.dart';
 import 'package:http/http.dart' as http_client;
@@ -47,7 +48,7 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
       final message =
           'Getting image through proxy failed, status code: ${response.statusCode}, body: ${response.body}';
       log(message);
-      ResponseSealed.failure(
+      return ResponseSealed.failure(
         Failure(
           FailureType.serverFailure,
           message,
