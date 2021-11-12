@@ -21,7 +21,7 @@ class _$TicketPriceTearOff {
   const _$TicketPriceTearOff();
 
   _TicketPrice call(
-      {required String name,
+      {required String? name,
       required double price,
       required MoneyCurrency currency}) {
     return _TicketPrice(
@@ -41,7 +41,7 @@ const $TicketPrice = _$TicketPriceTearOff();
 
 /// @nodoc
 mixin _$TicketPrice {
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   MoneyCurrency get currency => throw _privateConstructorUsedError;
 
@@ -56,7 +56,7 @@ abstract class $TicketPriceCopyWith<$Res> {
   factory $TicketPriceCopyWith(
           TicketPrice value, $Res Function(TicketPrice) then) =
       _$TicketPriceCopyWithImpl<$Res>;
-  $Res call({String name, double price, MoneyCurrency currency});
+  $Res call({String? name, double price, MoneyCurrency currency});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$TicketPriceCopyWithImpl<$Res> implements $TicketPriceCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$TicketPriceCopyWith<$Res>
           _TicketPrice value, $Res Function(_TicketPrice) then) =
       __$TicketPriceCopyWithImpl<$Res>;
   @override
-  $Res call({String name, double price, MoneyCurrency currency});
+  $Res call({String? name, double price, MoneyCurrency currency});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class __$TicketPriceCopyWithImpl<$Res> extends _$TicketPriceCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ class _$_TicketPrice with DiagnosticableTreeMixin implements _TicketPrice {
       _$_$_TicketPriceFromJson(json);
 
   @override
-  final String name;
+  final String? name;
   @override
   final double price;
   @override
@@ -197,7 +197,7 @@ class _$_TicketPrice with DiagnosticableTreeMixin implements _TicketPrice {
 
 abstract class _TicketPrice implements TicketPrice {
   const factory _TicketPrice(
-      {required String name,
+      {required String? name,
       required double price,
       required MoneyCurrency currency}) = _$_TicketPrice;
 
@@ -205,7 +205,7 @@ abstract class _TicketPrice implements TicketPrice {
       _$_TicketPrice.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   @override
   double get price => throw _privateConstructorUsedError;
   @override

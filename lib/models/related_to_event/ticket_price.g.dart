@@ -8,7 +8,7 @@ part of 'ticket_price.dart';
 
 _$_TicketPrice _$_$_TicketPriceFromJson(Map<String, dynamic> json) {
   return _$_TicketPrice(
-    name: json['name'] as String,
+    name: json['name'] as String?,
     price: (json['price'] as num).toDouble(),
     currency: _$enumDecode(_$MoneyCurrencyEnumMap, json['currency']),
   );
