@@ -21,9 +21,7 @@ class _$TicketPriceTearOff {
   const _$TicketPriceTearOff();
 
   _TicketPrice call(
-      {required String? name,
-      required double price,
-      required MoneyCurrency currency}) {
+      {String? name, required double price, required MoneyCurrency currency}) {
     return _TicketPrice(
       name: name,
       price: price,
@@ -137,7 +135,7 @@ class __$TicketPriceCopyWithImpl<$Res> extends _$TicketPriceCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TicketPrice with DiagnosticableTreeMixin implements _TicketPrice {
   const _$_TicketPrice(
-      {required this.name, required this.price, required this.currency});
+      {this.name, required this.price, required this.currency});
 
   factory _$_TicketPrice.fromJson(Map<String, dynamic> json) =>
       _$_$_TicketPriceFromJson(json);
@@ -197,7 +195,7 @@ class _$_TicketPrice with DiagnosticableTreeMixin implements _TicketPrice {
 
 abstract class _TicketPrice implements TicketPrice {
   const factory _TicketPrice(
-      {required String? name,
+      {String? name,
       required double price,
       required MoneyCurrency currency}) = _$_TicketPrice;
 

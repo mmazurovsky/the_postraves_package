@@ -9,7 +9,7 @@ part 'ticket_price.g.dart';
 class TicketPrice with _$TicketPrice {
 
   const factory TicketPrice({
-    required String? name,
+    String? name,
     required double price,
     required MoneyCurrency currency,
   }) = _TicketPrice;
