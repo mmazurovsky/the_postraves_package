@@ -1,10 +1,9 @@
 import 'dart:developer';
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/widgets.dart';
 import 'package:the_postraves_package/client/response_sealed.dart';
+import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/errors/failures.dart';
 import 'package:http/http.dart' as http_client;
 
@@ -44,7 +43,7 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
     required String folderName,
   }) async {
     final response = await http_client.get(
-      Uri.parse('https://cors-panda-fze4k.ondigitalocean.app/$imageUrl'),
+      Uri.parse('${ServerConstants.corsAnywhereHost}/$imageUrl'),
     );
     if (!response.statusCode.toString().startsWith('2')) {
       final message =
