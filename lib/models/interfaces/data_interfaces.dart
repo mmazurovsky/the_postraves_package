@@ -11,6 +11,10 @@ abstract class BaseNameInterface {
   String get name;
 }
 
+abstract class BaseNameImageInterface implements BaseNameInterface {
+  String? get imageLink;
+}
+
 abstract class LocationInterface {
   String get emojiCode;
   Country get country;
@@ -19,8 +23,7 @@ abstract class LocationInterface {
 }
 
 abstract class FollowableInterfaceWithType
-    implements BaseIdInterface, BaseNameInterface {
-  String? get imageLink;
+    implements BaseIdInterface, BaseNameImageInterface {
   Country? get country;
   FollowableType get type;
 }

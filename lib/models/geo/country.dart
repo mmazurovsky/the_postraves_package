@@ -6,7 +6,7 @@ part 'country.freezed.dart';
 part 'country.g.dart';
 
 @freezed
-class Country with _$Country implements LocationInterface {
+class Country with _$Country implements LocationInterface, BaseNameImageInterface {
   const Country._();
   const factory Country({
     required String name,
@@ -22,5 +22,5 @@ class Country with _$Country implements LocationInterface {
   Country get country => this;
 
   @override
-  String get emojiCode => emojiCode;
+  String? get imageLink => emojiCode;
 }
