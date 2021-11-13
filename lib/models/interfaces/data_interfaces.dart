@@ -35,10 +35,9 @@ abstract class WithTypeInterface {
 abstract class GeneralFollowableInterface
     implements
         BaseIdInterface,
-        BaseNameInterface,
+        BaseNameImageInterface,
         ConvertableToFollowableDataInterface,
         WithTypeInterface {
-  String? get imageLink;
   Country? get country;
   int get overallFollowers;
   int get weeklyFollowers;
