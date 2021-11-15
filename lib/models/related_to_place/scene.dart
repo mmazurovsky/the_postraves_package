@@ -8,7 +8,7 @@ class Scene with _$Scene {
 
   const factory Scene({
     String? imageLink,
-    required int id,
+    int? id,
     required String name,
   }) = _Scene;
 

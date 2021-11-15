@@ -9,7 +9,7 @@ part of 'scene.dart';
 _$_Scene _$_$_SceneFromJson(Map<String, dynamic> json) {
   return _$_Scene(
     imageLink: json['imageLink'] as String?,
-    id: json['id'] as int,
+    id: json['id'] as int?,
     name: json['name'] as String,
   );
 }
