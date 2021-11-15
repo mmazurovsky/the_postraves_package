@@ -7,6 +7,7 @@ part 'timetable_performance_use.freezed.dart';
 class TimetablePerformanceUse with _$TimetablePerformanceUse {
   const factory TimetablePerformanceUse({
     int? id,
+    String? internalId,
     required List<ArtistShort> artists,
     DateTime? startingDateTime,
     DateTime? endingDateTime,
