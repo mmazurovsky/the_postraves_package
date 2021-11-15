@@ -1,6 +1,6 @@
 enum MoneyCurrency { RUB, EUR, USD }
 
-extension MoneyCurrencyExtension on MoneyCurrency {
+extension MoneyCurrencyExtension on MoneyCurrency  {
   
   static const currencySymbols = {
     MoneyCurrency.RUB: '₽',
@@ -8,5 +8,5 @@ extension MoneyCurrencyExtension on MoneyCurrency {
     MoneyCurrency.USD: r'$',
   };
 
-  String? get currencySymbol => currencySymbols[this];
+  String? get name => currencySymbols[this];
 }
