@@ -9,6 +9,7 @@ part of 'timetable_performance.dart';
 _$_TimetablePerformance _$_$_TimetablePerformanceFromJson(
     Map<String, dynamic> json) {
   return _$_TimetablePerformance(
+    id: json['id'] as int,
     artists: (json['artists'] as List<dynamic>)
         .map((e) => ArtistShort.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -23,6 +24,7 @@ _$_TimetablePerformance _$_$_TimetablePerformanceFromJson(
 Map<String, dynamic> _$_$_TimetablePerformanceToJson(
         _$_TimetablePerformance instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'artists': instance.artists.map((e) => e.toJson()).toList(),
       'startingDateTime':
           const DateTimeConverter().toJson(instance.startingDateTime),

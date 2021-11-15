@@ -7,15 +7,12 @@ part 'timetable_performance.g.dart';
 
 @freezed
 class TimetablePerformance with _$TimetablePerformance {
-
   const factory TimetablePerformance({
+    required int id,
     required List<ArtistShort> artists,
-    @DateTimeConverter()
-    required DateTime startingDateTime,
-    @DateTimeConverter()
-    required DateTime endingDateTime,
+    @DateTimeConverter() required DateTime startingDateTime,
+    @DateTimeConverter() required DateTime endingDateTime,
     String? typeOfPerformance,
-    // ArtistPerformanceStatus? performanceStatus,
   }) = _TimetablePerformance;
 
   factory TimetablePerformance.fromJson(Map<String, dynamic> json) =>
