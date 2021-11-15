@@ -5,7 +5,6 @@ part 'scene.g.dart';
 
 @freezed
 class Scene with _$Scene {
-
   const factory Scene({
     String? imageLink,
     int? id,
@@ -13,4 +12,9 @@ class Scene with _$Scene {
   }) = _Scene;
 
   factory Scene.fromJson(Map<String, dynamic> json) => _$SceneFromJson(json);
+
+  @override
+  String toString() {
+    return name;
+  }
 }
