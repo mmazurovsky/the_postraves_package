@@ -20,6 +20,7 @@ class _$TimetablePerformanceUseTearOff {
       {int? id,
       String? internalId,
       required List<ArtistShort> artists,
+      Scene? scene,
       DateTime? startingDateTime,
       DateTime? endingDateTime,
       String? typeOfPerformance}) {
@@ -27,6 +28,7 @@ class _$TimetablePerformanceUseTearOff {
       id: id,
       internalId: internalId,
       artists: artists,
+      scene: scene,
       startingDateTime: startingDateTime,
       endingDateTime: endingDateTime,
       typeOfPerformance: typeOfPerformance,
@@ -42,6 +44,7 @@ mixin _$TimetablePerformanceUse {
   int? get id => throw _privateConstructorUsedError;
   String? get internalId => throw _privateConstructorUsedError;
   List<ArtistShort> get artists => throw _privateConstructorUsedError;
+  Scene? get scene => throw _privateConstructorUsedError;
   DateTime? get startingDateTime => throw _privateConstructorUsedError;
   DateTime? get endingDateTime => throw _privateConstructorUsedError;
   String? get typeOfPerformance => throw _privateConstructorUsedError;
@@ -60,9 +63,12 @@ abstract class $TimetablePerformanceUseCopyWith<$Res> {
       {int? id,
       String? internalId,
       List<ArtistShort> artists,
+      Scene? scene,
       DateTime? startingDateTime,
       DateTime? endingDateTime,
       String? typeOfPerformance});
+
+  $SceneCopyWith<$Res>? get scene;
 }
 
 /// @nodoc
@@ -79,6 +85,7 @@ class _$TimetablePerformanceUseCopyWithImpl<$Res>
     Object? id = freezed,
     Object? internalId = freezed,
     Object? artists = freezed,
+    Object? scene = freezed,
     Object? startingDateTime = freezed,
     Object? endingDateTime = freezed,
     Object? typeOfPerformance = freezed,
@@ -96,6 +103,10 @@ class _$TimetablePerformanceUseCopyWithImpl<$Res>
           ? _value.artists
           : artists // ignore: cast_nullable_to_non_nullable
               as List<ArtistShort>,
+      scene: scene == freezed
+          ? _value.scene
+          : scene // ignore: cast_nullable_to_non_nullable
+              as Scene?,
       startingDateTime: startingDateTime == freezed
           ? _value.startingDateTime
           : startingDateTime // ignore: cast_nullable_to_non_nullable
@@ -110,6 +121,17 @@ class _$TimetablePerformanceUseCopyWithImpl<$Res>
               as String?,
     ));
   }
+
+  @override
+  $SceneCopyWith<$Res>? get scene {
+    if (_value.scene == null) {
+      return null;
+    }
+
+    return $SceneCopyWith<$Res>(_value.scene!, (value) {
+      return _then(_value.copyWith(scene: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -123,9 +145,13 @@ abstract class _$TimetablePerformanceUseCopyWith<$Res>
       {int? id,
       String? internalId,
       List<ArtistShort> artists,
+      Scene? scene,
       DateTime? startingDateTime,
       DateTime? endingDateTime,
       String? typeOfPerformance});
+
+  @override
+  $SceneCopyWith<$Res>? get scene;
 }
 
 /// @nodoc
@@ -145,6 +171,7 @@ class __$TimetablePerformanceUseCopyWithImpl<$Res>
     Object? id = freezed,
     Object? internalId = freezed,
     Object? artists = freezed,
+    Object? scene = freezed,
     Object? startingDateTime = freezed,
     Object? endingDateTime = freezed,
     Object? typeOfPerformance = freezed,
@@ -162,6 +189,10 @@ class __$TimetablePerformanceUseCopyWithImpl<$Res>
           ? _value.artists
           : artists // ignore: cast_nullable_to_non_nullable
               as List<ArtistShort>,
+      scene: scene == freezed
+          ? _value.scene
+          : scene // ignore: cast_nullable_to_non_nullable
+              as Scene?,
       startingDateTime: startingDateTime == freezed
           ? _value.startingDateTime
           : startingDateTime // ignore: cast_nullable_to_non_nullable
@@ -185,6 +216,7 @@ class _$_TimetablePerformanceUse implements _TimetablePerformanceUse {
       {this.id,
       this.internalId,
       required this.artists,
+      this.scene,
       this.startingDateTime,
       this.endingDateTime,
       this.typeOfPerformance});
@@ -196,6 +228,8 @@ class _$_TimetablePerformanceUse implements _TimetablePerformanceUse {
   @override
   final List<ArtistShort> artists;
   @override
+  final Scene? scene;
+  @override
   final DateTime? startingDateTime;
   @override
   final DateTime? endingDateTime;
@@ -204,7 +238,7 @@ class _$_TimetablePerformanceUse implements _TimetablePerformanceUse {
 
   @override
   String toString() {
-    return 'TimetablePerformanceUse(id: $id, internalId: $internalId, artists: $artists, startingDateTime: $startingDateTime, endingDateTime: $endingDateTime, typeOfPerformance: $typeOfPerformance)';
+    return 'TimetablePerformanceUse(id: $id, internalId: $internalId, artists: $artists, scene: $scene, startingDateTime: $startingDateTime, endingDateTime: $endingDateTime, typeOfPerformance: $typeOfPerformance)';
   }
 
   @override
@@ -219,6 +253,8 @@ class _$_TimetablePerformanceUse implements _TimetablePerformanceUse {
             (identical(other.artists, artists) ||
                 const DeepCollectionEquality()
                     .equals(other.artists, artists)) &&
+            (identical(other.scene, scene) ||
+                const DeepCollectionEquality().equals(other.scene, scene)) &&
             (identical(other.startingDateTime, startingDateTime) ||
                 const DeepCollectionEquality()
                     .equals(other.startingDateTime, startingDateTime)) &&
@@ -236,6 +272,7 @@ class _$_TimetablePerformanceUse implements _TimetablePerformanceUse {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(internalId) ^
       const DeepCollectionEquality().hash(artists) ^
+      const DeepCollectionEquality().hash(scene) ^
       const DeepCollectionEquality().hash(startingDateTime) ^
       const DeepCollectionEquality().hash(endingDateTime) ^
       const DeepCollectionEquality().hash(typeOfPerformance);
@@ -252,6 +289,7 @@ abstract class _TimetablePerformanceUse implements TimetablePerformanceUse {
       {int? id,
       String? internalId,
       required List<ArtistShort> artists,
+      Scene? scene,
       DateTime? startingDateTime,
       DateTime? endingDateTime,
       String? typeOfPerformance}) = _$_TimetablePerformanceUse;
@@ -262,6 +300,8 @@ abstract class _TimetablePerformanceUse implements TimetablePerformanceUse {
   String? get internalId => throw _privateConstructorUsedError;
   @override
   List<ArtistShort> get artists => throw _privateConstructorUsedError;
+  @override
+  Scene? get scene => throw _privateConstructorUsedError;
   @override
   DateTime? get startingDateTime => throw _privateConstructorUsedError;
   @override
