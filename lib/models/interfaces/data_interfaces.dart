@@ -48,3 +48,7 @@ abstract class GeneralFollowableInterface
 abstract class ConvertableToFollowableDataInterface {
   FollowableData convertToFollowableData(ImageDimensions? imageDimensions);
 }
+
+abstract class WriteInterface {
+  Map<String, dynamic> toJson();
+}

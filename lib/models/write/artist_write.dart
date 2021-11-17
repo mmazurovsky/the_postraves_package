@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 
 part 'artist_write.freezed.dart';
 part 'artist_write.g.dart';
 
 @freezed
-class ArtistWrite with _$ArtistWrite {
+class ArtistWrite with _$ArtistWrite implements WriteInterface {
   const factory ArtistWrite({
     int? id,
     required String name,

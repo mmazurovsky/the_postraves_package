@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 
 part 'city_write.freezed.dart';
 part 'city_write.g.dart';
 
 @freezed
-class CityWrite with _$CityWrite {
+class CityWrite with _$CityWrite implements WriteInterface {
   const factory CityWrite({
     required String name,
     required String nameRu,

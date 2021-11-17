@@ -1,9 +1,15 @@
+import 'dart:convert';
+
+import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/localized_request.dart';
+import 'package:the_postraves_package/client/remote_request.dart';
+import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/related_to_event/timetable_for_scene.dart';
 import 'package:the_postraves_package/models/shorts/artist_short.dart';
 import 'package:the_postraves_package/models/shorts/event_short.dart';
 import 'package:the_postraves_package/models/shorts/unity_short.dart';
+import 'package:the_postraves_package/models/write/timetable_performance_write.dart';
 
 abstract class EventRemoteDataSource {
   Future<List<UnityShort>> fetchOrganizersForEventById({
@@ -21,14 +27,29 @@ abstract class EventRemoteDataSource {
     required Map<String, String> httpHeaders,
   });
 
-  Future<List<EventShort>> searchByName(
-      {required String searchValue, required Map<String, String> httpHeaders});
+  Future<List<EventShort>> searchByName({
+    required String searchValue,
+    required Map<String, String> httpHeaders,
+  });
+
+  Future<void> saveOrUpdateOrganizers({
+    required int eventId,
+    required Set<int> orgsIds,
+    required Map<String, String> httpHeaders,
+  });
+
+  Future<void> saveOrUpdateTimetable({
+    required int eventId,
+    required List<TimetablePerformanceWrite> timetable,
+    required Map<String, String> httpHeaders,
+  });
 }
 
 class EventRemoteDataSourceImpl implements EventRemoteDataSource {
+  final RemoteRequest _remoteRequest;
   final LocalizedGetRequest _localizedGetRequest;
 
-  EventRemoteDataSourceImpl(this._localizedGetRequest);
+  EventRemoteDataSourceImpl(this._remoteRequest, this._localizedGetRequest);
 
   @override
   Future<List<ArtistShort>> fetchLineupForEventById(
@@ -81,5 +102,39 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     final decodedEvents =
         responseEvents?.map((json) => EventShort.fromJson(json)).toList() ?? [];
     return decodedEvents;
+  }
+
+  @override
+  Future<void> saveOrUpdateOrganizers({
+    required int eventId,
+    required Set<int> orgsIds,
+    required Map<String, String> httpHeaders,
+  }) async {
+    await _remoteRequest(
+      httpMethod: HttpMethod.put,
+      host: ServerConstants.apiHost,
+      hostPath: ServerConstants.apiPath,
+      endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/organizers',
+      httpHeaders: httpHeaders,
+      body: orgsIds,
+    );
+    return;
+  }
+
+  @override
+  Future<void> saveOrUpdateTimetable({
+    required int eventId,
+    required List<TimetablePerformanceWrite> timetable,
+    required Map<String, String> httpHeaders,
+  }) async {
+    await _remoteRequest(
+      httpMethod: HttpMethod.put,
+      host: ServerConstants.apiHost,
+      hostPath: ServerConstants.apiPath,
+      endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/timetable',
+      httpHeaders: httpHeaders,
+      body: timetable,
+    );
+    return;
   }
 }

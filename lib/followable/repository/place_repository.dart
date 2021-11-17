@@ -10,6 +10,8 @@ abstract class PlaceRepository {
   Future<ResponseSealed<List<Scene>>> fetchScenesForPlaceById(int id);
   Future<ResponseSealed<List<EventShort>>> fetchEventsForPlaceById(int id);
   Future<ResponseSealed<List<PlaceShort>>> searchByName(String searchValue);
+  Future<ResponseSealed<void>> saveOrUpdateScenes(
+      int placeId, List<Scene> scenes);
 }
 
 class PlaceRepositoryImpl extends PlaceRepository {
@@ -17,12 +19,14 @@ class PlaceRepositoryImpl extends PlaceRepository {
   final RemoteRequestWrapper<List<EventShort>> remoteRequestWrapperEvents;
   final RemoteRequestWrapper<List<Scene>> remoteRequestWrapperScenes;
   final RemoteRequestWrapper<List<PlaceShort>> remoteRequestWrapperPlaces;
+  final RemoteRequestWrapper<void> remoteRequestWrapperVoid;
 
   PlaceRepositoryImpl(
     this.placeRemoteDataSource,
     this.remoteRequestWrapperEvents,
     this.remoteRequestWrapperScenes,
     this.remoteRequestWrapperPlaces,
+    this.remoteRequestWrapperVoid,
   );
 
   @override
@@ -52,6 +56,18 @@ class PlaceRepositoryImpl extends PlaceRepository {
     return await remoteRequestWrapperPlaces(
       (httpHeaders) => placeRemoteDataSource.searchByName(
         searchValue: searchValue,
+        httpHeaders: httpHeaders,
+      ),
+    );
+  }
+
+  @override
+  Future<ResponseSealed<void>> saveOrUpdateScenes(
+      int placeId, List<Scene> scenes) async {
+    return await remoteRequestWrapperVoid(
+      (httpHeaders) => placeRemoteDataSource.saveOrUpdateScenes(
+        placeId: placeId,
+        scenes: scenes,
         httpHeaders: httpHeaders,
       ),
     );

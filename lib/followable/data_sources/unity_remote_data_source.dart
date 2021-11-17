@@ -1,4 +1,7 @@
+import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/localized_request.dart';
+import 'package:the_postraves_package/client/remote_request.dart';
+import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/shorts/artist_short.dart';
 import 'package:the_postraves_package/models/shorts/event_short.dart';
@@ -17,12 +20,22 @@ abstract class UnityRemoteDataSource {
 
   Future<List<UnityShort>> searchByName(
       {required String searchValue, required Map<String, String> httpHeaders});
+
+  Future<void> saveOrUpdateArtists({
+    required int unityId,
+    required Set<int> artists,
+    required Map<String, String> httpHeaders,
+  });
 }
 
 class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
+  final RemoteRequest _remoteRequest;
   final LocalizedGetRequest _localizedGetRequest;
 
-  UnityRemoteDataSourceImpl(this._localizedGetRequest);
+  UnityRemoteDataSourceImpl(
+    this._remoteRequest,
+    this._localizedGetRequest,
+  );
 
   @override
   Future<List<EventShort>> fetchEventsForUnityById(
@@ -63,5 +76,22 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
             [];
 
     return decodedUnities;
+  }
+
+  @override
+  Future<void> saveOrUpdateArtists({
+    required int unityId,
+    required Set<int> artists,
+    required Map<String, String> httpHeaders,
+  }) async {
+    await _remoteRequest(
+      httpMethod: HttpMethod.put,
+      host: ServerConstants.apiHost,
+      hostPath: ServerConstants.apiPath,
+      endpointWithPath: '${FollowableType.UNITY.endpoint}/$unityId/artists',
+      httpHeaders: httpHeaders,
+      body: artists,
+    );
+    return;
   }
 }

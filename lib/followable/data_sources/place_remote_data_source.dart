@@ -1,4 +1,7 @@
+import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/localized_request.dart';
+import 'package:the_postraves_package/client/remote_request.dart';
+import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/related_to_place/scene.dart';
 import 'package:the_postraves_package/models/shorts/event_short.dart';
@@ -17,12 +20,22 @@ abstract class PlaceRemoteDataSource {
 
   Future<List<PlaceShort>> searchByName(
       {required String searchValue, required Map<String, String> httpHeaders});
+
+  Future<void> saveOrUpdateScenes({
+    required int placeId,
+    required List<Scene> scenes,
+    required Map<String, String> httpHeaders,
+  });
 }
 
 class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
+  final RemoteRequest _remoteRequest;
   final LocalizedGetRequest _localizedGetRequest;
 
-  PlaceRemoteDataSourceImpl(this._localizedGetRequest);
+  PlaceRemoteDataSourceImpl(
+    this._remoteRequest,
+    this._localizedGetRequest,
+  );
 
   @override
   Future<List<EventShort>> fetchEventsForPlaceById(
@@ -59,5 +72,22 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
         responsePlaces?.map((json) => PlaceShort.fromJson(json)).toList() ?? [];
 
     return decodedPlaces;
+  }
+
+  @override
+  Future<void> saveOrUpdateScenes({
+    required int placeId,
+    required List<Scene> scenes,
+    required Map<String, String> httpHeaders,
+  }) async {
+    await _remoteRequest(
+      httpMethod: HttpMethod.put,
+      host: ServerConstants.apiHost,
+      hostPath: ServerConstants.apiPath,
+      endpointWithPath: '${FollowableType.PLACE.endpoint}/$placeId/scenes',
+      httpHeaders: httpHeaders,
+      body: scenes,
+    );
+    return;
   }
 }

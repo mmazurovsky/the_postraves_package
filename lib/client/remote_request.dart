@@ -13,7 +13,7 @@ abstract class RemoteRequest {
       required String endpointWithPath,
       required Map<String, String> httpHeaders,
       Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? body});
+      dynamic body});
 }
 
 class RemoteRequestImpl implements RemoteRequest {
@@ -25,7 +25,7 @@ class RemoteRequestImpl implements RemoteRequest {
       required String endpointWithPath,
       required Map<String, String> httpHeaders,
       Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? body}) async {
+      dynamic body}) async {
     final httpRequest = _MyHttpRequest(
       httpMethod: httpMethod,
       host: host,
