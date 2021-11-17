@@ -4,7 +4,7 @@ import 'package:the_postraves_package/client/write_client_helper.dart';
 import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 
-abstract class WriteFollowableDataSource<WRITEDATA extends WriteInterface> {
+abstract class WriteRemoteDataSource<WRITEDATA extends WriteInterface> {
   Future<void> saveOne({
     required WRITEDATA writeData,
     required Map<String, String> httpHeaders,
@@ -15,12 +15,12 @@ abstract class WriteFollowableDataSource<WRITEDATA extends WriteInterface> {
   });
 }
 
-class WriteFollowableDataSourceImpl<WRITEDATA extends WriteInterface>
-    implements WriteFollowableDataSource<WRITEDATA> {
+class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface>
+    implements WriteRemoteDataSource<WRITEDATA> {
   final RemoteRequest _remoteRequest;
   final WriteClientHelper _writeClientHelper;
 
-  WriteFollowableDataSourceImpl(
+  WriteRemoteDataSourceImpl(
     this._remoteRequest,
     this._writeClientHelper,
   );
