@@ -6,7 +6,7 @@ import 'package:the_postraves_package/followable/repository/artist_repository.da
 import 'package:the_postraves_package/followable/repository/event_repository.dart';
 import 'package:the_postraves_package/followable/repository/place_repository.dart';
 import 'package:the_postraves_package/followable/repository/unity_repository.dart';
-import 'package:the_postraves_package/followable/repository/wiki_repository.dart';
+import 'package:the_postraves_package/followable/repository/followable_repository.dart';
 import 'package:the_postraves_package/models/fulls/artist_full.dart';
 import 'package:the_postraves_package/models/fulls/event_full.dart';
 import 'package:the_postraves_package/models/fulls/place_full.dart';
@@ -15,6 +15,7 @@ import 'package:the_postraves_package/models/related_to_event/timetable_for_scen
 import 'package:the_postraves_package/models/related_to_place/scene.dart';
 import 'package:the_postraves_package/models/shorts/artist_short.dart';
 import 'package:the_postraves_package/models/shorts/event_short.dart';
+import 'package:the_postraves_package/models/shorts/place_short.dart';
 import 'package:the_postraves_package/models/shorts/unity_short.dart';
 
 abstract class CompleteEntitiesLoader {
@@ -29,10 +30,10 @@ abstract class CompleteEntitiesLoader {
 }
 
 class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
-  final FollowableRepository<EventFull> eventFollowableRepository;
-  final FollowableRepository<ArtistFull> artistFollowableRepository;
-  final FollowableRepository<PlaceFull> placeFollowableRepository;
-  final FollowableRepository<UnityFull> unityFollowableRepository;
+  final FollowableRepository<EventFull, EventShort> eventFollowableRepository;
+  final FollowableRepository<ArtistFull, ArtistShort> artistFollowableRepository;
+  final FollowableRepository<PlaceFull, PlaceShort> placeFollowableRepository;
+  final FollowableRepository<UnityFull, UnityShort> unityFollowableRepository;
   final ArtistRepository artistRepository;
   final EventRepository eventRepository;
   final UnityRepository unityRepository;

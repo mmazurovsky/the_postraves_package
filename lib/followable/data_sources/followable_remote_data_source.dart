@@ -5,8 +5,9 @@ import 'package:the_postraves_package/client/remote_request.dart';
 import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 
-abstract class WikiRemoteDataSource<
-    FULLFOLLOWABLE extends GeneralFollowableInterface> {
+abstract class FollowableRemoteDataSource<
+    FULLFOLLOWABLE extends GeneralFollowableInterface,
+    SHORTFOLLOWABLE extends GeneralFollowableInterface> {
   Future<FULLFOLLOWABLE> fetchBasicDataById({
     required int id,
     required Map<String, String> httpHeaders,
@@ -20,18 +21,24 @@ abstract class WikiRemoteDataSource<
     required int id,
     required Map<String, String> httpHeaders,
   });
+  Future<List<SHORTFOLLOWABLE>> fetchAll({
+    required Map<String, String> httpHeaders,
+  });
 }
 
-class WikiRemoteDataSourceImpl<
-        FULLFOLLOWABLE extends GeneralFollowableInterface>
-    implements WikiRemoteDataSource<FULLFOLLOWABLE> {
+class FollowableRemoteDataSourceImpl<
+        FULLFOLLOWABLE extends GeneralFollowableInterface,
+        SHORTFOLLOWABLE extends GeneralFollowableInterface>
+    implements FollowableRemoteDataSource<FULLFOLLOWABLE, SHORTFOLLOWABLE> {
   final RemoteRequest _remoteRequest;
   final FollowableClientHelper<FULLFOLLOWABLE> _followableClientHelper;
+  final FollowableClientHelper<SHORTFOLLOWABLE> _followableClientHelperShort;
   final LocalizedGetRequest _localizedGetRequest;
 
-  WikiRemoteDataSourceImpl(
+  FollowableRemoteDataSourceImpl(
     this._remoteRequest,
     this._followableClientHelper,
+    this._followableClientHelperShort,
     this._localizedGetRequest,
   );
 
@@ -46,6 +53,23 @@ class WikiRemoteDataSourceImpl<
       httpHeaders: httpHeaders,
     );
     return _followableClientHelper.deserializeFollowable(decodedResponse);
+  }
+
+  @override
+  Future<List<SHORTFOLLOWABLE>> fetchAll(
+      {required Map<String, String> httpHeaders}) async {
+    final response = await _remoteRequest(
+      httpMethod: HttpMethod.get,
+      host: ServerConstants.apiHost,
+      hostPath: ServerConstants.apiPath,
+      endpointWithPath: _followableClientHelperShort.getEndpointForFollowable(),
+      httpHeaders: httpHeaders,
+    );
+
+    return response
+        .map<SHORTFOLLOWABLE>(
+            (json) => _followableClientHelperShort.deserializeFollowable(json))
+        .toList();
   }
 
   @override
