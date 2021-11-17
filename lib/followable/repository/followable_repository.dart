@@ -18,22 +18,22 @@ class FollowableRepositoryImpl<
         SHORTFOLLOWABLE extends GeneralFollowableInterface>
     extends FollowableRepository<FULLFOLLOWABLE, SHORTFOLLOWABLE> {
   final FollowableRemoteDataSource<FULLFOLLOWABLE, SHORTFOLLOWABLE>
-      wikiRemoteDataSource;
-  final RemoteRequestWrapper<FULLFOLLOWABLE> remoteRequestWrapper;
-  final RemoteRequestWrapper<List<SHORTFOLLOWABLE>> remoteRequestWrapperShorts;
-  final RemoteRequestWrapper<void> remoteRequestWrapperVoid;
+      _followableRemoteDataSource;
+  final RemoteRequestWrapper<FULLFOLLOWABLE> _remoteRequestWrapper;
+  final RemoteRequestWrapper<List<SHORTFOLLOWABLE>> _remoteRequestWrapperShorts;
+  final RemoteRequestWrapper<void> _remoteRequestWrapperVoid;
 
-  FollowableRepositoryImpl({
-    required this.wikiRemoteDataSource,
-    required this.remoteRequestWrapper,
-    required this.remoteRequestWrapperShorts,
-    required this.remoteRequestWrapperVoid,
-  });
+  FollowableRepositoryImpl(
+    this._followableRemoteDataSource,
+    this._remoteRequestWrapper,
+    this._remoteRequestWrapperShorts,
+    this._remoteRequestWrapperVoid,
+  );
 
   @override
   Future<ResponseSealed<FULLFOLLOWABLE>> fetchBasicDataById(int id) async {
-    return await remoteRequestWrapper(
-        (httpHeaders) => wikiRemoteDataSource.fetchBasicDataById(
+    return await _remoteRequestWrapper(
+        (httpHeaders) => _followableRemoteDataSource.fetchBasicDataById(
               id: id,
               httpHeaders: httpHeaders,
             ));
@@ -41,8 +41,8 @@ class FollowableRepositoryImpl<
 
   @override
   Future<ResponseSealed<void>> followFollowable(int id) async {
-    return await remoteRequestWrapperVoid(
-        (httpHeaders) => wikiRemoteDataSource.followFollowable(
+    return await _remoteRequestWrapperVoid(
+        (httpHeaders) => _followableRemoteDataSource.followFollowable(
               id: id,
               httpHeaders: httpHeaders,
             ));
@@ -50,8 +50,8 @@ class FollowableRepositoryImpl<
 
   @override
   Future<ResponseSealed<void>> unfollowFollowable(int id) async {
-    return await remoteRequestWrapperVoid(
-        (httpHeaders) => wikiRemoteDataSource.unfollowFollowable(
+    return await _remoteRequestWrapperVoid(
+        (httpHeaders) => _followableRemoteDataSource.unfollowFollowable(
               id: id,
               httpHeaders: httpHeaders,
             ));
@@ -59,7 +59,7 @@ class FollowableRepositoryImpl<
 
   @override
   Future<ResponseSealed<List<SHORTFOLLOWABLE>>> fetchAll() async {
-    return await remoteRequestWrapperShorts((httpHeaders) =>
-        wikiRemoteDataSource.fetchAll(httpHeaders: httpHeaders));
+    return await _remoteRequestWrapperShorts((httpHeaders) =>
+        _followableRemoteDataSource.fetchAll(httpHeaders: httpHeaders));
   }
 }

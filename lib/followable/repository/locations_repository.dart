@@ -10,20 +10,20 @@ abstract class LocationsRepository {
 }
 
 class LocationsRepositoryImpl implements LocationsRepository {
-  final LocationsRemoteDataSource locationsRemoteDataSource;
-  final RemoteRequestWrapper<List<City>> remoteRequestWrapperListCity;
-  final RemoteRequestWrapper<List<Country>> remoteRequestWrapperListCountry;
+  final LocationsRemoteDataSource _locationsRemoteDataSource;
+  final RemoteRequestWrapper<List<City>> _remoteRequestWrapperListCity;
+  final RemoteRequestWrapper<List<Country>> _remoteRequestWrapperListCountry;
 
   LocationsRepositoryImpl(
-    this.locationsRemoteDataSource,
-    this.remoteRequestWrapperListCity,
-    this.remoteRequestWrapperListCountry,
+    this._locationsRemoteDataSource,
+    this._remoteRequestWrapperListCity,
+    this._remoteRequestWrapperListCountry,
   );
 
   @override
   Future<ResponseSealed<List<City>>> fetchCitiesFromRemote() async {
-    return await remoteRequestWrapperListCity(
-      (httpHeaders) => locationsRemoteDataSource.fetchCities(
+    return await _remoteRequestWrapperListCity(
+      (httpHeaders) => _locationsRemoteDataSource.fetchCities(
         httpHeaders: httpHeaders,
       ),
     );
@@ -31,8 +31,8 @@ class LocationsRepositoryImpl implements LocationsRepository {
 
   @override
   Future<ResponseSealed<List<Country>>> fetchCountriesFromRemote() async {
-    return await remoteRequestWrapperListCountry(
-      (httpHeaders) => locationsRemoteDataSource.fetchCountries(
+    return await _remoteRequestWrapperListCountry(
+      (httpHeaders) => _locationsRemoteDataSource.fetchCountries(
         httpHeaders: httpHeaders,
       ),
     );

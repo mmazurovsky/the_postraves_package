@@ -21,28 +21,28 @@ abstract class EventRepository {
 }
 
 class EventRepositoryImpl extends EventRepository {
-  final EventRemoteDataSource eventRemoteDataSource;
-  final RemoteRequestWrapper<List<UnityShort>> remoteRequestWrapperUnities;
-  final RemoteRequestWrapper<List<ArtistShort>> remoteRequestWrapperArtists;
+  final EventRemoteDataSource _eventRemoteDataSource;
+  final RemoteRequestWrapper<List<UnityShort>> _remoteRequestWrapperUnities;
+  final RemoteRequestWrapper<List<ArtistShort>> _remoteRequestWrapperArtists;
   final RemoteRequestWrapper<List<TimetableForScene>>
-      remoteRequestWrapperTimetable;
-  final RemoteRequestWrapper<List<EventShort>> remoteRequestWrapperEvents;
-  final RemoteRequestWrapper<void> remoteRequestWrapperVoid;
+      _remoteRequestWrapperTimetable;
+  final RemoteRequestWrapper<List<EventShort>> _remoteRequestWrapperEvents;
+  final RemoteRequestWrapper<void> _remoteRequestWrapperVoid;
 
   EventRepositoryImpl(
-    this.eventRemoteDataSource,
-    this.remoteRequestWrapperUnities,
-    this.remoteRequestWrapperArtists,
-    this.remoteRequestWrapperTimetable,
-    this.remoteRequestWrapperEvents,
-    this.remoteRequestWrapperVoid,
+    this._eventRemoteDataSource,
+    this._remoteRequestWrapperUnities,
+    this._remoteRequestWrapperArtists,
+    this._remoteRequestWrapperTimetable,
+    this._remoteRequestWrapperEvents,
+    this._remoteRequestWrapperVoid,
   );
 
   @override
   Future<ResponseSealed<List<UnityShort>>> fetchOrganizersForEventById(
       int id) async {
-    return await remoteRequestWrapperUnities(
-      (httpHeaders) => eventRemoteDataSource.fetchOrganizersForEventById(
+    return await _remoteRequestWrapperUnities(
+      (httpHeaders) => _eventRemoteDataSource.fetchOrganizersForEventById(
         id: id,
         httpHeaders: httpHeaders,
       ),
@@ -52,8 +52,8 @@ class EventRepositoryImpl extends EventRepository {
   @override
   Future<ResponseSealed<List<ArtistShort>>> fetchLineupForEventById(
       int id) async {
-    return await remoteRequestWrapperArtists(
-      (httpHeaders) => eventRemoteDataSource.fetchLineupForEventById(
+    return await _remoteRequestWrapperArtists(
+      (httpHeaders) => _eventRemoteDataSource.fetchLineupForEventById(
         id: id,
         httpHeaders: httpHeaders,
       ),
@@ -63,8 +63,8 @@ class EventRepositoryImpl extends EventRepository {
   @override
   Future<ResponseSealed<List<TimetableForScene>>> fetchTimetableForEventById(
       int id) async {
-    return await remoteRequestWrapperTimetable(
-      (httpHeaders) => eventRemoteDataSource.fetchTimetableForEventById(
+    return await _remoteRequestWrapperTimetable(
+      (httpHeaders) => _eventRemoteDataSource.fetchTimetableForEventById(
         id: id,
         httpHeaders: httpHeaders,
       ),
@@ -74,8 +74,8 @@ class EventRepositoryImpl extends EventRepository {
   @override
   Future<ResponseSealed<List<EventShort>>> searchByName(
       String searchValue) async {
-    return await remoteRequestWrapperEvents(
-      (httpHeaders) => eventRemoteDataSource.searchByName(
+    return await _remoteRequestWrapperEvents(
+      (httpHeaders) => _eventRemoteDataSource.searchByName(
         searchValue: searchValue,
         httpHeaders: httpHeaders,
       ),
@@ -85,8 +85,8 @@ class EventRepositoryImpl extends EventRepository {
   @override
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(
       int eventId, Set<int> orgsIds) async {
-    return await remoteRequestWrapperVoid(
-      (httpHeaders) => eventRemoteDataSource.saveOrUpdateOrganizers(
+    return await _remoteRequestWrapperVoid(
+      (httpHeaders) => _eventRemoteDataSource.saveOrUpdateOrganizers(
         eventId: eventId,
         orgsIds: orgsIds,
         httpHeaders: httpHeaders,
@@ -97,8 +97,8 @@ class EventRepositoryImpl extends EventRepository {
   @override
   Future<ResponseSealed<void>> saveOrUpdateTimetable(
       int eventId, List<TimetablePerformanceWrite> timetable) async {
-    return await remoteRequestWrapperVoid(
-      (httpHeaders) => eventRemoteDataSource.saveOrUpdateTimetable(
+    return await _remoteRequestWrapperVoid(
+      (httpHeaders) => _eventRemoteDataSource.saveOrUpdateTimetable(
         eventId: eventId,
         timetable: timetable,
         httpHeaders: httpHeaders,

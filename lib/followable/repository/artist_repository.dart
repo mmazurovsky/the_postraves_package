@@ -13,23 +13,23 @@ abstract class ArtistRepository {
 }
 
 class ArtistRepositoryImpl extends ArtistRepository {
-  final ArtistRemoteDataSource artistRemoteDataSource;
-  final RemoteRequestWrapper<List<EventShort>> remoteRequestWrapperEvents;
-  final RemoteRequestWrapper<List<UnityShort>> remoteRequestWrapperUnities;
-  final RemoteRequestWrapper<List<ArtistShort>> remoteRequestWrapperArtists;
+  final ArtistRemoteDataSource _artistRemoteDataSource;
+  final RemoteRequestWrapper<List<EventShort>> _remoteRequestWrapperEvents;
+  final RemoteRequestWrapper<List<UnityShort>> _remoteRequestWrapperUnities;
+  final RemoteRequestWrapper<List<ArtistShort>> _remoteRequestWrapperArtists;
 
   ArtistRepositoryImpl(
-    this.artistRemoteDataSource,
-    this.remoteRequestWrapperEvents,
-    this.remoteRequestWrapperUnities,
-    this.remoteRequestWrapperArtists,
+    this._artistRemoteDataSource,
+    this._remoteRequestWrapperEvents,
+    this._remoteRequestWrapperUnities,
+    this._remoteRequestWrapperArtists,
   );
 
   @override
   Future<ResponseSealed<List<EventShort>>> fetchEventsForArtistById(
       int id) async {
-    return await remoteRequestWrapperEvents(
-      (httpHeaders) => artistRemoteDataSource.fetchEventsForArtistById(
+    return await _remoteRequestWrapperEvents(
+      (httpHeaders) => _artistRemoteDataSource.fetchEventsForArtistById(
         id: id,
         httpHeaders: httpHeaders,
       ),
@@ -39,8 +39,8 @@ class ArtistRepositoryImpl extends ArtistRepository {
   @override
   Future<ResponseSealed<List<UnityShort>>> fetchUnitiesForArtistById(
       int id) async {
-    return await remoteRequestWrapperUnities(
-      (httpHeaders) => artistRemoteDataSource.fetchUnitiesForArtistById(
+    return await _remoteRequestWrapperUnities(
+      (httpHeaders) => _artistRemoteDataSource.fetchUnitiesForArtistById(
         id: id,
         httpHeaders: httpHeaders,
       ),
@@ -50,8 +50,8 @@ class ArtistRepositoryImpl extends ArtistRepository {
   @override
   Future<ResponseSealed<List<ArtistShort>>> searchByName(
       String searchValue) async {
-    return await remoteRequestWrapperArtists(
-      (httpHeaders) => artistRemoteDataSource.searchByName(
+    return await _remoteRequestWrapperArtists(
+      (httpHeaders) => _artistRemoteDataSource.searchByName(
           searchValue: searchValue, httpHeaders: httpHeaders),
     );
   }

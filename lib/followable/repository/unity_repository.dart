@@ -15,25 +15,25 @@ abstract class UnityRepository {
 }
 
 class UnityRepositoryImpl extends UnityRepository {
-  final UnityRemoteDataSource unityRemoteDataSource;
-  final RemoteRequestWrapper<List<EventShort>> remoteRequestWrapperEvents;
-  final RemoteRequestWrapper<List<ArtistShort>> remoteRequestWrapperArtists;
-  final RemoteRequestWrapper<List<UnityShort>> remoteRequestWrapperUnities;
-  final RemoteRequestWrapper<void> remoteRequestWrapperVoid;
+  final UnityRemoteDataSource _unityRemoteDataSource;
+  final RemoteRequestWrapper<List<EventShort>> _remoteRequestWrapperEvents;
+  final RemoteRequestWrapper<List<ArtistShort>> _remoteRequestWrapperArtists;
+  final RemoteRequestWrapper<List<UnityShort>> _remoteRequestWrapperUnities;
+  final RemoteRequestWrapper<void> _remoteRequestWrapperVoid;
 
   UnityRepositoryImpl(
-    this.unityRemoteDataSource,
-    this.remoteRequestWrapperEvents,
-    this.remoteRequestWrapperArtists,
-    this.remoteRequestWrapperUnities,
-    this.remoteRequestWrapperVoid,
+    this._unityRemoteDataSource,
+    this._remoteRequestWrapperEvents,
+    this._remoteRequestWrapperArtists,
+    this._remoteRequestWrapperUnities,
+    this._remoteRequestWrapperVoid,
   );
 
   @override
   Future<ResponseSealed<List<EventShort>>> fetchEventsForArtistById(
       int id) async {
-    return await remoteRequestWrapperEvents(
-        (httpHeaders) => unityRemoteDataSource.fetchEventsForUnityById(
+    return await _remoteRequestWrapperEvents(
+        (httpHeaders) => _unityRemoteDataSource.fetchEventsForUnityById(
               id: id,
               httpHeaders: httpHeaders,
             ));
@@ -42,8 +42,8 @@ class UnityRepositoryImpl extends UnityRepository {
   @override
   Future<ResponseSealed<List<ArtistShort>>> fetchArtistsForUnityById(
       int id) async {
-    return await remoteRequestWrapperArtists(
-        (httpHeaders) => unityRemoteDataSource.fetchArtistsForUnityById(
+    return await _remoteRequestWrapperArtists(
+        (httpHeaders) => _unityRemoteDataSource.fetchArtistsForUnityById(
               id: id,
               httpHeaders: httpHeaders,
             ));
@@ -52,8 +52,8 @@ class UnityRepositoryImpl extends UnityRepository {
   @override
   Future<ResponseSealed<List<UnityShort>>> searchByName(
       String searchValue) async {
-    return await remoteRequestWrapperUnities(
-      (httpHeaders) => unityRemoteDataSource.searchByName(
+    return await _remoteRequestWrapperUnities(
+      (httpHeaders) => _unityRemoteDataSource.searchByName(
         searchValue: searchValue,
         httpHeaders: httpHeaders,
       ),
@@ -63,8 +63,8 @@ class UnityRepositoryImpl extends UnityRepository {
   @override
   Future<ResponseSealed<void>> saveOrUpdateArtists(
       int unityId, Set<int> artists) async {
-    return await remoteRequestWrapperVoid(
-      (httpHeaders) => unityRemoteDataSource.saveOrUpdateArtists(
+    return await _remoteRequestWrapperVoid(
+      (httpHeaders) => _unityRemoteDataSource.saveOrUpdateArtists(
         unityId: unityId,
         artists: artists,
         httpHeaders: httpHeaders,
