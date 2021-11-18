@@ -86,7 +86,7 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
       hostPath: ServerConstants.apiPath,
       endpointWithPath: '${FollowableType.PLACE.endpoint}/$placeId/scenes',
       httpHeaders: httpHeaders,
-      body: scenes,
+      body: scenes.map((el) => el.toJson()).toList(),
     );
     return;
   }

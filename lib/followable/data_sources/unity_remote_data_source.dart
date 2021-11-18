@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/localized_request.dart';
 import 'package:the_postraves_package/client/remote_request.dart';
@@ -90,7 +92,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
       hostPath: ServerConstants.apiPath,
       endpointWithPath: '${FollowableType.UNITY.endpoint}/$unityId/artists',
       httpHeaders: httpHeaders,
-      body: artists,
+      body: jsonEncode(artists),
     );
     return;
   }

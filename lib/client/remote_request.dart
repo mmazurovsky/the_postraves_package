@@ -47,7 +47,7 @@ class _MyHttpRequest {
   final HttpMethod httpMethod;
   final Map<String, String> httpHeaders;
   final Map<String, dynamic>? queryParameters;
-  final Map<String, dynamic>? body;
+  final dynamic body;
   late Uri uri;
 
   _MyHttpRequest({
@@ -88,7 +88,7 @@ class _MyHttpRequest {
     return httpMethod.methodFunction(
       url: uri,
       headers: httpHeaders,
-      body: jsonEncode(body),
+      body: body,
     );
   }
 

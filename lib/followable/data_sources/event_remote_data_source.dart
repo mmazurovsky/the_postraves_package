@@ -116,7 +116,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
       hostPath: ServerConstants.apiPath,
       endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/organizers',
       httpHeaders: httpHeaders,
-      body: orgsIds,
+      body: jsonEncode(orgsIds),
     );
     return;
   }
@@ -133,7 +133,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
       hostPath: ServerConstants.apiPath,
       endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/timetable',
       httpHeaders: httpHeaders,
-      body: timetable,
+      body: timetable.map((el) => el.toJson()).toList(),
     );
     return;
   }

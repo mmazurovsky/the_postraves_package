@@ -37,7 +37,7 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
       hostPath: ServerConstants.apiPath,
       endpointWithPath: _writeClientHelper.getEndpoint(),
       httpHeaders: httpHeaders,
-      body: writeData,
+      body: writeData.toJson(),
     );
 
     return _writeClientHelper.deserialize(response);
@@ -53,7 +53,7 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
       hostPath: ServerConstants.apiPath,
       endpointWithPath: _writeClientHelper.getEndpoint(),
       httpHeaders: httpHeaders,
-      body: writeData,
+      body: writeData.toJson(),
     );
   }
 }
