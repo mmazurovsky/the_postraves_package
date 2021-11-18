@@ -14,7 +14,6 @@ class EventWrite with _$EventWrite implements WriteInterface {
     required DateTime startDateTime,
     required DateTime endDateTime,
     List<TicketPrice>? ticketPrices,
-    Set<int>? organizers,
     String? imageLink,
     String? about,
     String? ticketsLink,
