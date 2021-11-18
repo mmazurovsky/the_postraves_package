@@ -1,11 +1,12 @@
+import 'package:the_postraves_package/client/followable_client_helper.dart';
 import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/remote_request.dart';
-import 'package:the_postraves_package/client/write_client_helper.dart';
 import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 
-abstract class WriteRemoteDataSource<WRITEDATA extends WriteInterface> {
-  Future<void> saveOne({
+abstract class WriteRemoteDataSource<WRITEDATA extends WriteInterface,
+    SHORT extends ShortInterface> {
+  Future<SHORT> saveOne({
     required WRITEDATA writeData,
     required Map<String, String> httpHeaders,
   });
@@ -15,10 +16,11 @@ abstract class WriteRemoteDataSource<WRITEDATA extends WriteInterface> {
   });
 }
 
-class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface>
-    implements WriteRemoteDataSource<WRITEDATA> {
+class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
+        SHORT extends ShortInterface>
+    implements WriteRemoteDataSource<WRITEDATA, SHORT> {
   final RemoteRequest _remoteRequest;
-  final WriteClientHelper _writeClientHelper;
+  final WriteClientHelper<WRITEDATA, SHORT> _writeClientHelper;
 
   WriteRemoteDataSourceImpl(
     this._remoteRequest,
@@ -26,19 +28,19 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface>
   );
 
   @override
-  Future<void> saveOne(
+  Future<SHORT> saveOne(
       {required WRITEDATA writeData,
       required Map<String, String> httpHeaders}) async {
-    final body = writeData.toJson();
-    await _remoteRequest(
+    final response = await _remoteRequest(
       httpMethod: HttpMethod.post,
       host: ServerConstants.apiHost,
       hostPath: ServerConstants.apiPath,
       endpointWithPath: _writeClientHelper.getEndpoint(),
       httpHeaders: httpHeaders,
-      body: body,
+      body: writeData,
     );
-    return;
+
+    return _writeClientHelper.deserialize(response);
   }
 
   @override
@@ -53,6 +55,5 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface>
       httpHeaders: httpHeaders,
       body: writeData,
     );
-    return;
   }
 }

@@ -9,7 +9,7 @@ part 'unity_short.freezed.dart';
 part 'unity_short.g.dart';
 
 @freezed
-class UnityShort with _$UnityShort implements GeneralFollowableInterface {
+class UnityShort with _$UnityShort implements GeneralFollowableInterface, ShortInterface {
   const UnityShort._();
   const factory UnityShort({
     required int id,

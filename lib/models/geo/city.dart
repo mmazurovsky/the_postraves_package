@@ -6,7 +6,7 @@ part 'city.freezed.dart';
 part 'city.g.dart';
 
 @freezed
-class City with _$City implements LocationInterface, BaseNameImageInterface {
+class City with _$City implements LocationInterface, BaseNameImageInterface, ShortInterface {
   const City._();
   const factory City({
     required String name,

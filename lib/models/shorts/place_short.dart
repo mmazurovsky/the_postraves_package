@@ -11,7 +11,7 @@ part 'place_short.freezed.dart';
 part 'place_short.g.dart';
 
 @freezed
-class PlaceShort with _$PlaceShort implements GeneralFollowableInterface {
+class PlaceShort with _$PlaceShort implements GeneralFollowableInterface, ShortInterface {
   const PlaceShort._();
   const factory PlaceShort({
     required City city,

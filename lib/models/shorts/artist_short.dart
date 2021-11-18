@@ -11,7 +11,7 @@ part 'artist_short.g.dart';
 @freezed
 class ArtistShort
     with _$ArtistShort
-    implements GeneralFollowableInterface, BaseNameInterface {
+    implements GeneralFollowableInterface, BaseNameInterface, ShortInterface {
   const ArtistShort._();
   const factory ArtistShort({
     required int id,

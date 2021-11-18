@@ -52,3 +52,7 @@ abstract class ConvertableToFollowableDataInterface {
 abstract class WriteInterface {
   Map<String, dynamic> toJson();
 }
+
+abstract class ShortInterface {
+  
+}

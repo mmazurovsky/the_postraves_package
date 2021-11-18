@@ -13,7 +13,7 @@ part 'event_short.freezed.dart';
 part 'event_short.g.dart';
 
 @freezed
-class EventShort with _$EventShort implements GeneralFollowableInterface {
+class EventShort with _$EventShort implements GeneralFollowableInterface, ShortInterface {
   const EventShort._();
   const factory EventShort({
     required int id,

@@ -6,7 +6,7 @@ part 'country.freezed.dart';
 part 'country.g.dart';
 
 @freezed
-class Country with _$Country implements LocationInterface, BaseNameImageInterface {
+class Country with _$Country implements LocationInterface, BaseNameImageInterface, ShortInterface {
   const Country._();
   const factory Country({
     required String name,
