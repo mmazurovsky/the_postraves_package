@@ -30,6 +30,8 @@ Map<String, dynamic> _$_$_TimetablePerformanceWriteToJson(
       'sceneId': instance.sceneId,
       'artistIds': instance.artistIds.toList(),
       'typeOfPerformance': instance.typeOfPerformance,
-      'startingDateTime': instance.startingDateTime?.toIso8601String(),
-      'endingDateTime': instance.endingDateTime?.toIso8601String(),
+      'startingDateTime':
+          toJsonDateTimeWithTimeZoneOffset(instance.startingDateTime),
+      'endingDateTime':
+          toJsonDateTimeWithTimeZoneOffset(instance.endingDateTime),
     };

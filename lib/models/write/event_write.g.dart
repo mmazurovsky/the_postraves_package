@@ -16,8 +16,6 @@ _$_EventWrite _$_$_EventWriteFromJson(Map<String, dynamic> json) {
     ticketPrices: (json['ticketPrices'] as List<dynamic>?)
         ?.map((e) => TicketPrice.fromJson(e as Map<String, dynamic>))
         .toList(),
-    organizers:
-        (json['organizers'] as List<dynamic>?)?.map((e) => e as int).toSet(),
     imageLink: json['imageLink'] as String?,
     about: json['about'] as String?,
     ticketsLink: json['ticketsLink'] as String?,
@@ -29,10 +27,9 @@ Map<String, dynamic> _$_$_EventWriteToJson(_$_EventWrite instance) =>
       'id': instance.id,
       'name': instance.name,
       'placeId': instance.placeId,
-      'startDateTime': instance.startDateTime.toIso8601String(),
-      'endDateTime': instance.endDateTime.toIso8601String(),
+      'startDateTime': toJsonDateTimeWithTimeZoneOffset(instance.startDateTime),
+      'endDateTime': toJsonDateTimeWithTimeZoneOffset(instance.endDateTime),
       'ticketPrices': instance.ticketPrices?.map((e) => e.toJson()).toList(),
-      'organizers': instance.organizers?.toList(),
       'imageLink': instance.imageLink,
       'about': instance.about,
       'ticketsLink': instance.ticketsLink,

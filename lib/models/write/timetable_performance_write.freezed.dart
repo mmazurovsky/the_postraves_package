@@ -26,8 +26,10 @@ class _$TimetablePerformanceWriteTearOff {
       int? sceneId,
       required Set<int> artistIds,
       String? typeOfPerformance,
-      DateTime? startingDateTime,
-      DateTime? endingDateTime}) {
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? endingDateTime}) {
     return _TimetablePerformanceWrite(
       id: id,
       sceneId: sceneId,
@@ -52,7 +54,9 @@ mixin _$TimetablePerformanceWrite {
   int? get sceneId => throw _privateConstructorUsedError;
   Set<int> get artistIds => throw _privateConstructorUsedError;
   String? get typeOfPerformance => throw _privateConstructorUsedError;
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime? get startingDateTime => throw _privateConstructorUsedError;
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime? get endingDateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -71,8 +75,10 @@ abstract class $TimetablePerformanceWriteCopyWith<$Res> {
       int? sceneId,
       Set<int> artistIds,
       String? typeOfPerformance,
-      DateTime? startingDateTime,
-      DateTime? endingDateTime});
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? endingDateTime});
 }
 
 /// @nodoc
@@ -134,8 +140,10 @@ abstract class _$TimetablePerformanceWriteCopyWith<$Res>
       int? sceneId,
       Set<int> artistIds,
       String? typeOfPerformance,
-      DateTime? startingDateTime,
-      DateTime? endingDateTime});
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? endingDateTime});
 }
 
 /// @nodoc
@@ -196,8 +204,8 @@ class _$_TimetablePerformanceWrite implements _TimetablePerformanceWrite {
       this.sceneId,
       required this.artistIds,
       this.typeOfPerformance,
-      this.startingDateTime,
-      this.endingDateTime});
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) this.startingDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) this.endingDateTime});
 
   factory _$_TimetablePerformanceWrite.fromJson(Map<String, dynamic> json) =>
       _$_$_TimetablePerformanceWriteFromJson(json);
@@ -211,8 +219,10 @@ class _$_TimetablePerformanceWrite implements _TimetablePerformanceWrite {
   @override
   final String? typeOfPerformance;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   final DateTime? startingDateTime;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   final DateTime? endingDateTime;
 
   @override
@@ -272,8 +282,10 @@ abstract class _TimetablePerformanceWrite implements TimetablePerformanceWrite {
       int? sceneId,
       required Set<int> artistIds,
       String? typeOfPerformance,
-      DateTime? startingDateTime,
-      DateTime? endingDateTime}) = _$_TimetablePerformanceWrite;
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          DateTime? endingDateTime}) = _$_TimetablePerformanceWrite;
 
   factory _TimetablePerformanceWrite.fromJson(Map<String, dynamic> json) =
       _$_TimetablePerformanceWrite.fromJson;
@@ -287,8 +299,10 @@ abstract class _TimetablePerformanceWrite implements TimetablePerformanceWrite {
   @override
   String? get typeOfPerformance => throw _privateConstructorUsedError;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime? get startingDateTime => throw _privateConstructorUsedError;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime? get endingDateTime => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

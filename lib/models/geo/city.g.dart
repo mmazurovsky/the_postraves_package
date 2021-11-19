@@ -11,6 +11,7 @@ _$_City _$_$_CityFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     localName: json['localName'] as String,
     country: Country.fromJson(json['country'] as Map<String, dynamic>),
+    timeOffset: json['timeOffset'] as int,
   );
 }
 
@@ -18,4 +19,5 @@ Map<String, dynamic> _$_$_CityToJson(_$_City instance) => <String, dynamic>{
       'name': instance.name,
       'localName': instance.localName,
       'country': instance.country.toJson(),
+      'timeOffset': instance.timeOffset,
     };

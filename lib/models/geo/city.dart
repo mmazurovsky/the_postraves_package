@@ -6,13 +6,15 @@ part 'city.freezed.dart';
 part 'city.g.dart';
 
 @freezed
-class City with _$City implements LocationInterface, BaseNameImageInterface, ShortInterface {
+class City
+    with _$City
+    implements LocationInterface, BaseNameImageInterface, ShortInterface {
   const City._();
-  const factory City({
-    required String name,
-    required String localName,
-    required Country country,
-  }) = _City;
+  const factory City(
+      {required String name,
+      required String localName,
+      required Country country,
+      required int timeOffset}) = _City;
 
   factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
 

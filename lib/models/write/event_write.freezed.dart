@@ -24,10 +24,11 @@ class _$EventWriteTearOff {
       {int? id,
       required String name,
       required int placeId,
-      required DateTime startDateTime,
-      required DateTime endDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          required DateTime startDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          required DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
-      Set<int>? organizers,
       String? imageLink,
       String? about,
       String? ticketsLink}) {
@@ -38,7 +39,6 @@ class _$EventWriteTearOff {
       startDateTime: startDateTime,
       endDateTime: endDateTime,
       ticketPrices: ticketPrices,
-      organizers: organizers,
       imageLink: imageLink,
       about: about,
       ticketsLink: ticketsLink,
@@ -58,10 +58,11 @@ mixin _$EventWrite {
   int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get placeId => throw _privateConstructorUsedError;
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime get startDateTime => throw _privateConstructorUsedError;
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime get endDateTime => throw _privateConstructorUsedError;
   List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;
-  Set<int>? get organizers => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get ticketsLink => throw _privateConstructorUsedError;
@@ -81,10 +82,9 @@ abstract class $EventWriteCopyWith<$Res> {
       {int? id,
       String name,
       int placeId,
-      DateTime startDateTime,
-      DateTime endDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime startDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
-      Set<int>? organizers,
       String? imageLink,
       String? about,
       String? ticketsLink});
@@ -106,7 +106,6 @@ class _$EventWriteCopyWithImpl<$Res> implements $EventWriteCopyWith<$Res> {
     Object? startDateTime = freezed,
     Object? endDateTime = freezed,
     Object? ticketPrices = freezed,
-    Object? organizers = freezed,
     Object? imageLink = freezed,
     Object? about = freezed,
     Object? ticketsLink = freezed,
@@ -136,10 +135,6 @@ class _$EventWriteCopyWithImpl<$Res> implements $EventWriteCopyWith<$Res> {
           ? _value.ticketPrices
           : ticketPrices // ignore: cast_nullable_to_non_nullable
               as List<TicketPrice>?,
-      organizers: organizers == freezed
-          ? _value.organizers
-          : organizers // ignore: cast_nullable_to_non_nullable
-              as Set<int>?,
       imageLink: imageLink == freezed
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -166,10 +161,9 @@ abstract class _$EventWriteCopyWith<$Res> implements $EventWriteCopyWith<$Res> {
       {int? id,
       String name,
       int placeId,
-      DateTime startDateTime,
-      DateTime endDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime startDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
-      Set<int>? organizers,
       String? imageLink,
       String? about,
       String? ticketsLink});
@@ -193,7 +187,6 @@ class __$EventWriteCopyWithImpl<$Res> extends _$EventWriteCopyWithImpl<$Res>
     Object? startDateTime = freezed,
     Object? endDateTime = freezed,
     Object? ticketPrices = freezed,
-    Object? organizers = freezed,
     Object? imageLink = freezed,
     Object? about = freezed,
     Object? ticketsLink = freezed,
@@ -223,10 +216,6 @@ class __$EventWriteCopyWithImpl<$Res> extends _$EventWriteCopyWithImpl<$Res>
           ? _value.ticketPrices
           : ticketPrices // ignore: cast_nullable_to_non_nullable
               as List<TicketPrice>?,
-      organizers: organizers == freezed
-          ? _value.organizers
-          : organizers // ignore: cast_nullable_to_non_nullable
-              as Set<int>?,
       imageLink: imageLink == freezed
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -250,10 +239,11 @@ class _$_EventWrite implements _EventWrite {
       {this.id,
       required this.name,
       required this.placeId,
-      required this.startDateTime,
-      required this.endDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          required this.startDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          required this.endDateTime,
       this.ticketPrices,
-      this.organizers,
       this.imageLink,
       this.about,
       this.ticketsLink});
@@ -268,13 +258,13 @@ class _$_EventWrite implements _EventWrite {
   @override
   final int placeId;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   final DateTime startDateTime;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   final DateTime endDateTime;
   @override
   final List<TicketPrice>? ticketPrices;
-  @override
-  final Set<int>? organizers;
   @override
   final String? imageLink;
   @override
@@ -284,7 +274,7 @@ class _$_EventWrite implements _EventWrite {
 
   @override
   String toString() {
-    return 'EventWrite(id: $id, name: $name, placeId: $placeId, startDateTime: $startDateTime, endDateTime: $endDateTime, ticketPrices: $ticketPrices, organizers: $organizers, imageLink: $imageLink, about: $about, ticketsLink: $ticketsLink)';
+    return 'EventWrite(id: $id, name: $name, placeId: $placeId, startDateTime: $startDateTime, endDateTime: $endDateTime, ticketPrices: $ticketPrices, imageLink: $imageLink, about: $about, ticketsLink: $ticketsLink)';
   }
 
   @override
@@ -307,9 +297,6 @@ class _$_EventWrite implements _EventWrite {
             (identical(other.ticketPrices, ticketPrices) ||
                 const DeepCollectionEquality()
                     .equals(other.ticketPrices, ticketPrices)) &&
-            (identical(other.organizers, organizers) ||
-                const DeepCollectionEquality()
-                    .equals(other.organizers, organizers)) &&
             (identical(other.imageLink, imageLink) ||
                 const DeepCollectionEquality()
                     .equals(other.imageLink, imageLink)) &&
@@ -329,7 +316,6 @@ class _$_EventWrite implements _EventWrite {
       const DeepCollectionEquality().hash(startDateTime) ^
       const DeepCollectionEquality().hash(endDateTime) ^
       const DeepCollectionEquality().hash(ticketPrices) ^
-      const DeepCollectionEquality().hash(organizers) ^
       const DeepCollectionEquality().hash(imageLink) ^
       const DeepCollectionEquality().hash(about) ^
       const DeepCollectionEquality().hash(ticketsLink);
@@ -350,10 +336,11 @@ abstract class _EventWrite implements EventWrite {
       {int? id,
       required String name,
       required int placeId,
-      required DateTime startDateTime,
-      required DateTime endDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          required DateTime startDateTime,
+      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+          required DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
-      Set<int>? organizers,
       String? imageLink,
       String? about,
       String? ticketsLink}) = _$_EventWrite;
@@ -368,13 +355,13 @@ abstract class _EventWrite implements EventWrite {
   @override
   int get placeId => throw _privateConstructorUsedError;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime get startDateTime => throw _privateConstructorUsedError;
   @override
+  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
   DateTime get endDateTime => throw _privateConstructorUsedError;
   @override
   List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;
-  @override
-  Set<int>? get organizers => throw _privateConstructorUsedError;
   @override
   String? get imageLink => throw _privateConstructorUsedError;
   @override

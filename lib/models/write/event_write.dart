@@ -11,8 +11,10 @@ class EventWrite with _$EventWrite implements WriteInterface {
     int? id,
     required String name,
     required int placeId,
-    required DateTime startDateTime,
-    required DateTime endDateTime,
+    @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+        required DateTime startDateTime,
+    @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+        required DateTime endDateTime,
     List<TicketPrice>? ticketPrices,
     String? imageLink,
     String? about,
@@ -21,4 +23,10 @@ class EventWrite with _$EventWrite implements WriteInterface {
 
   factory EventWrite.fromJson(Map<String, dynamic> json) =>
       _$EventWriteFromJson(json);
+}
+
+String? toJsonDateTimeWithTimeZoneOffset(DateTime? dateTime) {
+  return dateTime != null
+      ? '${dateTime.toLocal().toIso8601String()}+00:00'
+      : null;
 }

@@ -141,11 +141,6 @@ class _$_Scene implements _Scene {
   final String name;
 
   @override
-  String toString() {
-    return 'Scene(imageLink: $imageLink, id: $id, name: $name)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Scene &&
