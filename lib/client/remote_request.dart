@@ -85,10 +85,11 @@ class _MyHttpRequest {
   }
 
   Future<http_client.Response> _makeRequest() {
+    final encodedBody = jsonEncode(body);
     return httpMethod.methodFunction(
       url: uri,
       headers: httpHeaders,
-      body: body,
+      body: encodedBody,
     );
   }
 
