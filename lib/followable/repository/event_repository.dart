@@ -15,7 +15,7 @@ abstract class EventRepository {
       int id);
   Future<ResponseSealed<List<EventShort>>> searchByName(String searchValue);
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(
-      int eventId, Set<int> orgsIds);
+      int eventId, List<int> orgsIds);
   Future<ResponseSealed<void>> saveOrUpdateTimetable(
       int eventId, List<TimetablePerformanceWrite> timetable);
 }
@@ -84,7 +84,7 @@ class EventRepositoryImpl extends EventRepository {
 
   @override
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(
-      int eventId, Set<int> orgsIds) async {
+      int eventId, List<int> orgsIds) async {
     return await _remoteRequestWrapperVoid(
       (httpHeaders) => _eventRemoteDataSource.saveOrUpdateOrganizers(
         eventId: eventId,

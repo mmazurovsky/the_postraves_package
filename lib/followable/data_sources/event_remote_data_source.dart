@@ -34,7 +34,7 @@ abstract class EventRemoteDataSource {
 
   Future<void> saveOrUpdateOrganizers({
     required int eventId,
-    required Set<int> orgsIds,
+    required List<int> orgsIds,
     required Map<String, String> httpHeaders,
   });
 
@@ -107,7 +107,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   @override
   Future<void> saveOrUpdateOrganizers({
     required int eventId,
-    required Set<int> orgsIds,
+    required List<int> orgsIds,
     required Map<String, String> httpHeaders,
   }) async {
     await _remoteRequest(
@@ -116,7 +116,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
       hostPath: ServerConstants.apiPath,
       endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/organizers',
       httpHeaders: httpHeaders,
-      body: jsonEncode(orgsIds),
+      body: orgsIds,
     );
     return;
   }

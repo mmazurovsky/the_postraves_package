@@ -25,7 +25,7 @@ abstract class UnityRemoteDataSource {
 
   Future<void> saveOrUpdateArtists({
     required int unityId,
-    required Set<int> artists,
+    required List<int> artists,
     required Map<String, String> httpHeaders,
   });
 }
@@ -83,7 +83,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
   @override
   Future<void> saveOrUpdateArtists({
     required int unityId,
-    required Set<int> artists,
+    required List<int> artists,
     required Map<String, String> httpHeaders,
   }) async {
     await _remoteRequest(
@@ -92,7 +92,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
       hostPath: ServerConstants.apiPath,
       endpointWithPath: '${FollowableType.UNITY.endpoint}/$unityId/artists',
       httpHeaders: httpHeaders,
-      body: jsonEncode(artists),
+      body: artists,
     );
     return;
   }

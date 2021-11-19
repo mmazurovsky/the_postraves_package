@@ -11,7 +11,7 @@ abstract class UnityRepository {
   Future<ResponseSealed<List<EventShort>>> fetchEventsForArtistById(int id);
   Future<ResponseSealed<List<UnityShort>>> searchByName(String searchValue);
   Future<ResponseSealed<void>> saveOrUpdateArtists(
-      int unityId, Set<int> artists);
+      int unityId, List<int> artists);
 }
 
 class UnityRepositoryImpl extends UnityRepository {
@@ -62,7 +62,7 @@ class UnityRepositoryImpl extends UnityRepository {
 
   @override
   Future<ResponseSealed<void>> saveOrUpdateArtists(
-      int unityId, Set<int> artists) async {
+      int unityId, List<int> artists) async {
     return await _remoteRequestWrapperVoid(
       (httpHeaders) => _unityRemoteDataSource.saveOrUpdateArtists(
         unityId: unityId,
