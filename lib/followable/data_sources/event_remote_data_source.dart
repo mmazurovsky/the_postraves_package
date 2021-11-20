@@ -46,10 +46,15 @@ abstract class EventRemoteDataSource {
 }
 
 class EventRemoteDataSourceImpl implements EventRemoteDataSource {
+  final ServerConstantsAbstract _serverConstantsAbstract;
   final RemoteRequest _remoteRequest;
   final LocalizedGetRequest _localizedGetRequest;
 
-  EventRemoteDataSourceImpl(this._remoteRequest, this._localizedGetRequest);
+  EventRemoteDataSourceImpl(
+    this._remoteRequest,
+    this._localizedGetRequest,
+    this._serverConstantsAbstract,
+  );
 
   @override
   Future<List<ArtistShort>> fetchLineupForEventById(
@@ -111,9 +116,10 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     required Map<String, String> httpHeaders,
   }) async {
     await _remoteRequest(
+      isHttps: _serverConstantsAbstract.isHttps,
       httpMethod: HttpMethod.put,
-      host: ServerConstants.apiHost,
-      hostPath: ServerConstants.apiPath,
+      host: _serverConstantsAbstract.apiHost,
+      hostPath: _serverConstantsAbstract.apiPath,
       endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/organizers',
       httpHeaders: httpHeaders,
       body: orgsIds,
@@ -128,9 +134,10 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     required Map<String, String> httpHeaders,
   }) async {
     await _remoteRequest(
+      isHttps: _serverConstantsAbstract.isHttps,
       httpMethod: HttpMethod.put,
-      host: ServerConstants.apiHost,
-      hostPath: ServerConstants.apiPath,
+      host: _serverConstantsAbstract.apiHost,
+      hostPath: _serverConstantsAbstract.apiPath,
       endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/timetable',
       httpHeaders: httpHeaders,
       body: timetable.map((el) => el.toJson()).toList(),

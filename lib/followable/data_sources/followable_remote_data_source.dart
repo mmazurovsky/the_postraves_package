@@ -34,12 +34,14 @@ class FollowableRemoteDataSourceImpl<
   final FollowableClientHelper<FULLFOLLOWABLE> _followableClientHelper;
   final FollowableClientHelper<SHORTFOLLOWABLE> _followableClientHelperShort;
   final LocalizedGetRequest _localizedGetRequest;
+  final ServerConstantsAbstract _serverConstantsAbstract;
 
   FollowableRemoteDataSourceImpl(
     this._remoteRequest,
     this._followableClientHelper,
     this._followableClientHelperShort,
     this._localizedGetRequest,
+    this._serverConstantsAbstract,
   );
 
   @override
@@ -59,9 +61,10 @@ class FollowableRemoteDataSourceImpl<
   Future<List<SHORTFOLLOWABLE>> fetchAll(
       {required Map<String, String> httpHeaders}) async {
     final response = await _remoteRequest(
+      isHttps: _serverConstantsAbstract.isHttps,
       httpMethod: HttpMethod.get,
-      host: ServerConstants.apiHost,
-      hostPath: ServerConstants.apiPath,
+      host: _serverConstantsAbstract.apiHost,
+      hostPath: _serverConstantsAbstract.apiPath,
       endpointWithPath: _followableClientHelperShort.getEndpointForFollowable(),
       httpHeaders: httpHeaders,
     );
@@ -78,9 +81,10 @@ class FollowableRemoteDataSourceImpl<
     required Map<String, String> httpHeaders,
   }) async {
     await _remoteRequest(
+        isHttps: _serverConstantsAbstract.isHttps,
         httpMethod: HttpMethod.post,
-        host: ServerConstants.apiHost,
-        hostPath: ServerConstants.apiPath,
+        host: _serverConstantsAbstract.apiHost,
+        hostPath: _serverConstantsAbstract.apiPath,
         endpointWithPath:
             _followableClientHelper.getEndpointAndPathForUserFollowing() +
                 '/$id',
@@ -92,9 +96,10 @@ class FollowableRemoteDataSourceImpl<
   Future<void> unfollowFollowable(
       {required int id, required Map<String, String> httpHeaders}) async {
     await _remoteRequest(
+        isHttps: _serverConstantsAbstract.isHttps,
         httpMethod: HttpMethod.delete,
-        host: ServerConstants.apiHost,
-        hostPath: ServerConstants.apiPath,
+        host: _serverConstantsAbstract.apiHost,
+        hostPath: _serverConstantsAbstract.apiPath,
         endpointWithPath:
             _followableClientHelper.getEndpointAndPathForUserFollowing() +
                 '/$id',

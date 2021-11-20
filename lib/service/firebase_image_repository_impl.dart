@@ -17,8 +17,12 @@ abstract class FirebaseImageRepository {
 
 class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
   final FirebaseStorage _firebaseStorage;
+  final ServerConstantsAbstract _serverConstantsAbstract;
 
-  FirebaseImageRepositoryImpl(this._firebaseStorage);
+  FirebaseImageRepositoryImpl(
+    this._firebaseStorage,
+    this._serverConstantsAbstract,
+  );
 
   @override
   Future<ResponseSealed<String>> uploadUserImageFile(File imageFile) async {
@@ -43,7 +47,7 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
     required String folderName,
   }) async {
     final response = await http_client.get(
-      Uri.parse('${ServerConstants.corsAnywhereHost}/$imageUrl'),
+      Uri.parse('${_serverConstantsAbstract.corsAnywhereHost}/$imageUrl'),
     );
     if (!response.statusCode.toString().startsWith('2')) {
       final message =

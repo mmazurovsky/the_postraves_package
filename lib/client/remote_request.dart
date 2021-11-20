@@ -6,26 +6,30 @@ import 'package:http/http.dart' as http_client;
 import 'http_method_enum.dart';
 
 abstract class RemoteRequest {
-  Future<dynamic> call(
-      {required HttpMethod httpMethod,
-      required String host,
-      String? hostPath,
-      required String endpointWithPath,
-      required Map<String, String> httpHeaders,
-      Map<String, dynamic>? queryParameters,
-      dynamic body});
+  Future<dynamic> call({
+    required HttpMethod httpMethod,
+    required String host,
+    required String endpointWithPath,
+    required Map<String, String> httpHeaders,
+    required bool isHttps,
+    String? hostPath,
+    Map<String, dynamic>? queryParameters,
+    dynamic body,
+  });
 }
 
 class RemoteRequestImpl implements RemoteRequest {
   @override
-  Future<dynamic> call(
-      {required HttpMethod httpMethod,
-      required String host,
-      String? hostPath,
-      required String endpointWithPath,
-      required Map<String, String> httpHeaders,
-      Map<String, dynamic>? queryParameters,
-      dynamic body}) async {
+  Future<dynamic> call({
+    required HttpMethod httpMethod,
+    required String host,
+    required String endpointWithPath,
+    required Map<String, String> httpHeaders,
+    required bool isHttps,
+    String? hostPath,
+    Map<String, dynamic>? queryParameters,
+    dynamic body,
+  }) async {
     final httpRequest = _MyHttpRequest(
       httpMethod: httpMethod,
       host: host,
@@ -34,6 +38,7 @@ class RemoteRequestImpl implements RemoteRequest {
       httpHeaders: httpHeaders,
       queryParameters: queryParameters,
       body: body,
+      isHttps: isHttps,
     );
 
     return httpRequest();
@@ -48,6 +53,7 @@ class _MyHttpRequest {
   final Map<String, String> httpHeaders;
   final Map<String, dynamic>? queryParameters;
   final dynamic body;
+  final bool isHttps;
   late Uri uri;
 
   _MyHttpRequest({
@@ -56,10 +62,15 @@ class _MyHttpRequest {
     required this.endpointWithPath,
     required this.httpHeaders,
     required this.httpMethod,
+    required this.isHttps,
     this.queryParameters,
     this.body,
   }) {
-    uri = _createUri(host, hostPath);
+    uri = _createUri(
+      host,
+      isHttps,
+      hostPath,
+    );
   }
 
   dynamic call() async {
@@ -73,10 +84,12 @@ class _MyHttpRequest {
     return responseAsJson;
   }
 
-  Uri _createUri(String host, String? hostPath) {
+  Uri _createUri(String host, bool isHttps, String? hostPath) {
     final fullPath =
         hostPath != null ? '$hostPath$endpointWithPath' : endpointWithPath;
-    return Uri.https(host, fullPath, queryParameters);
+    return isHttps
+        ? Uri.https(host, fullPath, queryParameters)
+        : Uri.http(host, fullPath, queryParameters);
   }
 
   void _logRequest() {

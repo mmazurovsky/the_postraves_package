@@ -31,10 +31,12 @@ abstract class PlaceRemoteDataSource {
 class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
   final RemoteRequest _remoteRequest;
   final LocalizedGetRequest _localizedGetRequest;
+  final ServerConstantsAbstract _serverConstantsAbstract;
 
   PlaceRemoteDataSourceImpl(
     this._remoteRequest,
     this._localizedGetRequest,
+    this._serverConstantsAbstract,
   );
 
   @override
@@ -81,9 +83,10 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
     required Map<String, String> httpHeaders,
   }) async {
     await _remoteRequest(
+      isHttps: _serverConstantsAbstract.isHttps,
       httpMethod: HttpMethod.put,
-      host: ServerConstants.apiHost,
-      hostPath: ServerConstants.apiPath,
+      host: _serverConstantsAbstract.apiHost,
+      hostPath: _serverConstantsAbstract.apiPath,
       endpointWithPath: '${FollowableType.PLACE.endpoint}/$placeId/scenes',
       httpHeaders: httpHeaders,
       body: scenes.map((el) => el.toJson()).toList(),

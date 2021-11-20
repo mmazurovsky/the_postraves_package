@@ -21,10 +21,12 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
     implements WriteRemoteDataSource<WRITEDATA, SHORT> {
   final RemoteRequest _remoteRequest;
   final WriteClientHelper<WRITEDATA, SHORT> _writeClientHelper;
+  final ServerConstantsAbstract _serverConstantsAbstract;
 
   WriteRemoteDataSourceImpl(
     this._remoteRequest,
     this._writeClientHelper,
+    this._serverConstantsAbstract,
   );
 
   @override
@@ -32,9 +34,10 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
       {required WRITEDATA writeData,
       required Map<String, String> httpHeaders}) async {
     final response = await _remoteRequest(
+      isHttps: _serverConstantsAbstract.isHttps,
       httpMethod: HttpMethod.post,
-      host: ServerConstants.apiHost,
-      hostPath: ServerConstants.apiPath,
+      host: _serverConstantsAbstract.apiHost,
+      hostPath: _serverConstantsAbstract.apiPath,
       endpointWithPath: _writeClientHelper.getEndpoint(),
       httpHeaders: httpHeaders,
       body: writeData.toJson(),
@@ -48,9 +51,10 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
       {required WRITEDATA writeData,
       required Map<String, String> httpHeaders}) async {
     await _remoteRequest(
+      isHttps: _serverConstantsAbstract.isHttps,
       httpMethod: HttpMethod.put,
-      host: ServerConstants.apiHost,
-      hostPath: ServerConstants.apiPath,
+      host: _serverConstantsAbstract.apiHost,
+      hostPath: _serverConstantsAbstract.apiPath,
       endpointWithPath: _writeClientHelper.getEndpoint(),
       httpHeaders: httpHeaders,
       body: writeData.toJson(),
