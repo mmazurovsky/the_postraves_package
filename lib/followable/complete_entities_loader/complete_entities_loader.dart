@@ -1,7 +1,7 @@
 import 'package:the_postraves_package/client/response_sealed.dart';
 import 'package:the_postraves_package/dto/timetable_for_scene_by_day.dart';
 import 'package:the_postraves_package/errors/failures.dart';
-import 'package:the_postraves_package/followable/cubit_related/complete_full_entities.dart';
+import 'package:the_postraves_package/followable/complete_entities_loader/complete_full_entities.dart';
 import 'package:the_postraves_package/followable/repository/artist_repository.dart';
 import 'package:the_postraves_package/followable/repository/event_repository.dart';
 import 'package:the_postraves_package/followable/repository/place_repository.dart';
@@ -20,7 +20,7 @@ import 'package:the_postraves_package/models/shorts/unity_short.dart';
 
 abstract class CompleteEntitiesLoader {
   Future<ResponseSealed<CompleteEventEntity>> loadCompleteEvent(
-      {required int id});
+      {required int id, bool isForAdmin = false});
   Future<ResponseSealed<CompleteArtistEntity>> loadCompleteArtist(
       {required int id});
   Future<ResponseSealed<CompletePlaceEntity>> loadCompletePlace(
@@ -31,7 +31,8 @@ abstract class CompleteEntitiesLoader {
 
 class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
   final FollowableRepository<EventFull, EventShort> eventFollowableRepository;
-  final FollowableRepository<ArtistFull, ArtistShort> artistFollowableRepository;
+  final FollowableRepository<ArtistFull, ArtistShort>
+      artistFollowableRepository;
   final FollowableRepository<PlaceFull, PlaceShort> placeFollowableRepository;
   final FollowableRepository<UnityFull, UnityShort> unityFollowableRepository;
   final ArtistRepository artistRepository;
@@ -51,14 +52,18 @@ class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
   );
 
   @override
-  Future<ResponseSealed<CompleteEventEntity>> loadCompleteEvent(
-      {required int id}) async {
+  Future<ResponseSealed<CompleteEventEntity>> loadCompleteEvent({
+    required int id,
+    bool isForAdmin = false,
+  }) async {
     final eventBasicRequest = eventFollowableRepository.fetchBasicDataById(id);
     final eventOrganizersRequest =
         eventRepository.fetchOrganizersForEventById(id);
     final eventLineupRequest = eventRepository.fetchLineupForEventById(id);
-    final eventTimetableRequest =
-        eventRepository.fetchTimetableForEventById(id);
+    final eventTimetableRequest = eventRepository.fetchTimetableForEventById(
+      id,
+      isForAdmin: isForAdmin,
+    );
 
     final basicResponse = await eventBasicRequest;
     final organizersResponse = await eventOrganizersRequest;
