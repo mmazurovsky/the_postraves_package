@@ -25,6 +25,7 @@ abstract class EventRemoteDataSource {
   Future<List<TimetableForScene>> fetchTimetableForEventById({
     required int id,
     required Map<String, String> httpHeaders,
+    required bool isForAdmin,
   });
 
   Future<List<EventShort>> searchByName({
@@ -81,11 +82,16 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   }
 
   @override
-  Future<List<TimetableForScene>> fetchTimetableForEventById(
-      {required int id, required Map<String, String> httpHeaders}) async {
+  Future<List<TimetableForScene>> fetchTimetableForEventById({
+    required int id,
+    required Map<String, String> httpHeaders,
+    required bool isForAdmin,
+  }) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'event/public/$id/timetable',
-        httpHeaders: httpHeaders) as List<dynamic>?;
+            endpointWithPath: 'event/public/$id/timetable',
+            httpHeaders: httpHeaders,
+            queryParameters: !isForAdmin ? null : {'isForAdmin': true})
+        as List<dynamic>?;
     final list = decodedResponse
             ?.map((json) => TimetableForScene.fromJson(json))
             .toList() ??

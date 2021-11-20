@@ -23,8 +23,8 @@ class _$TimetablePerformanceTearOff {
   _TimetablePerformance call(
       {required int id,
       required List<ArtistShort> artists,
-      @DateTimeConverter() required DateTime startingDateTime,
-      @DateTimeConverter() required DateTime endingDateTime,
+      @DateTimeConverter() DateTime? startingDateTime,
+      @DateTimeConverter() DateTime? endingDateTime,
       String? typeOfPerformance}) {
     return _TimetablePerformance(
       id: id,
@@ -48,9 +48,9 @@ mixin _$TimetablePerformance {
   int get id => throw _privateConstructorUsedError;
   List<ArtistShort> get artists => throw _privateConstructorUsedError;
   @DateTimeConverter()
-  DateTime get startingDateTime => throw _privateConstructorUsedError;
+  DateTime? get startingDateTime => throw _privateConstructorUsedError;
   @DateTimeConverter()
-  DateTime get endingDateTime => throw _privateConstructorUsedError;
+  DateTime? get endingDateTime => throw _privateConstructorUsedError;
   String? get typeOfPerformance => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -67,8 +67,8 @@ abstract class $TimetablePerformanceCopyWith<$Res> {
   $Res call(
       {int id,
       List<ArtistShort> artists,
-      @DateTimeConverter() DateTime startingDateTime,
-      @DateTimeConverter() DateTime endingDateTime,
+      @DateTimeConverter() DateTime? startingDateTime,
+      @DateTimeConverter() DateTime? endingDateTime,
       String? typeOfPerformance});
 }
 
@@ -101,11 +101,11 @@ class _$TimetablePerformanceCopyWithImpl<$Res>
       startingDateTime: startingDateTime == freezed
           ? _value.startingDateTime
           : startingDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       endingDateTime: endingDateTime == freezed
           ? _value.endingDateTime
           : endingDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       typeOfPerformance: typeOfPerformance == freezed
           ? _value.typeOfPerformance
           : typeOfPerformance // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ abstract class _$TimetablePerformanceCopyWith<$Res>
   $Res call(
       {int id,
       List<ArtistShort> artists,
-      @DateTimeConverter() DateTime startingDateTime,
-      @DateTimeConverter() DateTime endingDateTime,
+      @DateTimeConverter() DateTime? startingDateTime,
+      @DateTimeConverter() DateTime? endingDateTime,
       String? typeOfPerformance});
 }
 
@@ -160,11 +160,11 @@ class __$TimetablePerformanceCopyWithImpl<$Res>
       startingDateTime: startingDateTime == freezed
           ? _value.startingDateTime
           : startingDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       endingDateTime: endingDateTime == freezed
           ? _value.endingDateTime
           : endingDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       typeOfPerformance: typeOfPerformance == freezed
           ? _value.typeOfPerformance
           : typeOfPerformance // ignore: cast_nullable_to_non_nullable
@@ -179,8 +179,8 @@ class _$_TimetablePerformance implements _TimetablePerformance {
   const _$_TimetablePerformance(
       {required this.id,
       required this.artists,
-      @DateTimeConverter() required this.startingDateTime,
-      @DateTimeConverter() required this.endingDateTime,
+      @DateTimeConverter() this.startingDateTime,
+      @DateTimeConverter() this.endingDateTime,
       this.typeOfPerformance});
 
   factory _$_TimetablePerformance.fromJson(Map<String, dynamic> json) =>
@@ -192,10 +192,10 @@ class _$_TimetablePerformance implements _TimetablePerformance {
   final List<ArtistShort> artists;
   @override
   @DateTimeConverter()
-  final DateTime startingDateTime;
+  final DateTime? startingDateTime;
   @override
   @DateTimeConverter()
-  final DateTime endingDateTime;
+  final DateTime? endingDateTime;
   @override
   final String? typeOfPerformance;
 
@@ -249,8 +249,8 @@ abstract class _TimetablePerformance implements TimetablePerformance {
   const factory _TimetablePerformance(
       {required int id,
       required List<ArtistShort> artists,
-      @DateTimeConverter() required DateTime startingDateTime,
-      @DateTimeConverter() required DateTime endingDateTime,
+      @DateTimeConverter() DateTime? startingDateTime,
+      @DateTimeConverter() DateTime? endingDateTime,
       String? typeOfPerformance}) = _$_TimetablePerformance;
 
   factory _TimetablePerformance.fromJson(Map<String, dynamic> json) =
@@ -262,10 +262,10 @@ abstract class _TimetablePerformance implements TimetablePerformance {
   List<ArtistShort> get artists => throw _privateConstructorUsedError;
   @override
   @DateTimeConverter()
-  DateTime get startingDateTime => throw _privateConstructorUsedError;
+  DateTime? get startingDateTime => throw _privateConstructorUsedError;
   @override
   @DateTimeConverter()
-  DateTime get endingDateTime => throw _privateConstructorUsedError;
+  DateTime? get endingDateTime => throw _privateConstructorUsedError;
   @override
   String? get typeOfPerformance => throw _privateConstructorUsedError;
   @override

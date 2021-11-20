@@ -14,8 +14,7 @@ _$_EventShort _$_$_EventShortFromJson(Map<String, dynamic> json) {
     weeklyFollowers: json['weeklyFollowers'] as int,
     isFollowed: json['isFollowed'] as bool,
     status: _$enumDecode(_$EventStatusEnumMap, json['status']),
-    startDateTime:
-        const DateTimeConverter().fromJson(json['startDateTime'] as String),
+    startDateTime: DateTime.parse(json['startDateTime'] as String),
     place: PlaceShort.fromJson(json['place'] as Map<String, dynamic>),
     ticketPrices: (json['ticketPrices'] as List<dynamic>?)
         ?.map((e) => TicketPrice.fromJson(e as Map<String, dynamic>))
@@ -32,7 +31,7 @@ Map<String, dynamic> _$_$_EventShortToJson(_$_EventShort instance) =>
       'weeklyFollowers': instance.weeklyFollowers,
       'isFollowed': instance.isFollowed,
       'status': _$EventStatusEnumMap[instance.status],
-      'startDateTime': const DateTimeConverter().toJson(instance.startDateTime),
+      'startDateTime': instance.startDateTime.toIso8601String(),
       'place': instance.place.toJson(),
       'ticketPrices': instance.ticketPrices?.map((e) => e.toJson()).toList(),
       'imageLink': instance.imageLink,

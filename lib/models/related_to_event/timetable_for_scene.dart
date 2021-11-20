@@ -9,7 +9,7 @@ part 'timetable_for_scene.g.dart';
 class TimetableForScene with _$TimetableForScene {
 
   const factory TimetableForScene({
-    required Scene scene,
+    required Scene? scene,
     required List<TimetablePerformance> performances,
   }) = _TimetableForScene;
 

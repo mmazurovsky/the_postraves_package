@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/client/date_time_converter.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 import 'package:the_postraves_package/models/related_to_event/ticket_price.dart';
 
@@ -11,10 +12,8 @@ class EventWrite with _$EventWrite implements WriteInterface {
     int? id,
     required String name,
     required int placeId,
-    @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-        required DateTime startDateTime,
-    @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-        required DateTime endDateTime,
+    @DateTimeConverter() required DateTime startDateTime,
+    @DateTimeConverter() required DateTime endDateTime,
     List<TicketPrice>? ticketPrices,
     String? imageLink,
     String? about,
@@ -23,10 +22,4 @@ class EventWrite with _$EventWrite implements WriteInterface {
 
   factory EventWrite.fromJson(Map<String, dynamic> json) =>
       _$EventWriteFromJson(json);
-}
-
-String? toJsonDateTimeWithTimeZoneOffset(DateTime? dateTime) {
-  return dateTime != null
-      ? '${dateTime.toLocal().toIso8601String()}+00:00'
-      : null;
 }

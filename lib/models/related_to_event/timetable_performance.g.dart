@@ -14,9 +14,9 @@ _$_TimetablePerformance _$_$_TimetablePerformanceFromJson(
         .map((e) => ArtistShort.fromJson(e as Map<String, dynamic>))
         .toList(),
     startingDateTime:
-        const DateTimeConverter().fromJson(json['startingDateTime'] as String),
+        const DateTimeConverter().fromJson(json['startingDateTime'] as String?),
     endingDateTime:
-        const DateTimeConverter().fromJson(json['endingDateTime'] as String),
+        const DateTimeConverter().fromJson(json['endingDateTime'] as String?),
     typeOfPerformance: json['typeOfPerformance'] as String?,
   );
 }

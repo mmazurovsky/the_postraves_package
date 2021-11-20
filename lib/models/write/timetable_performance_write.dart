@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/client/date_time_converter.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 import 'package:the_postraves_package/models/write/event_write.dart';
 
@@ -14,9 +15,8 @@ class TimetablePerformanceWrite
     int? sceneId,
     required Set<int> artistIds,
     String? typeOfPerformance,
-    @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-        DateTime? startingDateTime,
-    @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime? endingDateTime,
+    @DateTimeConverter() DateTime? startingDateTime,
+    @DateTimeConverter() DateTime? endingDateTime,
   }) = _TimetablePerformanceWrite;
 
   factory TimetablePerformanceWrite.fromJson(Map<String, dynamic> json) =>

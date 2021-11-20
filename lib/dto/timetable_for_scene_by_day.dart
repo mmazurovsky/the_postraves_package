@@ -9,21 +9,23 @@ part 'timetable_for_scene_by_day.freezed.dart';
 class TimetableForSceneByDay with _$TimetableForSceneByDay {
   const TimetableForSceneByDay._();
   const factory TimetableForSceneByDay({
-    required Scene scene,
+    required Scene? scene,
     required List<TimetableDayPerformances> timetableDayPerformances,
   }) = _TimetableForSceneByDay;
 
   factory TimetableForSceneByDay.fromModel(
       TimetableForScene timetableForSceneModel) {
-    DateTime _getOnlyDate(DateTime dateTime) {
-      return DateTime(dateTime.year, dateTime.month, dateTime.day);
+    DateTime? _getOnlyDate(DateTime? dateTime) {
+      return dateTime != null
+          ? DateTime(dateTime.year, dateTime.month, dateTime.day)
+          : null;
     }
 
     List<TimetableDayPerformances> dayPerformances = [];
-    Set<DateTime> sceneDays = {};
+    Set<DateTime?> sceneDays = {};
 
     for (var performance in timetableForSceneModel.performances) {
-      DateTime performanceDate = _getOnlyDate(performance.startingDateTime);
+      DateTime? performanceDate = _getOnlyDate(performance.startingDateTime);
       if (sceneDays.contains(performanceDate)) {
         dayPerformances
             .firstWhere((element) => element.date == performanceDate)

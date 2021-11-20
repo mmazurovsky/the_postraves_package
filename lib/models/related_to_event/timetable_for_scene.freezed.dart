@@ -21,7 +21,7 @@ class _$TimetableForSceneTearOff {
   const _$TimetableForSceneTearOff();
 
   _TimetableForScene call(
-      {required Scene scene,
+      {required Scene? scene,
       required List<TimetablePerformance> performances}) {
     return _TimetableForScene(
       scene: scene,
@@ -39,7 +39,7 @@ const $TimetableForScene = _$TimetableForSceneTearOff();
 
 /// @nodoc
 mixin _$TimetableForScene {
-  Scene get scene => throw _privateConstructorUsedError;
+  Scene? get scene => throw _privateConstructorUsedError;
   List<TimetablePerformance> get performances =>
       throw _privateConstructorUsedError;
 
@@ -54,9 +54,9 @@ abstract class $TimetableForSceneCopyWith<$Res> {
   factory $TimetableForSceneCopyWith(
           TimetableForScene value, $Res Function(TimetableForScene) then) =
       _$TimetableForSceneCopyWithImpl<$Res>;
-  $Res call({Scene scene, List<TimetablePerformance> performances});
+  $Res call({Scene? scene, List<TimetablePerformance> performances});
 
-  $SceneCopyWith<$Res> get scene;
+  $SceneCopyWith<$Res>? get scene;
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$TimetableForSceneCopyWithImpl<$Res>
       scene: scene == freezed
           ? _value.scene
           : scene // ignore: cast_nullable_to_non_nullable
-              as Scene,
+              as Scene?,
       performances: performances == freezed
           ? _value.performances
           : performances // ignore: cast_nullable_to_non_nullable
@@ -86,8 +86,12 @@ class _$TimetableForSceneCopyWithImpl<$Res>
   }
 
   @override
-  $SceneCopyWith<$Res> get scene {
-    return $SceneCopyWith<$Res>(_value.scene, (value) {
+  $SceneCopyWith<$Res>? get scene {
+    if (_value.scene == null) {
+      return null;
+    }
+
+    return $SceneCopyWith<$Res>(_value.scene!, (value) {
       return _then(_value.copyWith(scene: value));
     });
   }
@@ -100,10 +104,10 @@ abstract class _$TimetableForSceneCopyWith<$Res>
           _TimetableForScene value, $Res Function(_TimetableForScene) then) =
       __$TimetableForSceneCopyWithImpl<$Res>;
   @override
-  $Res call({Scene scene, List<TimetablePerformance> performances});
+  $Res call({Scene? scene, List<TimetablePerformance> performances});
 
   @override
-  $SceneCopyWith<$Res> get scene;
+  $SceneCopyWith<$Res>? get scene;
 }
 
 /// @nodoc
@@ -126,7 +130,7 @@ class __$TimetableForSceneCopyWithImpl<$Res>
       scene: scene == freezed
           ? _value.scene
           : scene // ignore: cast_nullable_to_non_nullable
-              as Scene,
+              as Scene?,
       performances: performances == freezed
           ? _value.performances
           : performances // ignore: cast_nullable_to_non_nullable
@@ -144,7 +148,7 @@ class _$_TimetableForScene implements _TimetableForScene {
       _$_$_TimetableForSceneFromJson(json);
 
   @override
-  final Scene scene;
+  final Scene? scene;
   @override
   final List<TimetablePerformance> performances;
 
@@ -183,14 +187,14 @@ class _$_TimetableForScene implements _TimetableForScene {
 
 abstract class _TimetableForScene implements TimetableForScene {
   const factory _TimetableForScene(
-      {required Scene scene,
+      {required Scene? scene,
       required List<TimetablePerformance> performances}) = _$_TimetableForScene;
 
   factory _TimetableForScene.fromJson(Map<String, dynamic> json) =
       _$_TimetableForScene.fromJson;
 
   @override
-  Scene get scene => throw _privateConstructorUsedError;
+  Scene? get scene => throw _privateConstructorUsedError;
   @override
   List<TimetablePerformance> get performances =>
       throw _privateConstructorUsedError;

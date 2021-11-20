@@ -24,10 +24,8 @@ class _$EventWriteTearOff {
       {int? id,
       required String name,
       required int placeId,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-          required DateTime startDateTime,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-          required DateTime endDateTime,
+      @DateTimeConverter() required DateTime startDateTime,
+      @DateTimeConverter() required DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -58,9 +56,9 @@ mixin _$EventWrite {
   int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get placeId => throw _privateConstructorUsedError;
-  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+  @DateTimeConverter()
   DateTime get startDateTime => throw _privateConstructorUsedError;
-  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+  @DateTimeConverter()
   DateTime get endDateTime => throw _privateConstructorUsedError;
   List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
@@ -82,8 +80,8 @@ abstract class $EventWriteCopyWith<$Res> {
       {int? id,
       String name,
       int placeId,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime startDateTime,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime endDateTime,
+      @DateTimeConverter() DateTime startDateTime,
+      @DateTimeConverter() DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -161,8 +159,8 @@ abstract class _$EventWriteCopyWith<$Res> implements $EventWriteCopyWith<$Res> {
       {int? id,
       String name,
       int placeId,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime startDateTime,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset) DateTime endDateTime,
+      @DateTimeConverter() DateTime startDateTime,
+      @DateTimeConverter() DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -239,10 +237,8 @@ class _$_EventWrite implements _EventWrite {
       {this.id,
       required this.name,
       required this.placeId,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-          required this.startDateTime,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-          required this.endDateTime,
+      @DateTimeConverter() required this.startDateTime,
+      @DateTimeConverter() required this.endDateTime,
       this.ticketPrices,
       this.imageLink,
       this.about,
@@ -258,10 +254,10 @@ class _$_EventWrite implements _EventWrite {
   @override
   final int placeId;
   @override
-  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+  @DateTimeConverter()
   final DateTime startDateTime;
   @override
-  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+  @DateTimeConverter()
   final DateTime endDateTime;
   @override
   final List<TicketPrice>? ticketPrices;
@@ -336,10 +332,8 @@ abstract class _EventWrite implements EventWrite {
       {int? id,
       required String name,
       required int placeId,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-          required DateTime startDateTime,
-      @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
-          required DateTime endDateTime,
+      @DateTimeConverter() required DateTime startDateTime,
+      @DateTimeConverter() required DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -355,10 +349,10 @@ abstract class _EventWrite implements EventWrite {
   @override
   int get placeId => throw _privateConstructorUsedError;
   @override
-  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+  @DateTimeConverter()
   DateTime get startDateTime => throw _privateConstructorUsedError;
   @override
-  @JsonKey(toJson: toJsonDateTimeWithTimeZoneOffset)
+  @DateTimeConverter()
   DateTime get endDateTime => throw _privateConstructorUsedError;
   @override
   List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;

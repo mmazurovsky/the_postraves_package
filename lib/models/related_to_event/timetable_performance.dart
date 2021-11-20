@@ -10,8 +10,8 @@ class TimetablePerformance with _$TimetablePerformance {
   const factory TimetablePerformance({
     required int id,
     required List<ArtistShort> artists,
-    @DateTimeConverter() required DateTime startingDateTime,
-    @DateTimeConverter() required DateTime endingDateTime,
+    @DateTimeConverter() DateTime? startingDateTime,
+    @DateTimeConverter() DateTime? endingDateTime,
     String? typeOfPerformance,
   }) = _TimetablePerformance;
 

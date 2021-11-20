@@ -6,7 +6,7 @@ part 'timetable_day_performances.freezed.dart';
 @freezed
 class TimetableDayPerformances with _$TimetableDayPerformances {
   const factory TimetableDayPerformances({
-    required DateTime date,
+    required DateTime? date,
     required List<TimetablePerformance> performances,
   }) = _TimetableDayPerformances;
 }

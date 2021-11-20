@@ -12,7 +12,7 @@ abstract class EventRepository {
   Future<ResponseSealed<List<UnityShort>>> fetchOrganizersForEventById(int id);
   Future<ResponseSealed<List<ArtistShort>>> fetchLineupForEventById(int id);
   Future<ResponseSealed<List<TimetableForScene>>> fetchTimetableForEventById(
-      int id);
+      int id, {bool isForAdmin});
   Future<ResponseSealed<List<EventShort>>> searchByName(String searchValue);
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(
       int eventId, List<int> orgsIds);
@@ -62,11 +62,12 @@ class EventRepositoryImpl extends EventRepository {
 
   @override
   Future<ResponseSealed<List<TimetableForScene>>> fetchTimetableForEventById(
-      int id) async {
+      int id, {bool isForAdmin = false}) async {
     return await _remoteRequestWrapperTimetable(
       (httpHeaders) => _eventRemoteDataSource.fetchTimetableForEventById(
         id: id,
         httpHeaders: httpHeaders,
+        isForAdmin: isForAdmin,
       ),
     );
   }

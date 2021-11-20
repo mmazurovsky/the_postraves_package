@@ -17,7 +17,7 @@ class _$TimetableDayPerformancesTearOff {
   const _$TimetableDayPerformancesTearOff();
 
   _TimetableDayPerformances call(
-      {required DateTime date,
+      {required DateTime? date,
       required List<TimetablePerformance> performances}) {
     return _TimetableDayPerformances(
       date: date,
@@ -31,7 +31,7 @@ const $TimetableDayPerformances = _$TimetableDayPerformancesTearOff();
 
 /// @nodoc
 mixin _$TimetableDayPerformances {
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
   List<TimetablePerformance> get performances =>
       throw _privateConstructorUsedError;
 
@@ -45,7 +45,7 @@ abstract class $TimetableDayPerformancesCopyWith<$Res> {
   factory $TimetableDayPerformancesCopyWith(TimetableDayPerformances value,
           $Res Function(TimetableDayPerformances) then) =
       _$TimetableDayPerformancesCopyWithImpl<$Res>;
-  $Res call({DateTime date, List<TimetablePerformance> performances});
+  $Res call({DateTime? date, List<TimetablePerformance> performances});
 }
 
 /// @nodoc
@@ -66,7 +66,7 @@ class _$TimetableDayPerformancesCopyWithImpl<$Res>
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       performances: performances == freezed
           ? _value.performances
           : performances // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$TimetableDayPerformancesCopyWith<$Res>
           $Res Function(_TimetableDayPerformances) then) =
       __$TimetableDayPerformancesCopyWithImpl<$Res>;
   @override
-  $Res call({DateTime date, List<TimetablePerformance> performances});
+  $Res call({DateTime? date, List<TimetablePerformance> performances});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$TimetableDayPerformancesCopyWithImpl<$Res>
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       performances: performances == freezed
           ? _value.performances
           : performances // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ class _$_TimetableDayPerformances implements _TimetableDayPerformances {
       {required this.date, required this.performances});
 
   @override
-  final DateTime date;
+  final DateTime? date;
   @override
   final List<TimetablePerformance> performances;
 
@@ -157,12 +157,12 @@ class _$_TimetableDayPerformances implements _TimetableDayPerformances {
 
 abstract class _TimetableDayPerformances implements TimetableDayPerformances {
   const factory _TimetableDayPerformances(
-          {required DateTime date,
+          {required DateTime? date,
           required List<TimetablePerformance> performances}) =
       _$_TimetableDayPerformances;
 
   @override
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
   @override
   List<TimetablePerformance> get performances =>
       throw _privateConstructorUsedError;

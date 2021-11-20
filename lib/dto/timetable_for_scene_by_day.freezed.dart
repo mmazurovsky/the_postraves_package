@@ -17,7 +17,7 @@ class _$TimetableForSceneByDayTearOff {
   const _$TimetableForSceneByDayTearOff();
 
   _TimetableForSceneByDay call(
-      {required Scene scene,
+      {required Scene? scene,
       required List<TimetableDayPerformances> timetableDayPerformances}) {
     return _TimetableForSceneByDay(
       scene: scene,
@@ -31,7 +31,7 @@ const $TimetableForSceneByDay = _$TimetableForSceneByDayTearOff();
 
 /// @nodoc
 mixin _$TimetableForSceneByDay {
-  Scene get scene => throw _privateConstructorUsedError;
+  Scene? get scene => throw _privateConstructorUsedError;
   List<TimetableDayPerformances> get timetableDayPerformances =>
       throw _privateConstructorUsedError;
 
@@ -46,9 +46,9 @@ abstract class $TimetableForSceneByDayCopyWith<$Res> {
           $Res Function(TimetableForSceneByDay) then) =
       _$TimetableForSceneByDayCopyWithImpl<$Res>;
   $Res call(
-      {Scene scene, List<TimetableDayPerformances> timetableDayPerformances});
+      {Scene? scene, List<TimetableDayPerformances> timetableDayPerformances});
 
-  $SceneCopyWith<$Res> get scene;
+  $SceneCopyWith<$Res>? get scene;
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$TimetableForSceneByDayCopyWithImpl<$Res>
       scene: scene == freezed
           ? _value.scene
           : scene // ignore: cast_nullable_to_non_nullable
-              as Scene,
+              as Scene?,
       timetableDayPerformances: timetableDayPerformances == freezed
           ? _value.timetableDayPerformances
           : timetableDayPerformances // ignore: cast_nullable_to_non_nullable
@@ -78,8 +78,12 @@ class _$TimetableForSceneByDayCopyWithImpl<$Res>
   }
 
   @override
-  $SceneCopyWith<$Res> get scene {
-    return $SceneCopyWith<$Res>(_value.scene, (value) {
+  $SceneCopyWith<$Res>? get scene {
+    if (_value.scene == null) {
+      return null;
+    }
+
+    return $SceneCopyWith<$Res>(_value.scene!, (value) {
       return _then(_value.copyWith(scene: value));
     });
   }
@@ -93,10 +97,10 @@ abstract class _$TimetableForSceneByDayCopyWith<$Res>
       __$TimetableForSceneByDayCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Scene scene, List<TimetableDayPerformances> timetableDayPerformances});
+      {Scene? scene, List<TimetableDayPerformances> timetableDayPerformances});
 
   @override
-  $SceneCopyWith<$Res> get scene;
+  $SceneCopyWith<$Res>? get scene;
 }
 
 /// @nodoc
@@ -119,7 +123,7 @@ class __$TimetableForSceneByDayCopyWithImpl<$Res>
       scene: scene == freezed
           ? _value.scene
           : scene // ignore: cast_nullable_to_non_nullable
-              as Scene,
+              as Scene?,
       timetableDayPerformances: timetableDayPerformances == freezed
           ? _value.timetableDayPerformances
           : timetableDayPerformances // ignore: cast_nullable_to_non_nullable
@@ -136,7 +140,7 @@ class _$_TimetableForSceneByDay extends _TimetableForSceneByDay {
       : super._();
 
   @override
-  final Scene scene;
+  final Scene? scene;
   @override
   final List<TimetableDayPerformances> timetableDayPerformances;
 
@@ -172,13 +176,13 @@ class _$_TimetableForSceneByDay extends _TimetableForSceneByDay {
 
 abstract class _TimetableForSceneByDay extends TimetableForSceneByDay {
   const factory _TimetableForSceneByDay(
-          {required Scene scene,
+          {required Scene? scene,
           required List<TimetableDayPerformances> timetableDayPerformances}) =
       _$_TimetableForSceneByDay;
   const _TimetableForSceneByDay._() : super._();
 
   @override
-  Scene get scene => throw _privateConstructorUsedError;
+  Scene? get scene => throw _privateConstructorUsedError;
   @override
   List<TimetableDayPerformances> get timetableDayPerformances =>
       throw _privateConstructorUsedError;
