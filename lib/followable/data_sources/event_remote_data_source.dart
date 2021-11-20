@@ -90,7 +90,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     final decodedResponse = await _localizedGetRequest(
             endpointWithPath: 'event/public/$id/timetable',
             httpHeaders: httpHeaders,
-            queryParameters: !isForAdmin ? null : {'isForAdmin': true})
+            queryParameters: !isForAdmin ? null : {'isForAdmin': true.toString()})
         as List<dynamic>?;
     final list = decodedResponse
             ?.map((json) => TimetableForScene.fromJson(json))
