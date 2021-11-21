@@ -27,7 +27,8 @@ class _$EventShortTearOff {
       required int weeklyFollowers,
       required bool isFollowed,
       required EventStatus status,
-      @DateTimeConverter() required DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required DateTime startDateTime,
       required PlaceShort place,
       required List<TicketPrice>? ticketPrices,
       String? imageLink}) {
@@ -61,7 +62,9 @@ mixin _$EventShort {
   int get weeklyFollowers => throw _privateConstructorUsedError;
   bool get isFollowed => throw _privateConstructorUsedError;
   EventStatus get status => throw _privateConstructorUsedError;
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get startDateTime => throw _privateConstructorUsedError;
   PlaceShort get place => throw _privateConstructorUsedError;
   List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;
@@ -85,7 +88,8 @@ abstract class $EventShortCopyWith<$Res> {
       int weeklyFollowers,
       bool isFollowed,
       EventStatus status,
-      @DateTimeConverter() DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          DateTime startDateTime,
       PlaceShort place,
       List<TicketPrice>? ticketPrices,
       String? imageLink});
@@ -179,7 +183,8 @@ abstract class _$EventShortCopyWith<$Res> implements $EventShortCopyWith<$Res> {
       int weeklyFollowers,
       bool isFollowed,
       EventStatus status,
-      @DateTimeConverter() DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          DateTime startDateTime,
       PlaceShort place,
       List<TicketPrice>? ticketPrices,
       String? imageLink});
@@ -266,7 +271,8 @@ class _$_EventShort extends _EventShort {
       required this.weeklyFollowers,
       required this.isFollowed,
       required this.status,
-      @DateTimeConverter() required this.startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required this.startDateTime,
       required this.place,
       required this.ticketPrices,
       this.imageLink})
@@ -288,7 +294,9 @@ class _$_EventShort extends _EventShort {
   @override
   final EventStatus status;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   final DateTime startDateTime;
   @override
   final PlaceShort place;
@@ -367,7 +375,8 @@ abstract class _EventShort extends EventShort {
       required int weeklyFollowers,
       required bool isFollowed,
       required EventStatus status,
-      @DateTimeConverter() required DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required DateTime startDateTime,
       required PlaceShort place,
       required List<TicketPrice>? ticketPrices,
       String? imageLink}) = _$_EventShort;
@@ -389,7 +398,9 @@ abstract class _EventShort extends EventShort {
   @override
   EventStatus get status => throw _privateConstructorUsedError;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get startDateTime => throw _privateConstructorUsedError;
   @override
   PlaceShort get place => throw _privateConstructorUsedError;

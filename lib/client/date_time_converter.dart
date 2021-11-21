@@ -1,17 +1,19 @@
-import 'package:json_annotation/json_annotation.dart';
-
-class DateTimeConverter implements JsonConverter<DateTime?, String?> {
-  const DateTimeConverter();
-
-  @override
-  DateTime? fromJson(String? jsonDateTime) {
+class DateTimeConverter {
+  static DateTime? fromJson(String? jsonDateTime) {
     return jsonDateTime != null ? DateTime.parse(jsonDateTime).toLocal() : null;
   }
 
-  @override
-  String? toJson(DateTime? dateTime) {
+  static DateTime fromJsonNonNullable(String jsonDateTime) {
+    return DateTime.parse(jsonDateTime).toLocal();
+  }
+
+  static String? toJson(DateTime? dateTime) {
     return dateTime != null
         ? '${dateTime.toLocal().toIso8601String()}+00:00'
         : null;
+  }
+
+  static String toJsonNonNullable(DateTime dateTime) {
+    return '${dateTime.toLocal().toIso8601String()}+00:00';
   }
 }

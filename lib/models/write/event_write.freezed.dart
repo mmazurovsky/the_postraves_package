@@ -24,8 +24,10 @@ class _$EventWriteTearOff {
       {int? id,
       required String name,
       required int placeId,
-      @DateTimeConverter() required DateTime startDateTime,
-      @DateTimeConverter() required DateTime endDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -56,9 +58,13 @@ mixin _$EventWrite {
   int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get placeId => throw _privateConstructorUsedError;
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get startDateTime => throw _privateConstructorUsedError;
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get endDateTime => throw _privateConstructorUsedError;
   List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
@@ -80,8 +86,10 @@ abstract class $EventWriteCopyWith<$Res> {
       {int? id,
       String name,
       int placeId,
-      @DateTimeConverter() DateTime startDateTime,
-      @DateTimeConverter() DateTime endDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -159,8 +167,10 @@ abstract class _$EventWriteCopyWith<$Res> implements $EventWriteCopyWith<$Res> {
       {int? id,
       String name,
       int placeId,
-      @DateTimeConverter() DateTime startDateTime,
-      @DateTimeConverter() DateTime endDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -237,8 +247,10 @@ class _$_EventWrite implements _EventWrite {
       {this.id,
       required this.name,
       required this.placeId,
-      @DateTimeConverter() required this.startDateTime,
-      @DateTimeConverter() required this.endDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required this.startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required this.endDateTime,
       this.ticketPrices,
       this.imageLink,
       this.about,
@@ -254,10 +266,14 @@ class _$_EventWrite implements _EventWrite {
   @override
   final int placeId;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   final DateTime startDateTime;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   final DateTime endDateTime;
   @override
   final List<TicketPrice>? ticketPrices;
@@ -332,8 +348,10 @@ abstract class _EventWrite implements EventWrite {
       {int? id,
       required String name,
       required int placeId,
-      @DateTimeConverter() required DateTime startDateTime,
-      @DateTimeConverter() required DateTime endDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required DateTime startDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+          required DateTime endDateTime,
       List<TicketPrice>? ticketPrices,
       String? imageLink,
       String? about,
@@ -349,10 +367,14 @@ abstract class _EventWrite implements EventWrite {
   @override
   int get placeId => throw _privateConstructorUsedError;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get startDateTime => throw _privateConstructorUsedError;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJsonNonNullable,
+      fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get endDateTime => throw _privateConstructorUsedError;
   @override
   List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;

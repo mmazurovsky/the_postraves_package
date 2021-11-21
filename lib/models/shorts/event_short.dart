@@ -13,7 +13,9 @@ part 'event_short.freezed.dart';
 part 'event_short.g.dart';
 
 @freezed
-class EventShort with _$EventShort implements GeneralFollowableInterface, ShortInterface {
+class EventShort
+    with _$EventShort
+    implements GeneralFollowableInterface, ShortInterface {
   const EventShort._();
   const factory EventShort({
     required int id,
@@ -22,7 +24,8 @@ class EventShort with _$EventShort implements GeneralFollowableInterface, ShortI
     required int weeklyFollowers,
     required bool isFollowed,
     required EventStatus status,
-    @DateTimeConverter() required DateTime startDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+        required DateTime startDateTime,
     required PlaceShort place,
     required List<TicketPrice>? ticketPrices,
     String? imageLink,

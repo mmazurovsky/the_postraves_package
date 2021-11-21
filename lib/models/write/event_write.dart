@@ -12,8 +12,10 @@ class EventWrite with _$EventWrite implements WriteInterface {
     int? id,
     required String name,
     required int placeId,
-    @DateTimeConverter() required DateTime startDateTime,
-    @DateTimeConverter() required DateTime endDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+        required DateTime startDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+        required DateTime endDateTime,
     List<TicketPrice>? ticketPrices,
     String? imageLink,
     String? about,

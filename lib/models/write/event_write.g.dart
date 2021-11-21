@@ -11,8 +11,10 @@ _$_EventWrite _$_$_EventWriteFromJson(Map<String, dynamic> json) {
     id: json['id'] as int?,
     name: json['name'] as String,
     placeId: json['placeId'] as int,
-    startDateTime: DateTime.parse(json['startDateTime'] as String),
-    endDateTime: DateTime.parse(json['endDateTime'] as String),
+    startDateTime:
+        DateTimeConverter.fromJsonNonNullable(json['startDateTime'] as String),
+    endDateTime:
+        DateTimeConverter.fromJsonNonNullable(json['endDateTime'] as String),
     ticketPrices: (json['ticketPrices'] as List<dynamic>?)
         ?.map((e) => TicketPrice.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -27,8 +29,9 @@ Map<String, dynamic> _$_$_EventWriteToJson(_$_EventWrite instance) =>
       'id': instance.id,
       'name': instance.name,
       'placeId': instance.placeId,
-      'startDateTime': instance.startDateTime.toIso8601String(),
-      'endDateTime': instance.endDateTime.toIso8601String(),
+      'startDateTime':
+          DateTimeConverter.toJsonNonNullable(instance.startDateTime),
+      'endDateTime': DateTimeConverter.toJsonNonNullable(instance.endDateTime),
       'ticketPrices': instance.ticketPrices?.map((e) => e.toJson()).toList(),
       'imageLink': instance.imageLink,
       'about': instance.about,

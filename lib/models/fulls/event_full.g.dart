@@ -14,8 +14,10 @@ _$_EventFull _$_$_EventFullFromJson(Map<String, dynamic> json) {
     weeklyFollowers: json['weeklyFollowers'] as int,
     isFollowed: json['isFollowed'] as bool,
     status: _$enumDecode(_$EventStatusEnumMap, json['status']),
-    startDateTime: DateTime.parse(json['startDateTime'] as String),
-    endDateTime: DateTime.parse(json['endDateTime'] as String),
+    startDateTime:
+        DateTimeConverter.fromJsonNonNullable(json['startDateTime'] as String),
+    endDateTime:
+        DateTimeConverter.fromJsonNonNullable(json['endDateTime'] as String),
     place: PlaceShort.fromJson(json['place'] as Map<String, dynamic>),
     imageLink: json['imageLink'] as String?,
     about: json['about'] as String?,
@@ -34,8 +36,9 @@ Map<String, dynamic> _$_$_EventFullToJson(_$_EventFull instance) =>
       'weeklyFollowers': instance.weeklyFollowers,
       'isFollowed': instance.isFollowed,
       'status': _$EventStatusEnumMap[instance.status],
-      'startDateTime': instance.startDateTime.toIso8601String(),
-      'endDateTime': instance.endDateTime.toIso8601String(),
+      'startDateTime':
+          DateTimeConverter.toJsonNonNullable(instance.startDateTime),
+      'endDateTime': DateTimeConverter.toJsonNonNullable(instance.endDateTime),
       'place': instance.place.toJson(),
       'imageLink': instance.imageLink,
       'about': instance.about,

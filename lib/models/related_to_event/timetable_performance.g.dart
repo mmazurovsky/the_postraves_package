@@ -14,9 +14,9 @@ _$_TimetablePerformance _$_$_TimetablePerformanceFromJson(
         .map((e) => ArtistShort.fromJson(e as Map<String, dynamic>))
         .toList(),
     startingDateTime:
-        const DateTimeConverter().fromJson(json['startingDateTime'] as String?),
+        DateTimeConverter.fromJson(json['startingDateTime'] as String?),
     endingDateTime:
-        const DateTimeConverter().fromJson(json['endingDateTime'] as String?),
+        DateTimeConverter.fromJson(json['endingDateTime'] as String?),
     typeOfPerformance: json['typeOfPerformance'] as String?,
   );
 }
@@ -26,9 +26,7 @@ Map<String, dynamic> _$_$_TimetablePerformanceToJson(
     <String, dynamic>{
       'id': instance.id,
       'artists': instance.artists.map((e) => e.toJson()).toList(),
-      'startingDateTime':
-          const DateTimeConverter().toJson(instance.startingDateTime),
-      'endingDateTime':
-          const DateTimeConverter().toJson(instance.endingDateTime),
+      'startingDateTime': DateTimeConverter.toJson(instance.startingDateTime),
+      'endingDateTime': DateTimeConverter.toJson(instance.endingDateTime),
       'typeOfPerformance': instance.typeOfPerformance,
     };

@@ -15,8 +15,10 @@ class TimetablePerformanceWrite
     int? sceneId,
     required Set<int> artistIds,
     String? typeOfPerformance,
-    @DateTimeConverter() DateTime? startingDateTime,
-    @DateTimeConverter() DateTime? endingDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+        DateTime? startingDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+        DateTime? endingDateTime,
   }) = _TimetablePerformanceWrite;
 
   factory TimetablePerformanceWrite.fromJson(Map<String, dynamic> json) =>

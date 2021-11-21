@@ -10,8 +10,10 @@ class TimetablePerformance with _$TimetablePerformance {
   const factory TimetablePerformance({
     required int id,
     required List<ArtistShort> artists,
-    @DateTimeConverter() DateTime? startingDateTime,
-    @DateTimeConverter() DateTime? endingDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+        DateTime? startingDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+        DateTime? endingDateTime,
     String? typeOfPerformance,
   }) = _TimetablePerformance;
 

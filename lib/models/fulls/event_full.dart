@@ -24,8 +24,10 @@ class EventFull
     required int weeklyFollowers,
     required bool isFollowed,
     required EventStatus status,
-    @DateTimeConverter() required DateTime startDateTime,
-    @DateTimeConverter() required DateTime endDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+        required DateTime startDateTime,
+    @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
+        required DateTime endDateTime,
     required PlaceShort place,
     String? imageLink,
     String? about,

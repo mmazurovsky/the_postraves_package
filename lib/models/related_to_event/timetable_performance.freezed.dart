@@ -23,8 +23,10 @@ class _$TimetablePerformanceTearOff {
   _TimetablePerformance call(
       {required int id,
       required List<ArtistShort> artists,
-      @DateTimeConverter() DateTime? startingDateTime,
-      @DateTimeConverter() DateTime? endingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? endingDateTime,
       String? typeOfPerformance}) {
     return _TimetablePerformance(
       id: id,
@@ -47,9 +49,11 @@ const $TimetablePerformance = _$TimetablePerformanceTearOff();
 mixin _$TimetablePerformance {
   int get id => throw _privateConstructorUsedError;
   List<ArtistShort> get artists => throw _privateConstructorUsedError;
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
   DateTime? get startingDateTime => throw _privateConstructorUsedError;
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
   DateTime? get endingDateTime => throw _privateConstructorUsedError;
   String? get typeOfPerformance => throw _privateConstructorUsedError;
 
@@ -67,8 +71,10 @@ abstract class $TimetablePerformanceCopyWith<$Res> {
   $Res call(
       {int id,
       List<ArtistShort> artists,
-      @DateTimeConverter() DateTime? startingDateTime,
-      @DateTimeConverter() DateTime? endingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? endingDateTime,
       String? typeOfPerformance});
 }
 
@@ -124,8 +130,10 @@ abstract class _$TimetablePerformanceCopyWith<$Res>
   $Res call(
       {int id,
       List<ArtistShort> artists,
-      @DateTimeConverter() DateTime? startingDateTime,
-      @DateTimeConverter() DateTime? endingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? endingDateTime,
       String? typeOfPerformance});
 }
 
@@ -179,8 +187,10 @@ class _$_TimetablePerformance implements _TimetablePerformance {
   const _$_TimetablePerformance(
       {required this.id,
       required this.artists,
-      @DateTimeConverter() this.startingDateTime,
-      @DateTimeConverter() this.endingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          this.startingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          this.endingDateTime,
       this.typeOfPerformance});
 
   factory _$_TimetablePerformance.fromJson(Map<String, dynamic> json) =>
@@ -191,10 +201,12 @@ class _$_TimetablePerformance implements _TimetablePerformance {
   @override
   final List<ArtistShort> artists;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
   final DateTime? startingDateTime;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
   final DateTime? endingDateTime;
   @override
   final String? typeOfPerformance;
@@ -249,8 +261,10 @@ abstract class _TimetablePerformance implements TimetablePerformance {
   const factory _TimetablePerformance(
       {required int id,
       required List<ArtistShort> artists,
-      @DateTimeConverter() DateTime? startingDateTime,
-      @DateTimeConverter() DateTime? endingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? startingDateTime,
+      @JsonKey(toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
+          DateTime? endingDateTime,
       String? typeOfPerformance}) = _$_TimetablePerformance;
 
   factory _TimetablePerformance.fromJson(Map<String, dynamic> json) =
@@ -261,10 +275,12 @@ abstract class _TimetablePerformance implements TimetablePerformance {
   @override
   List<ArtistShort> get artists => throw _privateConstructorUsedError;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
   DateTime? get startingDateTime => throw _privateConstructorUsedError;
   @override
-  @DateTimeConverter()
+  @JsonKey(
+      toJson: DateTimeConverter.toJson, fromJson: DateTimeConverter.fromJson)
   DateTime? get endingDateTime => throw _privateConstructorUsedError;
   @override
   String? get typeOfPerformance => throw _privateConstructorUsedError;
