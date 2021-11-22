@@ -22,7 +22,7 @@ class MoneyCurrency
     implements WriteInterface, ShortInterface {
   const MoneyCurrency._();
   const factory MoneyCurrency({
-    required String currency,
+    required String name,
     required String symbol,
   }) = _MoneyCurrency;
 

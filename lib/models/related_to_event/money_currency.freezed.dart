@@ -20,9 +20,9 @@ MoneyCurrency _$MoneyCurrencyFromJson(Map<String, dynamic> json) {
 class _$MoneyCurrencyTearOff {
   const _$MoneyCurrencyTearOff();
 
-  _MoneyCurrency call({required String currency, required String symbol}) {
+  _MoneyCurrency call({required String name, required String symbol}) {
     return _MoneyCurrency(
-      currency: currency,
+      name: name,
       symbol: symbol,
     );
   }
@@ -37,7 +37,7 @@ const $MoneyCurrency = _$MoneyCurrencyTearOff();
 
 /// @nodoc
 mixin _$MoneyCurrency {
-  String get currency => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get symbol => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $MoneyCurrencyCopyWith<$Res> {
   factory $MoneyCurrencyCopyWith(
           MoneyCurrency value, $Res Function(MoneyCurrency) then) =
       _$MoneyCurrencyCopyWithImpl<$Res>;
-  $Res call({String currency, String symbol});
+  $Res call({String name, String symbol});
 }
 
 /// @nodoc
@@ -65,13 +65,13 @@ class _$MoneyCurrencyCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? currency = freezed,
+    Object? name = freezed,
     Object? symbol = freezed,
   }) {
     return _then(_value.copyWith(
-      currency: currency == freezed
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       symbol: symbol == freezed
           ? _value.symbol
@@ -88,7 +88,7 @@ abstract class _$MoneyCurrencyCopyWith<$Res>
           _MoneyCurrency value, $Res Function(_MoneyCurrency) then) =
       __$MoneyCurrencyCopyWithImpl<$Res>;
   @override
-  $Res call({String currency, String symbol});
+  $Res call({String name, String symbol});
 }
 
 /// @nodoc
@@ -104,13 +104,13 @@ class __$MoneyCurrencyCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? currency = freezed,
+    Object? name = freezed,
     Object? symbol = freezed,
   }) {
     return _then(_MoneyCurrency(
-      currency: currency == freezed
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       symbol: symbol == freezed
           ? _value.symbol
@@ -123,29 +123,28 @@ class __$MoneyCurrencyCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MoneyCurrency extends _MoneyCurrency {
-  const _$_MoneyCurrency({required this.currency, required this.symbol})
+  const _$_MoneyCurrency({required this.name, required this.symbol})
       : super._();
 
   factory _$_MoneyCurrency.fromJson(Map<String, dynamic> json) =>
       _$_$_MoneyCurrencyFromJson(json);
 
   @override
-  final String currency;
+  final String name;
   @override
   final String symbol;
 
   @override
   String toString() {
-    return 'MoneyCurrency(currency: $currency, symbol: $symbol)';
+    return 'MoneyCurrency(name: $name, symbol: $symbol)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _MoneyCurrency &&
-            (identical(other.currency, currency) ||
-                const DeepCollectionEquality()
-                    .equals(other.currency, currency)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.symbol, symbol) ||
                 const DeepCollectionEquality().equals(other.symbol, symbol)));
   }
@@ -153,7 +152,7 @@ class _$_MoneyCurrency extends _MoneyCurrency {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(currency) ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(symbol);
 
   @JsonKey(ignore: true)
@@ -168,15 +167,15 @@ class _$_MoneyCurrency extends _MoneyCurrency {
 }
 
 abstract class _MoneyCurrency extends MoneyCurrency {
-  const factory _MoneyCurrency(
-      {required String currency, required String symbol}) = _$_MoneyCurrency;
+  const factory _MoneyCurrency({required String name, required String symbol}) =
+      _$_MoneyCurrency;
   const _MoneyCurrency._() : super._();
 
   factory _MoneyCurrency.fromJson(Map<String, dynamic> json) =
       _$_MoneyCurrency.fromJson;
 
   @override
-  String get currency => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @override
   String get symbol => throw _privateConstructorUsedError;
   @override

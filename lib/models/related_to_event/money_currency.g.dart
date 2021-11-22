@@ -8,13 +8,13 @@ part of 'money_currency.dart';
 
 _$_MoneyCurrency _$_$_MoneyCurrencyFromJson(Map<String, dynamic> json) {
   return _$_MoneyCurrency(
-    currency: json['currency'] as String,
+    name: json['name'] as String,
     symbol: json['symbol'] as String,
   );
 }
 
 Map<String, dynamic> _$_$_MoneyCurrencyToJson(_$_MoneyCurrency instance) =>
     <String, dynamic>{
-      'currency': instance.currency,
+      'name': instance.name,
       'symbol': instance.symbol,
     };
