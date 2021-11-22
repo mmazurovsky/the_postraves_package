@@ -22,6 +22,7 @@ class PlaceShort with _$PlaceShort implements GeneralFollowableInterface, ShortI
     required int overallFollowers,
     required int weeklyFollowers,
     required bool isFollowed,
+    required bool isJustCity,
     String? imageLink,
   }) = _PlaceShort;
 

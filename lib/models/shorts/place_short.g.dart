@@ -16,6 +16,7 @@ _$_PlaceShort _$_$_PlaceShortFromJson(Map<String, dynamic> json) {
     overallFollowers: json['overallFollowers'] as int,
     weeklyFollowers: json['weeklyFollowers'] as int,
     isFollowed: json['isFollowed'] as bool,
+    isJustCity: json['isJustCity'] as bool,
     imageLink: json['imageLink'] as String?,
   );
 }
@@ -30,5 +31,6 @@ Map<String, dynamic> _$_$_PlaceShortToJson(_$_PlaceShort instance) =>
       'overallFollowers': instance.overallFollowers,
       'weeklyFollowers': instance.weeklyFollowers,
       'isFollowed': instance.isFollowed,
+      'isJustCity': instance.isJustCity,
       'imageLink': instance.imageLink,
     };

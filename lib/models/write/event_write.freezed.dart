@@ -28,7 +28,7 @@ class _$EventWriteTearOff {
           required DateTime startDateTime,
       @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
           required DateTime endDateTime,
-      List<TicketPrice>? ticketPrices,
+      List<TicketPriceWrite>? ticketPrices,
       String? imageLink,
       String? about,
       String? ticketsLink}) {
@@ -66,7 +66,8 @@ mixin _$EventWrite {
       toJson: DateTimeConverter.toJsonNonNullable,
       fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get endDateTime => throw _privateConstructorUsedError;
-  List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;
+  List<TicketPriceWrite>? get ticketPrices =>
+      throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get ticketsLink => throw _privateConstructorUsedError;
@@ -90,7 +91,7 @@ abstract class $EventWriteCopyWith<$Res> {
           DateTime startDateTime,
       @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
           DateTime endDateTime,
-      List<TicketPrice>? ticketPrices,
+      List<TicketPriceWrite>? ticketPrices,
       String? imageLink,
       String? about,
       String? ticketsLink});
@@ -140,7 +141,7 @@ class _$EventWriteCopyWithImpl<$Res> implements $EventWriteCopyWith<$Res> {
       ticketPrices: ticketPrices == freezed
           ? _value.ticketPrices
           : ticketPrices // ignore: cast_nullable_to_non_nullable
-              as List<TicketPrice>?,
+              as List<TicketPriceWrite>?,
       imageLink: imageLink == freezed
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -171,7 +172,7 @@ abstract class _$EventWriteCopyWith<$Res> implements $EventWriteCopyWith<$Res> {
           DateTime startDateTime,
       @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
           DateTime endDateTime,
-      List<TicketPrice>? ticketPrices,
+      List<TicketPriceWrite>? ticketPrices,
       String? imageLink,
       String? about,
       String? ticketsLink});
@@ -223,7 +224,7 @@ class __$EventWriteCopyWithImpl<$Res> extends _$EventWriteCopyWithImpl<$Res>
       ticketPrices: ticketPrices == freezed
           ? _value.ticketPrices
           : ticketPrices // ignore: cast_nullable_to_non_nullable
-              as List<TicketPrice>?,
+              as List<TicketPriceWrite>?,
       imageLink: imageLink == freezed
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -276,7 +277,7 @@ class _$_EventWrite implements _EventWrite {
       fromJson: DateTimeConverter.fromJsonNonNullable)
   final DateTime endDateTime;
   @override
-  final List<TicketPrice>? ticketPrices;
+  final List<TicketPriceWrite>? ticketPrices;
   @override
   final String? imageLink;
   @override
@@ -352,7 +353,7 @@ abstract class _EventWrite implements EventWrite {
           required DateTime startDateTime,
       @JsonKey(toJson: DateTimeConverter.toJsonNonNullable, fromJson: DateTimeConverter.fromJsonNonNullable)
           required DateTime endDateTime,
-      List<TicketPrice>? ticketPrices,
+      List<TicketPriceWrite>? ticketPrices,
       String? imageLink,
       String? about,
       String? ticketsLink}) = _$_EventWrite;
@@ -377,7 +378,8 @@ abstract class _EventWrite implements EventWrite {
       fromJson: DateTimeConverter.fromJsonNonNullable)
   DateTime get endDateTime => throw _privateConstructorUsedError;
   @override
-  List<TicketPrice>? get ticketPrices => throw _privateConstructorUsedError;
+  List<TicketPriceWrite>? get ticketPrices =>
+      throw _privateConstructorUsedError;
   @override
   String? get imageLink => throw _privateConstructorUsedError;
   @override

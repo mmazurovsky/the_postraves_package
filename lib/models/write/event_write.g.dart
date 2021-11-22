@@ -16,7 +16,7 @@ _$_EventWrite _$_$_EventWriteFromJson(Map<String, dynamic> json) {
     endDateTime:
         DateTimeConverter.fromJsonNonNullable(json['endDateTime'] as String),
     ticketPrices: (json['ticketPrices'] as List<dynamic>?)
-        ?.map((e) => TicketPrice.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => TicketPriceWrite.fromJson(e as Map<String, dynamic>))
         .toList(),
     imageLink: json['imageLink'] as String?,
     about: json['about'] as String?,

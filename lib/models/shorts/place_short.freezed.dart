@@ -29,6 +29,7 @@ class _$PlaceShortTearOff {
       required int overallFollowers,
       required int weeklyFollowers,
       required bool isFollowed,
+      required bool isJustCity,
       String? imageLink}) {
     return _PlaceShort(
       city: city,
@@ -39,6 +40,7 @@ class _$PlaceShortTearOff {
       overallFollowers: overallFollowers,
       weeklyFollowers: weeklyFollowers,
       isFollowed: isFollowed,
+      isJustCity: isJustCity,
       imageLink: imageLink,
     );
   }
@@ -61,6 +63,7 @@ mixin _$PlaceShort {
   int get overallFollowers => throw _privateConstructorUsedError;
   int get weeklyFollowers => throw _privateConstructorUsedError;
   bool get isFollowed => throw _privateConstructorUsedError;
+  bool get isJustCity => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -83,6 +86,7 @@ abstract class $PlaceShortCopyWith<$Res> {
       int overallFollowers,
       int weeklyFollowers,
       bool isFollowed,
+      bool isJustCity,
       String? imageLink});
 
   $CityCopyWith<$Res> get city;
@@ -107,6 +111,7 @@ class _$PlaceShortCopyWithImpl<$Res> implements $PlaceShortCopyWith<$Res> {
     Object? overallFollowers = freezed,
     Object? weeklyFollowers = freezed,
     Object? isFollowed = freezed,
+    Object? isJustCity = freezed,
     Object? imageLink = freezed,
   }) {
     return _then(_value.copyWith(
@@ -141,6 +146,10 @@ class _$PlaceShortCopyWithImpl<$Res> implements $PlaceShortCopyWith<$Res> {
       isFollowed: isFollowed == freezed
           ? _value.isFollowed
           : isFollowed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isJustCity: isJustCity == freezed
+          ? _value.isJustCity
+          : isJustCity // ignore: cast_nullable_to_non_nullable
               as bool,
       imageLink: imageLink == freezed
           ? _value.imageLink
@@ -179,6 +188,7 @@ abstract class _$PlaceShortCopyWith<$Res> implements $PlaceShortCopyWith<$Res> {
       int overallFollowers,
       int weeklyFollowers,
       bool isFollowed,
+      bool isJustCity,
       String? imageLink});
 
   @override
@@ -207,6 +217,7 @@ class __$PlaceShortCopyWithImpl<$Res> extends _$PlaceShortCopyWithImpl<$Res>
     Object? overallFollowers = freezed,
     Object? weeklyFollowers = freezed,
     Object? isFollowed = freezed,
+    Object? isJustCity = freezed,
     Object? imageLink = freezed,
   }) {
     return _then(_PlaceShort(
@@ -242,6 +253,10 @@ class __$PlaceShortCopyWithImpl<$Res> extends _$PlaceShortCopyWithImpl<$Res>
           ? _value.isFollowed
           : isFollowed // ignore: cast_nullable_to_non_nullable
               as bool,
+      isJustCity: isJustCity == freezed
+          ? _value.isJustCity
+          : isJustCity // ignore: cast_nullable_to_non_nullable
+              as bool,
       imageLink: imageLink == freezed
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -262,6 +277,7 @@ class _$_PlaceShort extends _PlaceShort {
       required this.overallFollowers,
       required this.weeklyFollowers,
       required this.isFollowed,
+      required this.isJustCity,
       this.imageLink})
       : super._();
 
@@ -285,11 +301,13 @@ class _$_PlaceShort extends _PlaceShort {
   @override
   final bool isFollowed;
   @override
+  final bool isJustCity;
+  @override
   final String? imageLink;
 
   @override
   String toString() {
-    return 'PlaceShort(city: $city, streetAddress: $streetAddress, coordinate: $coordinate, id: $id, name: $name, overallFollowers: $overallFollowers, weeklyFollowers: $weeklyFollowers, isFollowed: $isFollowed, imageLink: $imageLink)';
+    return 'PlaceShort(city: $city, streetAddress: $streetAddress, coordinate: $coordinate, id: $id, name: $name, overallFollowers: $overallFollowers, weeklyFollowers: $weeklyFollowers, isFollowed: $isFollowed, isJustCity: $isJustCity, imageLink: $imageLink)';
   }
 
   @override
@@ -317,6 +335,9 @@ class _$_PlaceShort extends _PlaceShort {
             (identical(other.isFollowed, isFollowed) ||
                 const DeepCollectionEquality()
                     .equals(other.isFollowed, isFollowed)) &&
+            (identical(other.isJustCity, isJustCity) ||
+                const DeepCollectionEquality()
+                    .equals(other.isJustCity, isJustCity)) &&
             (identical(other.imageLink, imageLink) ||
                 const DeepCollectionEquality()
                     .equals(other.imageLink, imageLink)));
@@ -333,6 +354,7 @@ class _$_PlaceShort extends _PlaceShort {
       const DeepCollectionEquality().hash(overallFollowers) ^
       const DeepCollectionEquality().hash(weeklyFollowers) ^
       const DeepCollectionEquality().hash(isFollowed) ^
+      const DeepCollectionEquality().hash(isJustCity) ^
       const DeepCollectionEquality().hash(imageLink);
 
   @JsonKey(ignore: true)
@@ -356,6 +378,7 @@ abstract class _PlaceShort extends PlaceShort {
       required int overallFollowers,
       required int weeklyFollowers,
       required bool isFollowed,
+      required bool isJustCity,
       String? imageLink}) = _$_PlaceShort;
   const _PlaceShort._() : super._();
 
@@ -378,6 +401,8 @@ abstract class _PlaceShort extends PlaceShort {
   int get weeklyFollowers => throw _privateConstructorUsedError;
   @override
   bool get isFollowed => throw _privateConstructorUsedError;
+  @override
+  bool get isJustCity => throw _privateConstructorUsedError;
   @override
   String? get imageLink => throw _privateConstructorUsedError;
   @override
