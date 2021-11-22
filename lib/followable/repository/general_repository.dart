@@ -1,8 +1,6 @@
 import 'package:the_postraves_package/client/request_wrapper.dart';
 import 'package:the_postraves_package/client/response_sealed.dart';
 import 'package:the_postraves_package/followable/data_sources/general_remote_data_source.dart';
-import 'package:the_postraves_package/models/geo/city.dart';
-import 'package:the_postraves_package/models/geo/country.dart';
 
 abstract class GeneralRepository<DATA> {
   Future<ResponseSealed<List<DATA>>> fetchAllFromRemote(
