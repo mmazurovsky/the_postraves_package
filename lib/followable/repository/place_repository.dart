@@ -9,7 +9,7 @@ import '../data_sources/place_remote_data_source.dart';
 abstract class PlaceRepository {
   Future<ResponseSealed<List<Scene>>> fetchScenesForPlaceById(int id);
   Future<ResponseSealed<List<EventShort>>> fetchEventsForPlaceById(int id);
-  Future<ResponseSealed<List<PlaceShort>>> searchByName(String searchValue);
+  // Future<ResponseSealed<List<PlaceShort>>> searchByName(String searchValue);
   Future<ResponseSealed<void>> saveOrUpdateScenes(
       int placeId, List<Scene> scenes);
 }
@@ -50,16 +50,16 @@ class PlaceRepositoryImpl extends PlaceRepository {
     );
   }
 
-  @override
-  Future<ResponseSealed<List<PlaceShort>>> searchByName(
-      String searchValue) async {
-    return await _remoteRequestWrapperPlaces(
-      (httpHeaders) => _placeRemoteDataSource.searchByName(
-        searchValue: searchValue,
-        httpHeaders: httpHeaders,
-      ),
-    );
-  }
+  // @override
+  // Future<ResponseSealed<List<PlaceShort>>> searchByName(
+  //     String searchValue) async {
+  //   return await _remoteRequestWrapperPlaces(
+  //     (httpHeaders) => _placeRemoteDataSource.searchByName(
+  //       searchValue: searchValue,
+  //       httpHeaders: httpHeaders,
+  //     ),
+  //   );
+  // }
 
   @override
   Future<ResponseSealed<void>> saveOrUpdateScenes(

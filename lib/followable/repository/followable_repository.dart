@@ -11,6 +11,8 @@ abstract class FollowableRepository<
   Future<ResponseSealed<List<SHORTFOLLOWABLE>>> fetchAll();
   Future<ResponseSealed<void>> followFollowable(int id);
   Future<ResponseSealed<void>> unfollowFollowable(int id);
+  Future<ResponseSealed<List<SHORTFOLLOWABLE>>> searchByName(
+      String searchValue);
 }
 
 class FollowableRepositoryImpl<
@@ -61,5 +63,14 @@ class FollowableRepositoryImpl<
   Future<ResponseSealed<List<SHORTFOLLOWABLE>>> fetchAll() async {
     return await _remoteRequestWrapperShorts((httpHeaders) =>
         _followableRemoteDataSource.fetchAll(httpHeaders: httpHeaders));
+  }
+
+  @override
+  Future<ResponseSealed<List<SHORTFOLLOWABLE>>> searchByName(
+      String searchValue) async {
+    return await _remoteRequestWrapperShorts(
+      (httpHeaders) => _followableRemoteDataSource.searchByName(
+          searchValue: searchValue, httpHeaders: httpHeaders),
+    );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/localized_request.dart';
 import 'package:the_postraves_package/client/remote_request.dart';
@@ -28,10 +26,10 @@ abstract class EventRemoteDataSource {
     required bool isForAdmin,
   });
 
-  Future<List<EventShort>> searchByName({
-    required String searchValue,
-    required Map<String, String> httpHeaders,
-  });
+  // Future<List<EventShort>> searchByName({
+  //   required String searchValue,
+  //   required Map<String, String> httpHeaders,
+  // });
 
   Future<void> saveOrUpdateOrganizers({
     required int eventId,
@@ -61,7 +59,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   Future<List<ArtistShort>> fetchLineupForEventById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'event/public/$id/lineup',
+        endpointWithPath: '${FollowableType.EVENT.endpoint}/public/$id/lineup',
         httpHeaders: httpHeaders) as List<dynamic>?;
     final list =
         decodedResponse?.map((json) => ArtistShort.fromJson(json)).toList() ??
@@ -73,7 +71,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   Future<List<UnityShort>> fetchOrganizersForEventById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'event/public/$id/organizers',
+        endpointWithPath: '${FollowableType.EVENT.endpoint}/public/$id/organizers',
         httpHeaders: httpHeaders) as List<dynamic>?;
     final list =
         decodedResponse?.map((json) => UnityShort.fromJson(json)).toList() ??
@@ -88,7 +86,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     required bool isForAdmin,
   }) async {
     final decodedResponse = await _localizedGetRequest(
-            endpointWithPath: 'event/public/$id/timetable',
+            endpointWithPath: '${FollowableType.EVENT.endpoint}/public/$id/timetable',
             httpHeaders: httpHeaders,
             queryParameters: !isForAdmin ? null : {'isForAdmin': true.toString()})
         as List<dynamic>?;
@@ -99,21 +97,21 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     return list;
   }
 
-  @override
-  Future<List<EventShort>> searchByName(
-      {required String searchValue,
-      required Map<String, String> httpHeaders}) async {
-    final requestEvents = _localizedGetRequest(
-      endpointWithPath:
-          '${FollowableType.EVENT.endpoint}/public/search/$searchValue',
-      httpHeaders: httpHeaders,
-    );
+  // @override
+  // Future<List<EventShort>> searchByName(
+  //     {required String searchValue,
+  //     required Map<String, String> httpHeaders}) async {
+  //   final requestEvents = _localizedGetRequest(
+  //     endpointWithPath:
+  //         '${FollowableType.EVENT.endpoint}/public/search/$searchValue',
+  //     httpHeaders: httpHeaders,
+  //   );
 
-    final responseEvents = await requestEvents as List<dynamic>?;
-    final decodedEvents =
-        responseEvents?.map((json) => EventShort.fromJson(json)).toList() ?? [];
-    return decodedEvents;
-  }
+  //   final responseEvents = await requestEvents as List<dynamic>?;
+  //   final decodedEvents =
+  //       responseEvents?.map((json) => EventShort.fromJson(json)).toList() ?? [];
+  //   return decodedEvents;
+  // }
 
   @override
   Future<void> saveOrUpdateOrganizers({

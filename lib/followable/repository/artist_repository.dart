@@ -9,7 +9,7 @@ import '../data_sources/artist_remote_data_source.dart';
 abstract class ArtistRepository {
   Future<ResponseSealed<List<UnityShort>>> fetchUnitiesForArtistById(int id);
   Future<ResponseSealed<List<EventShort>>> fetchEventsForArtistById(int id);
-  Future<ResponseSealed<List<ArtistShort>>> searchByName(String searchValue);
+  // Future<ResponseSealed<List<ArtistShort>>> searchByName(String searchValue);
 }
 
 class ArtistRepositoryImpl extends ArtistRepository {
@@ -47,12 +47,12 @@ class ArtistRepositoryImpl extends ArtistRepository {
     );
   }
 
-  @override
-  Future<ResponseSealed<List<ArtistShort>>> searchByName(
-      String searchValue) async {
-    return await _remoteRequestWrapperArtists(
-      (httpHeaders) => _artistRemoteDataSource.searchByName(
-          searchValue: searchValue, httpHeaders: httpHeaders),
-    );
-  }
+  // @override
+  // Future<ResponseSealed<List<ArtistShort>>> searchByName(
+  //     String searchValue) async {
+  //   return await _remoteRequestWrapperArtists(
+  //     (httpHeaders) => _artistRemoteDataSource.searchByName(
+  //         searchValue: searchValue, httpHeaders: httpHeaders),
+  //   );
+  // }
 }

@@ -11,12 +11,15 @@
 // }
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 
 part 'money_currency.freezed.dart';
 part 'money_currency.g.dart';
 
 @freezed
-class MoneyCurrency with _$MoneyCurrency {
+class MoneyCurrency
+    with _$MoneyCurrency
+    implements WriteInterface, ShortInterface {
   const MoneyCurrency._();
   const factory MoneyCurrency({
     required String currency,

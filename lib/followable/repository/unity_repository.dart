@@ -9,7 +9,7 @@ import '../data_sources/unity_remote_data_source.dart';
 abstract class UnityRepository {
   Future<ResponseSealed<List<ArtistShort>>> fetchArtistsForUnityById(int id);
   Future<ResponseSealed<List<EventShort>>> fetchEventsForArtistById(int id);
-  Future<ResponseSealed<List<UnityShort>>> searchByName(String searchValue);
+  // Future<ResponseSealed<List<UnityShort>>> searchByName(String searchValue);
   Future<ResponseSealed<void>> saveOrUpdateArtists(
       int unityId, List<int> artists);
 }
@@ -49,16 +49,16 @@ class UnityRepositoryImpl extends UnityRepository {
             ));
   }
 
-  @override
-  Future<ResponseSealed<List<UnityShort>>> searchByName(
-      String searchValue) async {
-    return await _remoteRequestWrapperUnities(
-      (httpHeaders) => _unityRemoteDataSource.searchByName(
-        searchValue: searchValue,
-        httpHeaders: httpHeaders,
-      ),
-    );
-  }
+  // @override
+  // Future<ResponseSealed<List<UnityShort>>> searchByName(
+  //     String searchValue) async {
+  //   return await _remoteRequestWrapperUnities(
+  //     (httpHeaders) => _unityRemoteDataSource.searchByName(
+  //       searchValue: searchValue,
+  //       httpHeaders: httpHeaders,
+  //     ),
+  //   );
+  // }
 
   @override
   Future<ResponseSealed<void>> saveOrUpdateArtists(

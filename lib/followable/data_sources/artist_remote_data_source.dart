@@ -15,8 +15,8 @@ abstract class ArtistRemoteDataSource {
     required Map<String, String> httpHeaders,
   });
 
-  Future<List<ArtistShort>> searchByName(
-      {required String searchValue, required Map<String, String> httpHeaders});
+  // Future<List<ArtistShort>> searchByName(
+  //     {required String searchValue, required Map<String, String> httpHeaders});
 }
 
 class ArtistRemoteDataSourceImpl implements ArtistRemoteDataSource {
@@ -28,7 +28,7 @@ class ArtistRemoteDataSourceImpl implements ArtistRemoteDataSource {
   Future<List<EventShort>> fetchEventsForArtistById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'artist/public/$id/events',
+        endpointWithPath: '${FollowableType.ARTIST.endpoint}/public/$id/events',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => EventShort.fromJson(json)).toList() ??
         [];
@@ -38,27 +38,27 @@ class ArtistRemoteDataSourceImpl implements ArtistRemoteDataSource {
   Future<List<UnityShort>> fetchUnitiesForArtistById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'artist/public/$id/unities',
+        endpointWithPath: '${FollowableType.ARTIST.endpoint}/public/$id/unities',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => UnityShort.fromJson(json)).toList() ??
         [];
   }
 
-  @override
-  Future<List<ArtistShort>> searchByName(
-      {required String searchValue,
-      required Map<String, String> httpHeaders}) async {
-    final requestArtists = _localizedGetRequest(
-      endpointWithPath:
-          '${FollowableType.ARTIST.endpoint}/public/search/$searchValue',
-      httpHeaders: httpHeaders,
-    );
+  // @override
+  // Future<List<ArtistShort>> searchByName(
+  //     {required String searchValue,
+  //     required Map<String, String> httpHeaders}) async {
+  //   final requestArtists = _localizedGetRequest(
+  //     endpointWithPath:
+  //         '${FollowableType.ARTIST.endpoint}/public/search/$searchValue',
+  //     httpHeaders: httpHeaders,
+  //   );
 
-    final responseArtists = await requestArtists as List<dynamic>?;
+  //   final responseArtists = await requestArtists as List<dynamic>?;
 
-    final decodedArtists =
-        responseArtists?.map((json) => ArtistShort.fromJson(json)).toList() ??
-            [];
-    return decodedArtists;
-  }
+  //   final decodedArtists =
+  //       responseArtists?.map((json) => ArtistShort.fromJson(json)).toList() ??
+  //           [];
+  //   return decodedArtists;
+  // }
 }

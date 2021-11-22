@@ -20,8 +20,8 @@ abstract class UnityRemoteDataSource {
     required Map<String, String> httpHeaders,
   });
 
-  Future<List<UnityShort>> searchByName(
-      {required String searchValue, required Map<String, String> httpHeaders});
+  // Future<List<UnityShort>> searchByName(
+  //     {required String searchValue, required Map<String, String> httpHeaders});
 
   Future<void> saveOrUpdateArtists({
     required int unityId,
@@ -45,7 +45,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
   Future<List<EventShort>> fetchEventsForUnityById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'unity/public/$id/events',
+        endpointWithPath: '${FollowableType.UNITY.endpoint}/public/$id/events',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => EventShort.fromJson(json)).toList() ??
         [];
@@ -55,7 +55,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
   Future<List<ArtistShort>> fetchArtistsForUnityById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'unity/public/$id/artists',
+        endpointWithPath: '${FollowableType.UNITY.endpoint}/public/$id/artists',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse
             ?.map((json) => ArtistShort.fromJson(json))
@@ -63,24 +63,24 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
         [];
   }
 
-  @override
-  Future<List<UnityShort>> searchByName(
-      {required String searchValue,
-      required Map<String, String> httpHeaders}) async {
-    final requestUnities = _localizedGetRequest(
-      endpointWithPath:
-          '${FollowableType.UNITY.endpoint}/public/search/$searchValue',
-      httpHeaders: httpHeaders,
-    );
+  // @override
+  // Future<List<UnityShort>> searchByName(
+  //     {required String searchValue,
+  //     required Map<String, String> httpHeaders}) async {
+  //   final requestUnities = _localizedGetRequest(
+  //     endpointWithPath:
+  //         '${FollowableType.UNITY.endpoint}/public/search/$searchValue',
+  //     httpHeaders: httpHeaders,
+  //   );
 
-    final responseUnities = await requestUnities as List<dynamic>?;
+  //   final responseUnities = await requestUnities as List<dynamic>?;
 
-    final decodedUnities =
-        responseUnities?.map((json) => UnityShort.fromJson(json)).toList() ??
-            [];
+  //   final decodedUnities =
+  //       responseUnities?.map((json) => UnityShort.fromJson(json)).toList() ??
+  //           [];
 
-    return decodedUnities;
-  }
+  //   return decodedUnities;
+  // }
 
   @override
   Future<void> saveOrUpdateArtists({

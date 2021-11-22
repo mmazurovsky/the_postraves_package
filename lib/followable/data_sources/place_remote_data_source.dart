@@ -18,8 +18,8 @@ abstract class PlaceRemoteDataSource {
     required Map<String, String> httpHeaders,
   });
 
-  Future<List<PlaceShort>> searchByName(
-      {required String searchValue, required Map<String, String> httpHeaders});
+  // Future<List<PlaceShort>> searchByName(
+  //     {required String searchValue, required Map<String, String> httpHeaders});
 
   Future<void> saveOrUpdateScenes({
     required int placeId,
@@ -43,7 +43,7 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
   Future<List<EventShort>> fetchEventsForPlaceById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'place/public/$id/events',
+        endpointWithPath: '${FollowableType.PLACE.endpoint}/public/$id/events',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => EventShort.fromJson(json)).toList() ??
         [];
@@ -53,28 +53,28 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
   Future<List<Scene>> fetchScenesForPlaceById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: 'place/public/$id/scenes',
+        endpointWithPath: '${FollowableType.PLACE.endpoint}/public/$id/scenes',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => Scene.fromJson(json)).toList() ?? [];
   }
 
-  @override
-  Future<List<PlaceShort>> searchByName(
-      {required String searchValue,
-      required Map<String, String> httpHeaders}) async {
-    final requestPlaces = _localizedGetRequest(
-      endpointWithPath:
-          '${FollowableType.PLACE.endpoint}/public/search/$searchValue',
-      httpHeaders: httpHeaders,
-    );
+  // @override
+  // Future<List<PlaceShort>> searchByName(
+  //     {required String searchValue,
+  //     required Map<String, String> httpHeaders}) async {
+  //   final requestPlaces = _localizedGetRequest(
+  //     endpointWithPath:
+  //         '${FollowableType.PLACE.endpoint}/public/search/$searchValue',
+  //     httpHeaders: httpHeaders,
+  //   );
 
-    final responsePlaces = await requestPlaces as List<dynamic>?;
+  //   final responsePlaces = await requestPlaces as List<dynamic>?;
 
-    final decodedPlaces =
-        responsePlaces?.map((json) => PlaceShort.fromJson(json)).toList() ?? [];
+  //   final decodedPlaces =
+  //       responsePlaces?.map((json) => PlaceShort.fromJson(json)).toList() ?? [];
 
-    return decodedPlaces;
-  }
+  //   return decodedPlaces;
+  // }
 
   @override
   Future<void> saveOrUpdateScenes({

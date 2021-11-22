@@ -13,7 +13,7 @@ abstract class EventRepository {
   Future<ResponseSealed<List<ArtistShort>>> fetchLineupForEventById(int id);
   Future<ResponseSealed<List<TimetableForScene>>> fetchTimetableForEventById(
       int id, {bool isForAdmin});
-  Future<ResponseSealed<List<EventShort>>> searchByName(String searchValue);
+  // Future<ResponseSealed<List<EventShort>>> searchByName(String searchValue);
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(
       int eventId, List<int> orgsIds);
   Future<ResponseSealed<void>> saveOrUpdateTimetable(
@@ -72,16 +72,16 @@ class EventRepositoryImpl extends EventRepository {
     );
   }
 
-  @override
-  Future<ResponseSealed<List<EventShort>>> searchByName(
-      String searchValue) async {
-    return await _remoteRequestWrapperEvents(
-      (httpHeaders) => _eventRemoteDataSource.searchByName(
-        searchValue: searchValue,
-        httpHeaders: httpHeaders,
-      ),
-    );
-  }
+  // @override
+  // Future<ResponseSealed<List<EventShort>>> searchByName(
+  //     String searchValue) async {
+  //   return await _remoteRequestWrapperEvents(
+  //     (httpHeaders) => _eventRemoteDataSource.searchByName(
+  //       searchValue: searchValue,
+  //       httpHeaders: httpHeaders,
+  //     ),
+  //   );
+  // }
 
   @override
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(

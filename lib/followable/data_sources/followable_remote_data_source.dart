@@ -1,4 +1,4 @@
-import 'package:the_postraves_package/client/followable_client_helper.dart';
+import 'package:the_postraves_package/client/client_helper.dart';
 import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/localized_request.dart';
 import 'package:the_postraves_package/client/remote_request.dart';
@@ -24,6 +24,8 @@ abstract class FollowableRemoteDataSource<
   Future<List<SHORTFOLLOWABLE>> fetchAll({
     required Map<String, String> httpHeaders,
   });
+  Future<List<SHORTFOLLOWABLE>> searchByName(
+      {required String searchValue, required Map<String, String> httpHeaders});
 }
 
 class FollowableRemoteDataSourceImpl<
@@ -31,14 +33,14 @@ class FollowableRemoteDataSourceImpl<
         SHORTFOLLOWABLE extends GeneralFollowableInterface>
     implements FollowableRemoteDataSource<FULLFOLLOWABLE, SHORTFOLLOWABLE> {
   final RemoteRequest _remoteRequest;
-  final FollowableClientHelper<FULLFOLLOWABLE> _followableClientHelper;
-  final FollowableClientHelper<SHORTFOLLOWABLE> _followableClientHelperShort;
+  final ClientHelper<FULLFOLLOWABLE> _followableClientHelperFull;
+  final ClientHelper<SHORTFOLLOWABLE> _followableClientHelperShort;
   final LocalizedGetRequest _localizedGetRequest;
   final ServerConstantsAbstract _serverConstantsAbstract;
 
   FollowableRemoteDataSourceImpl(
     this._remoteRequest,
-    this._followableClientHelper,
+    this._followableClientHelperFull,
     this._followableClientHelperShort,
     this._localizedGetRequest,
     this._serverConstantsAbstract,
@@ -51,10 +53,10 @@ class FollowableRemoteDataSourceImpl<
   }) async {
     final decodedResponse = await _localizedGetRequest(
       endpointWithPath:
-          _followableClientHelper.getEndpointForFollowable() + '/public/$id',
+          _followableClientHelperFull.getEndpoint() + '/public/$id',
       httpHeaders: httpHeaders,
     );
-    return _followableClientHelper.deserializeFollowable(decodedResponse);
+    return _followableClientHelperFull.deserialize(decodedResponse);
   }
 
   @override
@@ -65,14 +67,32 @@ class FollowableRemoteDataSourceImpl<
       httpMethod: HttpMethod.get,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
-      endpointWithPath: _followableClientHelperShort.getEndpointForFollowable(),
+      endpointWithPath: _followableClientHelperShort.getEndpoint(),
       httpHeaders: httpHeaders,
     );
 
     return response
         .map<SHORTFOLLOWABLE>(
-            (json) => _followableClientHelperShort.deserializeFollowable(json))
+            (json) => _followableClientHelperShort.deserialize(json))
         .toList();
+  }
+
+  @override
+  Future<List<SHORTFOLLOWABLE>> searchByName(
+      {required String searchValue,
+      required Map<String, String> httpHeaders}) async {
+    final request = _localizedGetRequest(
+      endpointWithPath:
+          '${_followableClientHelperShort.getEndpoint()}/public/search/$searchValue',
+      httpHeaders: httpHeaders,
+    );
+
+    final response = await request as List<dynamic>?;
+    final decoded = response
+            ?.map((json) => _followableClientHelperShort.deserialize(json))
+            .toList() ??
+        [];
+    return decoded;
   }
 
   @override
@@ -86,7 +106,7 @@ class FollowableRemoteDataSourceImpl<
         host: _serverConstantsAbstract.apiHost,
         hostPath: _serverConstantsAbstract.apiPath,
         endpointWithPath:
-            _followableClientHelper.getEndpointAndPathForUserFollowing() +
+            _followableClientHelperFull.getEndpointAndPathForUserFollowing() +
                 '/$id',
         httpHeaders: httpHeaders);
     return; //TODO: better have something in return to ensure everything is ok
@@ -101,7 +121,7 @@ class FollowableRemoteDataSourceImpl<
         host: _serverConstantsAbstract.apiHost,
         hostPath: _serverConstantsAbstract.apiPath,
         endpointWithPath:
-            _followableClientHelper.getEndpointAndPathForUserFollowing() +
+            _followableClientHelperFull.getEndpointAndPathForUserFollowing() +
                 '/$id',
         httpHeaders: httpHeaders);
     return; //TODO: better have something in return to ensure everything is ok

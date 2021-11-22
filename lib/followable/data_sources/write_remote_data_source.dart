@@ -1,4 +1,4 @@
-import 'package:the_postraves_package/client/followable_client_helper.dart';
+import 'package:the_postraves_package/client/client_helper.dart';
 import 'package:the_postraves_package/client/http_method_enum.dart';
 import 'package:the_postraves_package/client/remote_request.dart';
 import 'package:the_postraves_package/constants/server_constants.dart';
@@ -20,12 +20,12 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
         SHORT extends ShortInterface>
     implements WriteRemoteDataSource<WRITEDATA, SHORT> {
   final RemoteRequest _remoteRequest;
-  final WriteClientHelper<WRITEDATA, SHORT> _writeClientHelper;
+  final ClientHelper<SHORT> _clientHelper;
   final ServerConstantsAbstract _serverConstantsAbstract;
 
   WriteRemoteDataSourceImpl(
     this._remoteRequest,
-    this._writeClientHelper,
+    this._clientHelper,
     this._serverConstantsAbstract,
   );
 
@@ -38,12 +38,12 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
       httpMethod: HttpMethod.post,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
-      endpointWithPath: _writeClientHelper.getEndpoint(),
+      endpointWithPath: _clientHelper.getEndpoint(),
       httpHeaders: httpHeaders,
       body: writeData.toJson(),
     );
 
-    return _writeClientHelper.deserialize(response);
+    return _clientHelper.deserialize(response);
   }
 
   @override
@@ -55,7 +55,7 @@ class WriteRemoteDataSourceImpl<WRITEDATA extends WriteInterface,
       httpMethod: HttpMethod.put,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
-      endpointWithPath: _writeClientHelper.getEndpoint(),
+      endpointWithPath: _clientHelper.getEndpoint(),
       httpHeaders: httpHeaders,
       body: writeData.toJson(),
     );
