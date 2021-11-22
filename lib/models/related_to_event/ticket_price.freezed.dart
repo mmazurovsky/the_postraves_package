@@ -55,6 +55,8 @@ abstract class $TicketPriceCopyWith<$Res> {
           TicketPrice value, $Res Function(TicketPrice) then) =
       _$TicketPriceCopyWithImpl<$Res>;
   $Res call({String? name, double price, MoneyCurrency currency});
+
+  $MoneyCurrencyCopyWith<$Res> get currency;
 }
 
 /// @nodoc
@@ -86,6 +88,13 @@ class _$TicketPriceCopyWithImpl<$Res> implements $TicketPriceCopyWith<$Res> {
               as MoneyCurrency,
     ));
   }
+
+  @override
+  $MoneyCurrencyCopyWith<$Res> get currency {
+    return $MoneyCurrencyCopyWith<$Res>(_value.currency, (value) {
+      return _then(_value.copyWith(currency: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -96,6 +105,9 @@ abstract class _$TicketPriceCopyWith<$Res>
       __$TicketPriceCopyWithImpl<$Res>;
   @override
   $Res call({String? name, double price, MoneyCurrency currency});
+
+  @override
+  $MoneyCurrencyCopyWith<$Res> get currency;
 }
 
 /// @nodoc

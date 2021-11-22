@@ -10,7 +10,7 @@ _$_TicketPrice _$_$_TicketPriceFromJson(Map<String, dynamic> json) {
   return _$_TicketPrice(
     name: json['name'] as String?,
     price: (json['price'] as num).toDouble(),
-    currency: _$enumDecode(_$MoneyCurrencyEnumMap, json['currency']),
+    currency: MoneyCurrency.fromJson(json['currency'] as Map<String, dynamic>),
   );
 }
 
@@ -18,37 +18,5 @@ Map<String, dynamic> _$_$_TicketPriceToJson(_$_TicketPrice instance) =>
     <String, dynamic>{
       'name': instance.name,
       'price': instance.price,
-      'currency': _$MoneyCurrencyEnumMap[instance.currency],
+      'currency': instance.currency.toJson(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-const _$MoneyCurrencyEnumMap = {
-  MoneyCurrency.RUB: 'RUB',
-  MoneyCurrency.EUR: 'EUR',
-  MoneyCurrency.USD: 'USD',
-};

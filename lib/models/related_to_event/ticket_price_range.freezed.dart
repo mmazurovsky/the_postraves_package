@@ -48,6 +48,8 @@ abstract class $TicketPriceRangeCopyWith<$Res> {
           TicketPriceRange value, $Res Function(TicketPriceRange) then) =
       _$TicketPriceRangeCopyWithImpl<$Res>;
   $Res call({double minPrice, double? maxPrice, MoneyCurrency currency});
+
+  $MoneyCurrencyCopyWith<$Res> get currency;
 }
 
 /// @nodoc
@@ -80,6 +82,13 @@ class _$TicketPriceRangeCopyWithImpl<$Res>
               as MoneyCurrency,
     ));
   }
+
+  @override
+  $MoneyCurrencyCopyWith<$Res> get currency {
+    return $MoneyCurrencyCopyWith<$Res>(_value.currency, (value) {
+      return _then(_value.copyWith(currency: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -90,6 +99,9 @@ abstract class _$TicketPriceRangeCopyWith<$Res>
       __$TicketPriceRangeCopyWithImpl<$Res>;
   @override
   $Res call({double minPrice, double? maxPrice, MoneyCurrency currency});
+
+  @override
+  $MoneyCurrencyCopyWith<$Res> get currency;
 }
 
 /// @nodoc
