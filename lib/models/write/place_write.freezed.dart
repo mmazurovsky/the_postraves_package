@@ -26,6 +26,7 @@ class _$PlaceWriteTearOff {
       required String cityName,
       required String streetAddress,
       required Coordinate coordinate,
+      required bool isJustCity,
       String? imageLink,
       String? soundcloudUsername,
       String? instagramUsername,
@@ -36,6 +37,7 @@ class _$PlaceWriteTearOff {
       cityName: cityName,
       streetAddress: streetAddress,
       coordinate: coordinate,
+      isJustCity: isJustCity,
       imageLink: imageLink,
       soundcloudUsername: soundcloudUsername,
       instagramUsername: instagramUsername,
@@ -58,6 +60,7 @@ mixin _$PlaceWrite {
   String get cityName => throw _privateConstructorUsedError;
   String get streetAddress => throw _privateConstructorUsedError;
   Coordinate get coordinate => throw _privateConstructorUsedError;
+  bool get isJustCity => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
   String? get soundcloudUsername => throw _privateConstructorUsedError;
   String? get instagramUsername => throw _privateConstructorUsedError;
@@ -80,6 +83,7 @@ abstract class $PlaceWriteCopyWith<$Res> {
       String cityName,
       String streetAddress,
       Coordinate coordinate,
+      bool isJustCity,
       String? imageLink,
       String? soundcloudUsername,
       String? instagramUsername,
@@ -103,6 +107,7 @@ class _$PlaceWriteCopyWithImpl<$Res> implements $PlaceWriteCopyWith<$Res> {
     Object? cityName = freezed,
     Object? streetAddress = freezed,
     Object? coordinate = freezed,
+    Object? isJustCity = freezed,
     Object? imageLink = freezed,
     Object? soundcloudUsername = freezed,
     Object? instagramUsername = freezed,
@@ -129,6 +134,10 @@ class _$PlaceWriteCopyWithImpl<$Res> implements $PlaceWriteCopyWith<$Res> {
           ? _value.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
               as Coordinate,
+      isJustCity: isJustCity == freezed
+          ? _value.isJustCity
+          : isJustCity // ignore: cast_nullable_to_non_nullable
+              as bool,
       imageLink: imageLink == freezed
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -168,6 +177,7 @@ abstract class _$PlaceWriteCopyWith<$Res> implements $PlaceWriteCopyWith<$Res> {
       String cityName,
       String streetAddress,
       Coordinate coordinate,
+      bool isJustCity,
       String? imageLink,
       String? soundcloudUsername,
       String? instagramUsername,
@@ -194,6 +204,7 @@ class __$PlaceWriteCopyWithImpl<$Res> extends _$PlaceWriteCopyWithImpl<$Res>
     Object? cityName = freezed,
     Object? streetAddress = freezed,
     Object? coordinate = freezed,
+    Object? isJustCity = freezed,
     Object? imageLink = freezed,
     Object? soundcloudUsername = freezed,
     Object? instagramUsername = freezed,
@@ -220,6 +231,10 @@ class __$PlaceWriteCopyWithImpl<$Res> extends _$PlaceWriteCopyWithImpl<$Res>
           ? _value.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
               as Coordinate,
+      isJustCity: isJustCity == freezed
+          ? _value.isJustCity
+          : isJustCity // ignore: cast_nullable_to_non_nullable
+              as bool,
       imageLink: imageLink == freezed
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -249,6 +264,7 @@ class _$_PlaceWrite implements _PlaceWrite {
       required this.cityName,
       required this.streetAddress,
       required this.coordinate,
+      required this.isJustCity,
       this.imageLink,
       this.soundcloudUsername,
       this.instagramUsername,
@@ -268,6 +284,8 @@ class _$_PlaceWrite implements _PlaceWrite {
   @override
   final Coordinate coordinate;
   @override
+  final bool isJustCity;
+  @override
   final String? imageLink;
   @override
   final String? soundcloudUsername;
@@ -278,7 +296,7 @@ class _$_PlaceWrite implements _PlaceWrite {
 
   @override
   String toString() {
-    return 'PlaceWrite(id: $id, name: $name, cityName: $cityName, streetAddress: $streetAddress, coordinate: $coordinate, imageLink: $imageLink, soundcloudUsername: $soundcloudUsername, instagramUsername: $instagramUsername, about: $about)';
+    return 'PlaceWrite(id: $id, name: $name, cityName: $cityName, streetAddress: $streetAddress, coordinate: $coordinate, isJustCity: $isJustCity, imageLink: $imageLink, soundcloudUsername: $soundcloudUsername, instagramUsername: $instagramUsername, about: $about)';
   }
 
   @override
@@ -298,6 +316,9 @@ class _$_PlaceWrite implements _PlaceWrite {
             (identical(other.coordinate, coordinate) ||
                 const DeepCollectionEquality()
                     .equals(other.coordinate, coordinate)) &&
+            (identical(other.isJustCity, isJustCity) ||
+                const DeepCollectionEquality()
+                    .equals(other.isJustCity, isJustCity)) &&
             (identical(other.imageLink, imageLink) ||
                 const DeepCollectionEquality()
                     .equals(other.imageLink, imageLink)) &&
@@ -319,6 +340,7 @@ class _$_PlaceWrite implements _PlaceWrite {
       const DeepCollectionEquality().hash(cityName) ^
       const DeepCollectionEquality().hash(streetAddress) ^
       const DeepCollectionEquality().hash(coordinate) ^
+      const DeepCollectionEquality().hash(isJustCity) ^
       const DeepCollectionEquality().hash(imageLink) ^
       const DeepCollectionEquality().hash(soundcloudUsername) ^
       const DeepCollectionEquality().hash(instagramUsername) ^
@@ -342,6 +364,7 @@ abstract class _PlaceWrite implements PlaceWrite {
       required String cityName,
       required String streetAddress,
       required Coordinate coordinate,
+      required bool isJustCity,
       String? imageLink,
       String? soundcloudUsername,
       String? instagramUsername,
@@ -360,6 +383,8 @@ abstract class _PlaceWrite implements PlaceWrite {
   String get streetAddress => throw _privateConstructorUsedError;
   @override
   Coordinate get coordinate => throw _privateConstructorUsedError;
+  @override
+  bool get isJustCity => throw _privateConstructorUsedError;
   @override
   String? get imageLink => throw _privateConstructorUsedError;
   @override

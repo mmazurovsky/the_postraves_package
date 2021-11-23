@@ -13,6 +13,7 @@ class PlaceWrite with _$PlaceWrite implements WriteInterface {
     required String cityName,
     required String streetAddress,
     required Coordinate coordinate,
+    required bool isJustCity,
     String? imageLink,
     String? soundcloudUsername,
     String? instagramUsername,
