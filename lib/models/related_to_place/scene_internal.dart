@@ -21,7 +21,7 @@ class SceneInternal with _$SceneInternal {
     );
   }
 
-  static fromScene(Scene scene) {
+  static SceneInternal fromScene(Scene scene) {
     return SceneInternal(
       id: scene.id,
       name: scene.name,
