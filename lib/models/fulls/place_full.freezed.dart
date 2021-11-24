@@ -32,7 +32,8 @@ class _$PlaceFullTearOff {
       String? imageLink,
       required City city,
       required String streetAddress,
-      required Coordinate coordinate}) {
+      required Coordinate coordinate,
+      bool isJustCity = false}) {
     return _PlaceFull(
       about: about,
       instagramUsername: instagramUsername,
@@ -46,6 +47,7 @@ class _$PlaceFullTearOff {
       city: city,
       streetAddress: streetAddress,
       coordinate: coordinate,
+      isJustCity: isJustCity,
     );
   }
 
@@ -71,6 +73,7 @@ mixin _$PlaceFull {
   City get city => throw _privateConstructorUsedError;
   String get streetAddress => throw _privateConstructorUsedError;
   Coordinate get coordinate => throw _privateConstructorUsedError;
+  bool get isJustCity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -94,7 +97,8 @@ abstract class $PlaceFullCopyWith<$Res> {
       String? imageLink,
       City city,
       String streetAddress,
-      Coordinate coordinate});
+      Coordinate coordinate,
+      bool isJustCity});
 
   $CityCopyWith<$Res> get city;
   $CoordinateCopyWith<$Res> get coordinate;
@@ -122,6 +126,7 @@ class _$PlaceFullCopyWithImpl<$Res> implements $PlaceFullCopyWith<$Res> {
     Object? city = freezed,
     Object? streetAddress = freezed,
     Object? coordinate = freezed,
+    Object? isJustCity = freezed,
   }) {
     return _then(_value.copyWith(
       about: about == freezed
@@ -172,6 +177,10 @@ class _$PlaceFullCopyWithImpl<$Res> implements $PlaceFullCopyWith<$Res> {
           ? _value.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
               as Coordinate,
+      isJustCity: isJustCity == freezed
+          ? _value.isJustCity
+          : isJustCity // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -208,7 +217,8 @@ abstract class _$PlaceFullCopyWith<$Res> implements $PlaceFullCopyWith<$Res> {
       String? imageLink,
       City city,
       String streetAddress,
-      Coordinate coordinate});
+      Coordinate coordinate,
+      bool isJustCity});
 
   @override
   $CityCopyWith<$Res> get city;
@@ -239,6 +249,7 @@ class __$PlaceFullCopyWithImpl<$Res> extends _$PlaceFullCopyWithImpl<$Res>
     Object? city = freezed,
     Object? streetAddress = freezed,
     Object? coordinate = freezed,
+    Object? isJustCity = freezed,
   }) {
     return _then(_PlaceFull(
       about: about == freezed
@@ -289,6 +300,10 @@ class __$PlaceFullCopyWithImpl<$Res> extends _$PlaceFullCopyWithImpl<$Res>
           ? _value.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
               as Coordinate,
+      isJustCity: isJustCity == freezed
+          ? _value.isJustCity
+          : isJustCity // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -308,7 +323,8 @@ class _$_PlaceFull extends _PlaceFull {
       this.imageLink,
       required this.city,
       required this.streetAddress,
-      required this.coordinate})
+      required this.coordinate,
+      this.isJustCity = false})
       : super._();
 
   factory _$_PlaceFull.fromJson(Map<String, dynamic> json) =>
@@ -338,10 +354,13 @@ class _$_PlaceFull extends _PlaceFull {
   final String streetAddress;
   @override
   final Coordinate coordinate;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isJustCity;
 
   @override
   String toString() {
-    return 'PlaceFull(about: $about, instagramUsername: $instagramUsername, soundcloudUsername: $soundcloudUsername, id: $id, name: $name, overallFollowers: $overallFollowers, weeklyFollowers: $weeklyFollowers, isFollowed: $isFollowed, imageLink: $imageLink, city: $city, streetAddress: $streetAddress, coordinate: $coordinate)';
+    return 'PlaceFull(about: $about, instagramUsername: $instagramUsername, soundcloudUsername: $soundcloudUsername, id: $id, name: $name, overallFollowers: $overallFollowers, weeklyFollowers: $weeklyFollowers, isFollowed: $isFollowed, imageLink: $imageLink, city: $city, streetAddress: $streetAddress, coordinate: $coordinate, isJustCity: $isJustCity)';
   }
 
   @override
@@ -379,7 +398,10 @@ class _$_PlaceFull extends _PlaceFull {
                     .equals(other.streetAddress, streetAddress)) &&
             (identical(other.coordinate, coordinate) ||
                 const DeepCollectionEquality()
-                    .equals(other.coordinate, coordinate)));
+                    .equals(other.coordinate, coordinate)) &&
+            (identical(other.isJustCity, isJustCity) ||
+                const DeepCollectionEquality()
+                    .equals(other.isJustCity, isJustCity)));
   }
 
   @override
@@ -396,7 +418,8 @@ class _$_PlaceFull extends _PlaceFull {
       const DeepCollectionEquality().hash(imageLink) ^
       const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(streetAddress) ^
-      const DeepCollectionEquality().hash(coordinate);
+      const DeepCollectionEquality().hash(coordinate) ^
+      const DeepCollectionEquality().hash(isJustCity);
 
   @JsonKey(ignore: true)
   @override
@@ -422,7 +445,8 @@ abstract class _PlaceFull extends PlaceFull {
       String? imageLink,
       required City city,
       required String streetAddress,
-      required Coordinate coordinate}) = _$_PlaceFull;
+      required Coordinate coordinate,
+      bool isJustCity}) = _$_PlaceFull;
   const _PlaceFull._() : super._();
 
   factory _PlaceFull.fromJson(Map<String, dynamic> json) =
@@ -452,6 +476,8 @@ abstract class _PlaceFull extends PlaceFull {
   String get streetAddress => throw _privateConstructorUsedError;
   @override
   Coordinate get coordinate => throw _privateConstructorUsedError;
+  @override
+  bool get isJustCity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PlaceFullCopyWith<_PlaceFull> get copyWith =>

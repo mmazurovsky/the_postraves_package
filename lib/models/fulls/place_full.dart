@@ -28,6 +28,7 @@ class PlaceFull
     required City city,
     required String streetAddress,
     required Coordinate coordinate,
+    @Default(false) bool isJustCity,
   }) = _PlaceFull;
 
   factory PlaceFull.fromJson(Map<String, dynamic> json) =>

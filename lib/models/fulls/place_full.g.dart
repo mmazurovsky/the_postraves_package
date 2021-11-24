@@ -20,6 +20,7 @@ _$_PlaceFull _$_$_PlaceFullFromJson(Map<String, dynamic> json) {
     city: City.fromJson(json['city'] as Map<String, dynamic>),
     streetAddress: json['streetAddress'] as String,
     coordinate: Coordinate.fromJson(json['coordinate'] as Map<String, dynamic>),
+    isJustCity: json['isJustCity'] as bool? ?? false,
   );
 }
 
@@ -37,4 +38,5 @@ Map<String, dynamic> _$_$_PlaceFullToJson(_$_PlaceFull instance) =>
       'city': instance.city.toJson(),
       'streetAddress': instance.streetAddress,
       'coordinate': instance.coordinate.toJson(),
+      'isJustCity': instance.isJustCity,
     };
