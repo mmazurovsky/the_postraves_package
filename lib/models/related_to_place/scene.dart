@@ -9,6 +9,7 @@ class Scene with _$Scene {
     String? imageLink,
     int? id,
     required String name,
+    required int priority,
   }) = _Scene;
 
   factory Scene.fromJson(Map<String, dynamic> json) => _$SceneFromJson(json);

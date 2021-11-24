@@ -17,12 +17,17 @@ class _$SceneInternalTearOff {
   const _$SceneInternalTearOff();
 
   _SceneInternal call(
-      {String? imageLink, int? id, String? internalId, required String name}) {
+      {String? imageLink,
+      int? id,
+      String? internalId,
+      required String name,
+      required int priority}) {
     return _SceneInternal(
       imageLink: imageLink,
       id: id,
       internalId: internalId,
       name: name,
+      priority: priority,
     );
   }
 }
@@ -36,6 +41,7 @@ mixin _$SceneInternal {
   int? get id => throw _privateConstructorUsedError;
   String? get internalId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  int get priority => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SceneInternalCopyWith<SceneInternal> get copyWith =>
@@ -47,7 +53,12 @@ abstract class $SceneInternalCopyWith<$Res> {
   factory $SceneInternalCopyWith(
           SceneInternal value, $Res Function(SceneInternal) then) =
       _$SceneInternalCopyWithImpl<$Res>;
-  $Res call({String? imageLink, int? id, String? internalId, String name});
+  $Res call(
+      {String? imageLink,
+      int? id,
+      String? internalId,
+      String name,
+      int priority});
 }
 
 /// @nodoc
@@ -65,6 +76,7 @@ class _$SceneInternalCopyWithImpl<$Res>
     Object? id = freezed,
     Object? internalId = freezed,
     Object? name = freezed,
+    Object? priority = freezed,
   }) {
     return _then(_value.copyWith(
       imageLink: imageLink == freezed
@@ -83,6 +95,10 @@ class _$SceneInternalCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      priority: priority == freezed
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -94,7 +110,12 @@ abstract class _$SceneInternalCopyWith<$Res>
           _SceneInternal value, $Res Function(_SceneInternal) then) =
       __$SceneInternalCopyWithImpl<$Res>;
   @override
-  $Res call({String? imageLink, int? id, String? internalId, String name});
+  $Res call(
+      {String? imageLink,
+      int? id,
+      String? internalId,
+      String name,
+      int priority});
 }
 
 /// @nodoc
@@ -114,6 +135,7 @@ class __$SceneInternalCopyWithImpl<$Res>
     Object? id = freezed,
     Object? internalId = freezed,
     Object? name = freezed,
+    Object? priority = freezed,
   }) {
     return _then(_SceneInternal(
       imageLink: imageLink == freezed
@@ -132,6 +154,10 @@ class __$SceneInternalCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      priority: priority == freezed
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -140,7 +166,11 @@ class __$SceneInternalCopyWithImpl<$Res>
 
 class _$_SceneInternal extends _SceneInternal {
   const _$_SceneInternal(
-      {this.imageLink, this.id, this.internalId, required this.name})
+      {this.imageLink,
+      this.id,
+      this.internalId,
+      required this.name,
+      required this.priority})
       : super._();
 
   @override
@@ -151,10 +181,12 @@ class _$_SceneInternal extends _SceneInternal {
   final String? internalId;
   @override
   final String name;
+  @override
+  final int priority;
 
   @override
   String toString() {
-    return 'SceneInternal(imageLink: $imageLink, id: $id, internalId: $internalId, name: $name)';
+    return 'SceneInternal(imageLink: $imageLink, id: $id, internalId: $internalId, name: $name, priority: $priority)';
   }
 
   @override
@@ -170,7 +202,10 @@ class _$_SceneInternal extends _SceneInternal {
                 const DeepCollectionEquality()
                     .equals(other.internalId, internalId)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.priority, priority) ||
+                const DeepCollectionEquality()
+                    .equals(other.priority, priority)));
   }
 
   @override
@@ -179,7 +214,8 @@ class _$_SceneInternal extends _SceneInternal {
       const DeepCollectionEquality().hash(imageLink) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(internalId) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(priority);
 
   @JsonKey(ignore: true)
   @override
@@ -192,7 +228,8 @@ abstract class _SceneInternal extends SceneInternal {
       {String? imageLink,
       int? id,
       String? internalId,
-      required String name}) = _$_SceneInternal;
+      required String name,
+      required int priority}) = _$_SceneInternal;
   const _SceneInternal._() : super._();
 
   @override
@@ -203,6 +240,8 @@ abstract class _SceneInternal extends SceneInternal {
   String? get internalId => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  int get priority => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SceneInternalCopyWith<_SceneInternal> get copyWith =>

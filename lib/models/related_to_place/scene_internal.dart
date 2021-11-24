@@ -11,6 +11,7 @@ class SceneInternal with _$SceneInternal {
     int? id,
     String? internalId,
     required String name,
+    required int priority,
   }) = _SceneInternal;
 
   Scene toScene() {
@@ -18,6 +19,7 @@ class SceneInternal with _$SceneInternal {
       id: id,
       name: name,
       imageLink: imageLink,
+      priority: priority,
     );
   }
 
@@ -26,6 +28,7 @@ class SceneInternal with _$SceneInternal {
       id: scene.id,
       name: scene.name,
       imageLink: scene.imageLink,
+      priority: scene.priority,
     );
   }
 }

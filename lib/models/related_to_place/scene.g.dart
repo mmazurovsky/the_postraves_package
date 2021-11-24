@@ -11,6 +11,7 @@ _$_Scene _$_$_SceneFromJson(Map<String, dynamic> json) {
     imageLink: json['imageLink'] as String?,
     id: json['id'] as int?,
     name: json['name'] as String,
+    priority: json['priority'] as int,
   );
 }
 
@@ -18,4 +19,5 @@ Map<String, dynamic> _$_$_SceneToJson(_$_Scene instance) => <String, dynamic>{
       'imageLink': instance.imageLink,
       'id': instance.id,
       'name': instance.name,
+      'priority': instance.priority,
     };

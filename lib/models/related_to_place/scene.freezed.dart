@@ -20,11 +20,16 @@ Scene _$SceneFromJson(Map<String, dynamic> json) {
 class _$SceneTearOff {
   const _$SceneTearOff();
 
-  _Scene call({String? imageLink, int? id, required String name}) {
+  _Scene call(
+      {String? imageLink,
+      int? id,
+      required String name,
+      required int priority}) {
     return _Scene(
       imageLink: imageLink,
       id: id,
       name: name,
+      priority: priority,
     );
   }
 
@@ -41,6 +46,7 @@ mixin _$Scene {
   String? get imageLink => throw _privateConstructorUsedError;
   int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  int get priority => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +57,7 @@ mixin _$Scene {
 abstract class $SceneCopyWith<$Res> {
   factory $SceneCopyWith(Scene value, $Res Function(Scene) then) =
       _$SceneCopyWithImpl<$Res>;
-  $Res call({String? imageLink, int? id, String name});
+  $Res call({String? imageLink, int? id, String name, int priority});
 }
 
 /// @nodoc
@@ -67,6 +73,7 @@ class _$SceneCopyWithImpl<$Res> implements $SceneCopyWith<$Res> {
     Object? imageLink = freezed,
     Object? id = freezed,
     Object? name = freezed,
+    Object? priority = freezed,
   }) {
     return _then(_value.copyWith(
       imageLink: imageLink == freezed
@@ -81,6 +88,10 @@ class _$SceneCopyWithImpl<$Res> implements $SceneCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      priority: priority == freezed
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -90,7 +101,7 @@ abstract class _$SceneCopyWith<$Res> implements $SceneCopyWith<$Res> {
   factory _$SceneCopyWith(_Scene value, $Res Function(_Scene) then) =
       __$SceneCopyWithImpl<$Res>;
   @override
-  $Res call({String? imageLink, int? id, String name});
+  $Res call({String? imageLink, int? id, String name, int priority});
 }
 
 /// @nodoc
@@ -107,6 +118,7 @@ class __$SceneCopyWithImpl<$Res> extends _$SceneCopyWithImpl<$Res>
     Object? imageLink = freezed,
     Object? id = freezed,
     Object? name = freezed,
+    Object? priority = freezed,
   }) {
     return _then(_Scene(
       imageLink: imageLink == freezed
@@ -121,6 +133,10 @@ class __$SceneCopyWithImpl<$Res> extends _$SceneCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      priority: priority == freezed
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -128,7 +144,8 @@ class __$SceneCopyWithImpl<$Res> extends _$SceneCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Scene implements _Scene {
-  const _$_Scene({this.imageLink, this.id, required this.name});
+  const _$_Scene(
+      {this.imageLink, this.id, required this.name, required this.priority});
 
   factory _$_Scene.fromJson(Map<String, dynamic> json) =>
       _$_$_SceneFromJson(json);
@@ -139,10 +156,12 @@ class _$_Scene implements _Scene {
   final int? id;
   @override
   final String name;
+  @override
+  final int priority;
 
   @override
   String toString() {
-    return 'Scene(imageLink: $imageLink, id: $id, name: $name)';
+    return 'Scene(imageLink: $imageLink, id: $id, name: $name, priority: $priority)';
   }
 
   @override
@@ -155,7 +174,10 @@ class _$_Scene implements _Scene {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.priority, priority) ||
+                const DeepCollectionEquality()
+                    .equals(other.priority, priority)));
   }
 
   @override
@@ -163,7 +185,8 @@ class _$_Scene implements _Scene {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(imageLink) ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(priority);
 
   @JsonKey(ignore: true)
   @override
@@ -177,8 +200,11 @@ class _$_Scene implements _Scene {
 }
 
 abstract class _Scene implements Scene {
-  const factory _Scene({String? imageLink, int? id, required String name}) =
-      _$_Scene;
+  const factory _Scene(
+      {String? imageLink,
+      int? id,
+      required String name,
+      required int priority}) = _$_Scene;
 
   factory _Scene.fromJson(Map<String, dynamic> json) = _$_Scene.fromJson;
 
@@ -188,6 +214,8 @@ abstract class _Scene implements Scene {
   int? get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  int get priority => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SceneCopyWith<_Scene> get copyWith => throw _privateConstructorUsedError;
