@@ -6,6 +6,7 @@ import 'package:the_postraves_package/models/fulls/unity_full.dart';
 import 'package:the_postraves_package/models/geo/city.dart';
 import 'package:the_postraves_package/models/geo/country.dart';
 import 'package:the_postraves_package/models/related_to_event/money_currency.dart';
+import 'package:the_postraves_package/models/related_to_place/scene.dart';
 import 'package:the_postraves_package/models/shorts/artist_short.dart';
 import 'package:the_postraves_package/models/shorts/event_short.dart';
 import 'package:the_postraves_package/models/shorts/place_short.dart';
@@ -200,7 +201,23 @@ class MoneyCurrencyClientHelper implements ClientHelper<MoneyCurrency> {
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    // TODO: implement getEndpointAndPathForUserFollowing
+    throw UnimplementedError();
+  }
+}
+
+class SceneClientHelper implements ClientHelper<Scene> {
+  @override
+  Scene deserialize(json) {
+    return Scene.fromJson(json);
+  }
+
+  @override
+  String getEndpoint() {
+    return 'scene';
+  }
+
+  @override
+  String getEndpointAndPathForUserFollowing() {
     throw UnimplementedError();
   }
 }
