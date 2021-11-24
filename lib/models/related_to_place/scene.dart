@@ -12,9 +12,4 @@ class Scene with _$Scene {
   }) = _Scene;
 
   factory Scene.fromJson(Map<String, dynamic> json) => _$SceneFromJson(json);
-
-  @override
-  String toString() {
-    return name;
-  }
 }
