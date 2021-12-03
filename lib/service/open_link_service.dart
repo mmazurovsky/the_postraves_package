@@ -9,7 +9,7 @@ class OpenLinkService {
         ? await launch(urlString)
         : await canLaunch('https://$urlString')
             ? await launch('https://$urlString')
-            : throw MyOpenLinkException('Could not launch $urlString'); 
+            : throw MyOpenLinkException('Could not launch $urlString');
   }
 
   static void openInstagram(String instagramUsername) async {
@@ -23,9 +23,14 @@ class OpenLinkService {
   }
 
   static void openSoundcloud(String soundcloudUsername) async {
-    openUrl(
-      SocialLinksHelper.getSoundcloudLinkForNickname(soundcloudUsername),
-    );
+    final soundcloudAppLink =
+        "https://soundcloud.app.goo.gl/?link=https%3A%2F%2Fsoundcloud.com%2F$soundcloudUsername&apn=com.soundcloud.android&ibi=com.soundcloud.TouchApp&isi=336353151&efr=1";
+    final isLaunched = await launch(soundcloudAppLink);
+    if (!isLaunched) {
+      openUrl(
+        SocialLinksHelper.getSoundcloudLinkForNickname(soundcloudUsername),
+      );
+    }
   }
 
   static void openTelegram(String telegramUsername) async {
