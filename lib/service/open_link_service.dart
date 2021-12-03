@@ -23,14 +23,16 @@ class OpenLinkService {
   }
 
   static void openSoundcloud(String soundcloudUsername) async {
-    final soundcloudAppLink =
-        "https://soundcloud.app.goo.gl/?link=https%3A%2F%2Fsoundcloud.com%2F$soundcloudUsername&apn=com.soundcloud.android&ibi=com.soundcloud.TouchApp&isi=336353151&efr=1";
-    final isLaunched = await launch(soundcloudAppLink);
-    if (!isLaunched) {
+
+    //* not working, link is opened in app store or in safari on sc site
+    // final soundcloudAppLink =
+    //     "https://soundcloud.app.goo.gl/?link=https%3A%2F%2Fsoundcloud.com%2F$soundcloudUsername&apn=com.soundcloud.android&ibi=com.soundcloud.TouchApp&isi=336353151&efr=1";
+    // final isLaunched = await launch(soundcloudAppLink);
+    // if (!isLaunched) {
       openUrl(
         SocialLinksHelper.getSoundcloudLinkForNickname(soundcloudUsername),
       );
-    }
+    // }
   }
 
   static void openTelegram(String telegramUsername) async {
