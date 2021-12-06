@@ -11,7 +11,7 @@ class ServerConstantsProduction implements ServerConstantsAbstract {
   @override
   String get apiHost => 'postraves.com';
   @override
-  String get apiPath => 'api/';
+  String? get apiPath => 'api/';
   @override
   String get corsAnywhereHost =>
       'http://cors-anywhere.eu-central-1.elasticbeanstalk.com';
@@ -23,7 +23,7 @@ class ServerConstantsDevelopment implements ServerConstantsAbstract {
   @override
   String get apiHost => 'mdev.postraves.com';
   @override
-  String get apiPath => 'api/';
+  String? get apiPath => 'api/';
   @override
   String get corsAnywhereHost =>
       'http://cors-anywhere.eu-central-1.elasticbeanstalk.com';
@@ -35,7 +35,7 @@ class ServerConstantsLocal implements ServerConstantsAbstract {
   @override
   String get apiHost => 'localhost:8080';
   @override
-  String get apiPath => '/';
+  String? get apiPath => null;
   @override
   String get corsAnywhereHost =>
       'http://cors-anywhere.eu-central-1.elasticbeanstalk.com';
