@@ -97,22 +97,6 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     return list;
   }
 
-  // @override
-  // Future<List<EventShort>> searchByName(
-  //     {required String searchValue,
-  //     required Map<String, String> httpHeaders}) async {
-  //   final requestEvents = _localizedGetRequest(
-  //     endpointWithPath:
-  //         '${FollowableType.EVENT.endpoint}/public/search/$searchValue',
-  //     httpHeaders: httpHeaders,
-  //   );
-
-  //   final responseEvents = await requestEvents as List<dynamic>?;
-  //   final decodedEvents =
-  //       responseEvents?.map((json) => EventShort.fromJson(json)).toList() ?? [];
-  //   return decodedEvents;
-  // }
-
   @override
   Future<void> saveOrUpdateOrganizers({
     required int eventId,
