@@ -14,7 +14,7 @@ class MyColors {
   static const Color forPositiveWeeklyRating = Color.fromRGBO(155, 240, 160, 1);
   static const Color forNegativeWeeklyRating = Color.fromRGBO(240, 155, 155, 1);
   static const Color forDividers = Color.fromRGBO(198, 199, 200, 1);
-  static const Color forErrors = Color.fromRGBO(129, 0, 0, 1);
+  static const Color forErrors = Color.fromRGBO(150, 0, 0, 1);
   static const forInactiveBottomBarIcons = main;
   static const forActiveBottomBarIcons = accent;
   static Color forSearchContainer = Colors.grey.withOpacity(0.2);
