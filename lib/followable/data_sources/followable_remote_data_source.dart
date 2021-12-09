@@ -63,8 +63,8 @@ class FollowableRemoteDataSourceImpl<
   Future<List<SHORTFOLLOWABLE>> fetchAll(
       {required Map<String, String> httpHeaders}) async {
     final response = await _remoteRequest(
-      isHttps: _serverConstantsAbstract.isHttps,
       httpMethod: HttpMethod.get,
+      isHttps: _serverConstantsAbstract.isHttps,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
       endpointWithPath: _followableClientHelperShort.getEndpoint(),
