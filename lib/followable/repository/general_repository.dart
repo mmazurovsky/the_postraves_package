@@ -6,14 +6,14 @@ abstract class GeneralRepository<DATA> {
   Future<ResponseSealed<List<DATA>>> fetchAllFromRemote(
       {bool isEndpointPublic = true});
   Future<ResponseSealed<List<DATA>>> searchByName(String searchValue);
-  Future<ResponseSealed<List<DATA>>> fetchCustomList(
-    String path,
+  Future<ResponseSealed<List<DATA>>> fetchCustomList({
+    required String path,
     Map<String, dynamic>? queryParameters,
-  );
-  Future<ResponseSealed<DATA>> fetchCustomSingle(
-    String path,
+  });
+  Future<ResponseSealed<DATA>> fetchCustomSingle({
+    required String path,
     Map<String, dynamic>? queryParameters,
-  );
+  });
 }
 
 class GeneralRepositoryImpl<DATA> implements GeneralRepository<DATA> {
@@ -46,7 +46,7 @@ class GeneralRepositoryImpl<DATA> implements GeneralRepository<DATA> {
 
   @override
   Future<ResponseSealed<List<DATA>>> fetchCustomList(
-      String path, Map<String, dynamic>? queryParameters) {
+      {required String path, Map<String, dynamic>? queryParameters}) {
     return _remoteRequestWrapperList(
       (httpHeaders) => _generalRemoteDataSource.fetchCustomList(
           path: path,
@@ -57,7 +57,7 @@ class GeneralRepositoryImpl<DATA> implements GeneralRepository<DATA> {
 
   @override
   Future<ResponseSealed<DATA>> fetchCustomSingle(
-      String path, Map<String, dynamic>? queryParameters) {
+      {required String path, Map<String, dynamic>? queryParameters}) {
     return _remoteRequestWrapperSingle(
       (httpHeaders) => _generalRemoteDataSource.fetchCustomSingle(
           path: path,
