@@ -24,10 +24,15 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
     this._serverConstantsAbstract,
   );
 
+  String get possibleTestBucketPrefix =>
+      _serverConstantsAbstract.environment == ServerEnvironment.prod
+          ? ''
+          : 'test/';
+
   @override
   Future<ResponseSealed<String>> uploadUserImageFile(File imageFile) async {
-    final refr =
-        _firebaseStorage.ref('images/user/user-${DateTime.now().toUtc()}.png');
+    final refr = _firebaseStorage.ref(
+        '${possibleTestBucketPrefix}images/user/user-${DateTime.now().toUtc()}.png');
     try {
       String? imageLink;
       final uploadTask = refr.putFile(imageFile);
@@ -63,8 +68,8 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
       );
     }
     final downloadedImageData = response.bodyBytes;
-    final refr = _firebaseStorage
-        .ref('images/$folderName/image-${DateTime.now().toUtc()}.png');
+    final refr = _firebaseStorage.ref(
+        '${possibleTestBucketPrefix}images/$folderName/image-${DateTime.now().toUtc()}.png');
     try {
       String? imageLink;
       final uploadTask = refr.putData(
