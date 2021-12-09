@@ -11,6 +11,8 @@ import 'package:the_postraves_package/models/shorts/artist_short.dart';
 import 'package:the_postraves_package/models/shorts/event_short.dart';
 import 'package:the_postraves_package/models/shorts/place_short.dart';
 import 'package:the_postraves_package/models/shorts/unity_short.dart';
+import 'package:the_postraves_package/models/write/city_write.dart';
+import 'package:the_postraves_package/models/write/country_write.dart';
 
 abstract class ClientHelper<DATA> {
   String getEndpoint();
@@ -171,6 +173,23 @@ class CountryClientHelper implements ClientHelper<Country> {
   }
 }
 
+class CountryWriteClientHelper implements ClientHelper<CountryWrite> {
+  @override
+  String getEndpoint() {
+    return 'country';
+  }
+
+  @override
+  CountryWrite deserialize(dynamic json) {
+    return CountryWrite.fromJson(json);
+  }
+
+  @override
+  String getEndpointAndPathForUserFollowing() {
+    throw UnimplementedError();
+  }
+}
+
 class CityClientHelper implements ClientHelper<City> {
   @override
   String getEndpoint() {
@@ -180,6 +199,23 @@ class CityClientHelper implements ClientHelper<City> {
   @override
   City deserialize(dynamic json) {
     return City.fromJson(json);
+  }
+
+  @override
+  String getEndpointAndPathForUserFollowing() {
+    throw UnimplementedError();
+  }
+}
+
+class CityWriteClientHelper implements ClientHelper<CityWrite> {
+  @override
+  String getEndpoint() {
+    return 'city';
+  }
+
+  @override
+  CityWrite deserialize(dynamic json) {
+    return CityWrite.fromJson(json);
   }
 
   @override
