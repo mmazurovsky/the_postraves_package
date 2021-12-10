@@ -14,6 +14,7 @@ abstract class FirebaseImageService {
   Future<ResponseSealed<String>> uploadImageFromInternet({
     required String imageUrl,
     required String folderName,
+    bool isCorsAnywhereRequired = false,
   });
 }
 
