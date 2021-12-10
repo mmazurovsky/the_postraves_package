@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image/image.dart';
 import 'package:the_postraves_package/client/response_sealed.dart';
 import 'package:the_postraves_package/constants/server_constants.dart';
 import 'package:the_postraves_package/errors/failures.dart';
@@ -68,20 +70,31 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
       );
     }
     final downloadedImageData = response.bodyBytes;
-    final refr = _firebaseStorage.ref(
-        '${possibleTestBucketPrefix}images/$folderName/image-${DateTime.now().toUtc()}.png');
-    try {
-      String? imageLink;
-      final uploadTask = refr.putData(
-        downloadedImageData,
-        SettableMetadata(contentType: 'image/png'),
-      );
-      await uploadTask
-          .whenComplete(() async => imageLink = await refr.getDownloadURL());
-      return ResponseSealed.success(imageLink!);
-    } on FirebaseException catch (e) {
-      return ResponseSealed.failure(
-        Failure(FailureType.firebaseFailure, e.message),
+    final downloadedImage = decodeImage(downloadedImageData);
+    if (downloadedImage != null) {
+      final resizedImage = copyResize(downloadedImage, width: 1000);
+      final resizedImageAsBytes = resizedImage.getBytes();
+
+      final refr = _firebaseStorage.ref(
+          '${possibleTestBucketPrefix}images/$folderName/image-${DateTime.now().toUtc()}.png');
+      try {
+        String? imageLink;
+        final uploadTask = refr.putData(
+          resizedImageAsBytes,
+          SettableMetadata(contentType: 'image/png'),
+        );
+        await uploadTask
+            .whenComplete(() async => imageLink = await refr.getDownloadURL());
+        return ResponseSealed.success(imageLink!);
+      } on FirebaseException catch (e) {
+        return ResponseSealed.failure(
+          Failure(FailureType.firebaseFailure, e.message),
+        );
+      }
+    } else {
+      return const ResponseSealed.failure(
+        Failure(FailureType.imageDownloadFailure,
+            "can't properly download image from resource"),
       );
     }
   }

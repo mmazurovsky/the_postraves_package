@@ -10,4 +10,5 @@ enum FailureType {
   cacheFailure,
   authFailure,
   firebaseFailure,
+  imageDownloadFailure
 }
