@@ -55,8 +55,8 @@ class FirebaseImageRepositoryImpl implements FirebaseImageRepository {
   }) async {
     final response = await http_client.get(
       // using cors anywhere as intermediate for requests not from server
-      // Uri.parse('${_serverConstantsAbstract.corsAnywhereHost}/$imageUrl'),
-      Uri.parse(imageUrl),
+      Uri.parse('${_serverConstantsAbstract.corsAnywhereHost}/$imageUrl'),
+      // Uri.parse(imageUrl),
     );
     if (!response.statusCode.toString().startsWith('2')) {
       final message =
