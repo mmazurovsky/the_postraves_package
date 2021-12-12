@@ -24,12 +24,12 @@ class CompleteEventEntity {
 
 class CompleteArtistEntity {
   final ArtistFull artistFull;
-  final List<UnityShort> unions;
+  final List<UnityShort> unities;
   final List<EventShort> events;
 
   CompleteArtistEntity({
     required this.artistFull,
-    required this.unions,
+    required this.unities,
     required this.events,
   });
 }

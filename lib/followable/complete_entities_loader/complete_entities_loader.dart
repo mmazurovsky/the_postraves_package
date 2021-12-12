@@ -153,7 +153,7 @@ class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
       return ResponseSealed.success(
         CompleteArtistEntity(
           artistFull: basic!,
-          unions: unities!,
+          unities: unities!,
           events: events!,
         ),
       );

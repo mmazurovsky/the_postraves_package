@@ -10,10 +10,11 @@ import 'package:the_postraves_package/service/image_resizing_service.dart';
 import 'package:http/http.dart' as http_client;
 
 abstract class FirebaseImageService {
-  Future<ResponseSealed<String>> uploadUserImageFile(File imageFile);
-  Future<ResponseSealed<String>> uploadImageFromInternet({
-    required String imageUrl,
+  Future<ResponseSealed<String>> uploadImageFile(
+      String folderName, File imageFile);
+  Future<ResponseSealed<String>> uploadImageByLink({
     required String folderName,
+    required String imageUrl,
     bool isCorsAnywhereRequired = false,
   });
 }
@@ -53,34 +54,18 @@ class FirebaseImageServiceImpl implements FirebaseImageService {
   }
 
   @override
-  Future<ResponseSealed<String>> uploadUserImageFile(File imageFile) async {
+  Future<ResponseSealed<String>> uploadImageFile(
+      String folderName, File imageFile) async {
     final resizedImageAsBytes = ImageResizingService.resizeFileImage(imageFile);
 
     return _uploadImageBytesToFirebase(
-        folderName: 'user', imageBytes: resizedImageAsBytes);
-
-    // final refr = _firebaseStorage.ref(
-    //     '${_possibleTestBucketPrefix}images/user/user-${DateTime.now().toUtc()}.jpg');
-    // try {
-    //   String? imageLink;
-    //   final uploadTask = refr.putData(
-    //     resizedImageAsBytes,
-    //     SettableMetadata(contentType: 'image/jpg'),
-    //   );
-    //   await uploadTask
-    //       .whenComplete(() async => imageLink = await refr.getDownloadURL());
-    //   return ResponseSealed.success(imageLink!);
-    // } on FirebaseException catch (e) {
-    //   return ResponseSealed.failure(
-    //     Failure(FailureType.firebaseFailure, e.message),
-    //   );
-    // }
+        folderName: folderName, imageBytes: resizedImageAsBytes);
   }
 
   @override
-  Future<ResponseSealed<String>> uploadImageFromInternet({
-    required String imageUrl,
+  Future<ResponseSealed<String>> uploadImageByLink({
     required String folderName,
+    required String imageUrl,
     bool isCorsAnywhereRequired = false,
   }) async {
     final response = await http_client.get(
