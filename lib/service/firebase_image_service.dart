@@ -10,13 +10,15 @@ import 'package:the_postraves_package/service/image_resizing_service.dart';
 import 'package:http/http.dart' as http_client;
 
 abstract class FirebaseImageService {
-  Future<ResponseSealed<String>> uploadImageFile(
+  Future<ResponseSealed<String>> resizeAndUploadImageFileNonWeb(
       {required String folderName, required File imageFile});
-  Future<ResponseSealed<String>> uploadImageByLink({
+  Future<ResponseSealed<String>> resizeAndUploadImageByLink({
     required String folderName,
     required String imageUrl,
     bool isCorsAnywhereRequired = false,
   });
+  Future<ResponseSealed<String>> resizeAndUploadImageBytes(
+      {required String folderName, required Uint8List imageBytes});
 }
 
 class FirebaseImageServiceImpl implements FirebaseImageService {
@@ -54,16 +56,26 @@ class FirebaseImageServiceImpl implements FirebaseImageService {
   }
 
   @override
-  Future<ResponseSealed<String>> uploadImageFile(
+  Future<ResponseSealed<String>> resizeAndUploadImageFileNonWeb(
       {required String folderName, required File imageFile}) async {
-    final resizedImageAsBytes = ImageResizingService.resizeFileImage(imageFile);
+    final resizedImageAsBytes = ImageResizingService.resizeImageFile(imageFile);
 
     return _uploadImageBytesToFirebase(
         folderName: folderName, imageBytes: resizedImageAsBytes);
   }
 
   @override
-  Future<ResponseSealed<String>> uploadImageByLink({
+  Future<ResponseSealed<String>> resizeAndUploadImageBytes(
+      {required String folderName, required Uint8List imageBytes}) async {
+    final resizedImageAsBytes =
+        ImageResizingService.resizeImageBytes(imageBytes);
+
+    return _uploadImageBytesToFirebase(
+        folderName: folderName, imageBytes: resizedImageAsBytes);
+  }
+
+  @override
+  Future<ResponseSealed<String>> resizeAndUploadImageByLink({
     required String folderName,
     required String imageUrl,
     bool isCorsAnywhereRequired = false,
@@ -85,11 +97,13 @@ class FirebaseImageServiceImpl implements FirebaseImageService {
         ),
       );
     }
-    final downloadedImageData = response.bodyBytes;
-    final resizedImageBytes =
-        ImageResizingService.resizeImage(downloadedImageData);
+    final downloadedImageBytes = response.bodyBytes;
+    // final resizedImageBytes =
+    //     ImageResizingService.resizeImageBytes(downloadedImageData);
 
-    return _uploadImageBytesToFirebase(
-        folderName: folderName, imageBytes: resizedImageBytes);
+    // return _uploadImageBytesToFirebase(
+    //     folderName: folderName, imageBytes: resizedImageBytes);
+    return resizeAndUploadImageBytes(
+        folderName: folderName, imageBytes: downloadedImageBytes);
   }
 }

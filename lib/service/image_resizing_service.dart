@@ -7,7 +7,7 @@ import 'package:image/image.dart';
 class ImageResizingService {
   static const int resizeTo = 1200;
 
-  static Uint8List resizeImage(Uint8List data) {
+  static Uint8List resizeImageBytes(Uint8List data) {
     IMG.Image initialImage = IMG.decodeImage(data)!;
 
     IMG.Image resized = initialImage;
@@ -25,7 +25,7 @@ class ImageResizingService {
     return Uint8List.fromList(resizedData);
   }
 
-  static Uint8List resizeFileImage(IO.File file) {
-    return resizeImage(file.readAsBytesSync());
+  static Uint8List resizeImageFile(IO.File file) {
+    return resizeImageBytes(file.readAsBytesSync());
   }
 }
