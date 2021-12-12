@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http_client;
 
 abstract class FirebaseImageService {
   Future<ResponseSealed<String>> uploadImageFile(
-      String folderName, File imageFile);
+      {required String folderName, required File imageFile});
   Future<ResponseSealed<String>> uploadImageByLink({
     required String folderName,
     required String imageUrl,
@@ -55,7 +55,7 @@ class FirebaseImageServiceImpl implements FirebaseImageService {
 
   @override
   Future<ResponseSealed<String>> uploadImageFile(
-      String folderName, File imageFile) async {
+      {required String folderName, required File imageFile}) async {
     final resizedImageAsBytes = ImageResizingService.resizeFileImage(imageFile);
 
     return _uploadImageBytesToFirebase(
