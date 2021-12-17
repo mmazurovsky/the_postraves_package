@@ -15,7 +15,7 @@ part 'event_full.g.dart';
 @freezed
 class EventFull
     with _$EventFull
-    implements GeneralFollowableInterface, BaseNameInterface {
+    implements GeneralFollowableInterface {
   const EventFull._();
   const factory EventFull({
     required int id,

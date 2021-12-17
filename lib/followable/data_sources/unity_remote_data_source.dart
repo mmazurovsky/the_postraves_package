@@ -45,7 +45,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
   Future<List<EventShort>> fetchEventsForUnityById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: '${FollowableType.UNITY.endpoint}/public/$id/events',
+        endpointWithPath: '${FollowableType.UNITY.path}/public/$id/events',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => EventShort.fromJson(json)).toList() ??
         [];
@@ -55,7 +55,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
   Future<List<ArtistShort>> fetchArtistsForUnityById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: '${FollowableType.UNITY.endpoint}/public/$id/artists',
+        endpointWithPath: '${FollowableType.UNITY.path}/public/$id/artists',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse
             ?.map((json) => ArtistShort.fromJson(json))
@@ -93,7 +93,7 @@ class UnityRemoteDataSourceImpl implements UnityRemoteDataSource {
       httpMethod: HttpMethod.put,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
-      endpointWithPath: '${FollowableType.UNITY.endpoint}/$unityId/artists',
+      endpointWithPath: '${FollowableType.UNITY.path}/$unityId/artists',
       httpHeaders: httpHeaders,
       body: artists,
     );

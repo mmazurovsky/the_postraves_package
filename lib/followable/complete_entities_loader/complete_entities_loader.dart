@@ -30,25 +30,25 @@ abstract class CompleteEntitiesLoader {
 }
 
 class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
-  final FollowableRepository<EventFull, EventShort> eventFollowableRepository;
+  final FollowableRepository<EventFull, EventShort> _eventFollowableRepository;
   final FollowableRepository<ArtistFull, ArtistShort>
-      artistFollowableRepository;
-  final FollowableRepository<PlaceFull, PlaceShort> placeFollowableRepository;
-  final FollowableRepository<UnityFull, UnityShort> unityFollowableRepository;
-  final ArtistRepository artistRepository;
-  final EventRepository eventRepository;
-  final UnityRepository unityRepository;
-  final PlaceRepository placeRepository;
+      _artistFollowableRepository;
+  final FollowableRepository<PlaceFull, PlaceShort> _placeFollowableRepository;
+  final FollowableRepository<UnityFull, UnityShort> _unityFollowableRepository;
+  final ArtistRepository _artistRepository;
+  final EventRepository _eventRepository;
+  final UnityRepository _unityRepository;
+  final PlaceRepository _placeRepository;
 
   CompleteEntitiesLoaderImpl(
-    this.eventFollowableRepository,
-    this.eventRepository,
-    this.unityRepository,
-    this.placeRepository,
-    this.artistFollowableRepository,
-    this.artistRepository,
-    this.placeFollowableRepository,
-    this.unityFollowableRepository,
+    this._eventFollowableRepository,
+    this._eventRepository,
+    this._unityRepository,
+    this._placeRepository,
+    this._artistFollowableRepository,
+    this._artistRepository,
+    this._placeFollowableRepository,
+    this._unityFollowableRepository,
   );
 
   @override
@@ -56,11 +56,11 @@ class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
     required int id,
     bool isForAdmin = false,
   }) async {
-    final eventBasicRequest = eventFollowableRepository.fetchBasicDataById(id);
+    final eventBasicRequest = _eventFollowableRepository.fetchBasicDataById(id);
     final eventOrganizersRequest =
-        eventRepository.fetchOrganizersForEventById(id);
-    final eventLineupRequest = eventRepository.fetchLineupForEventById(id);
-    final eventTimetableRequest = eventRepository.fetchTimetableForEventById(
+        _eventRepository.fetchOrganizersForEventById(id);
+    final eventLineupRequest = _eventRepository.fetchLineupForEventById(id);
+    final eventTimetableRequest = _eventRepository.fetchTimetableForEventById(
       id,
       isForAdmin: isForAdmin,
     );
@@ -118,10 +118,10 @@ class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
     required int id,
   }) async {
     final responseBasicRequest =
-        artistFollowableRepository.fetchBasicDataById(id);
+        _artistFollowableRepository.fetchBasicDataById(id);
     final responseUnitiesRequest =
-        artistRepository.fetchUnitiesForArtistById(id);
-    final responseEventsRequest = artistRepository.fetchEventsForArtistById(id);
+        _artistRepository.fetchUnitiesForArtistById(id);
+    final responseEventsRequest = _artistRepository.fetchEventsForArtistById(id);
 
     final responseBasic = await responseBasicRequest;
     final responseUnities = await responseUnitiesRequest;
@@ -164,9 +164,9 @@ class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
   Future<ResponseSealed<CompletePlaceEntity>> loadCompletePlace(
       {required int id}) async {
     final responseBasicRequest =
-        placeFollowableRepository.fetchBasicDataById(id);
-    final responseScenesRequest = placeRepository.fetchScenesForPlaceById(id);
-    final responseEventsRequest = placeRepository.fetchEventsForPlaceById(id);
+        _placeFollowableRepository.fetchBasicDataById(id);
+    final responseScenesRequest = _placeRepository.fetchScenesForPlaceById(id);
+    final responseEventsRequest = _placeRepository.fetchEventsForPlaceById(id);
 
     final responseBasic = await responseBasicRequest;
     final responseScenes = await responseScenesRequest;
@@ -209,9 +209,9 @@ class CompleteEntitiesLoaderImpl implements CompleteEntitiesLoader {
   Future<ResponseSealed<CompleteUnityEntity>> loadCompleteUnity(
       {required int id}) async {
     final responseBasicRequest =
-        unityFollowableRepository.fetchBasicDataById(id);
-    final responseArtistsRequest = unityRepository.fetchArtistsForUnityById(id);
-    final responseEventsRequest = unityRepository.fetchEventsForArtistById(id);
+        _unityFollowableRepository.fetchBasicDataById(id);
+    final responseArtistsRequest = _unityRepository.fetchArtistsForUnityById(id);
+    final responseEventsRequest = _unityRepository.fetchEventsForArtistById(id);
 
     final responseBasic = await responseBasicRequest;
     final responseArtists = await responseArtistsRequest;

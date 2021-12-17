@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../models/shorts/event_short.dart';
 
-
 part 'shows_by_date.freezed.dart';
 part 'shows_by_date.g.dart';
 

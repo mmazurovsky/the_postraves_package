@@ -81,9 +81,9 @@ class FirebaseImageServiceImpl implements FirebaseImageService {
     bool isCorsAnywhereRequired = false,
   }) async {
     final response = await http_client.get(
-      // using cors anywhere as intermediate for requests not from server
+      // using cors anywhere as intermediary for requests not from server
       isCorsAnywhereRequired
-          ? Uri.parse('${_serverConstantsAbstract.corsAnywhereHost}/$imageUrl')
+          ? Uri.parse('$corsAnywhereHost/$imageUrl')
           : Uri.parse(imageUrl),
     );
     if (!response.statusCode.toString().startsWith('2')) {
@@ -98,11 +98,7 @@ class FirebaseImageServiceImpl implements FirebaseImageService {
       );
     }
     final downloadedImageBytes = response.bodyBytes;
-    // final resizedImageBytes =
-    //     ImageResizingService.resizeImageBytes(downloadedImageData);
 
-    // return _uploadImageBytesToFirebase(
-    //     folderName: folderName, imageBytes: resizedImageBytes);
     return resizeAndUploadImageBytes(
         folderName: folderName, imageBytes: downloadedImageBytes);
   }

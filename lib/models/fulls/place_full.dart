@@ -13,7 +13,7 @@ part 'place_full.g.dart';
 @freezed
 class PlaceFull
     with _$PlaceFull
-    implements GeneralFollowableInterface, BaseNameInterface {
+    implements GeneralFollowableInterface {
   const PlaceFull._();
   const factory PlaceFull({
     String? about,
