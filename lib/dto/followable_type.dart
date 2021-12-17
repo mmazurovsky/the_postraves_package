@@ -8,7 +8,7 @@ enum FollowableType {
 
 extension TypeOfUnifiedRatingModelExtension on FollowableType {
 
-  static const Map<FollowableType, String> _endpoints = {
+  static const Map<FollowableType, String> _paths = {
     FollowableType.ARTIST: 'artist',
     FollowableType.UNITY: 'unity',
     FollowableType.PLACE: 'place',
@@ -16,5 +16,5 @@ extension TypeOfUnifiedRatingModelExtension on FollowableType {
     FollowableType.USER: 'user',
   };
 
-  String get endpoint => _endpoints[this]!;
+  String get path => _paths[this]!;
 }

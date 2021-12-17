@@ -1,15 +1,3 @@
-// enum MoneyCurrency { RUB, EUR, USD }
-
-// extension MoneyCurrencyExtension on MoneyCurrency {
-//   static const currencySymbols = {
-//     MoneyCurrency.RUB: '₽',
-//     MoneyCurrency.EUR: '€',
-//     MoneyCurrency.USD: r'$',
-//   };
-
-//   String? get currencySymbol => currencySymbols[this];
-// }
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
 

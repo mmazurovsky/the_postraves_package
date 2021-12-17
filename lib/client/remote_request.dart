@@ -113,8 +113,7 @@ class _MyHttpRequest {
   }
 
   void _checkResponse(http_client.Response response) {
-    if (response.statusCode.toString()[0] == '4' ||
-        response.statusCode.toString()[0] == '5') {
+    if (response.statusCode.toString()[0] == '5') {
       final exceptionMessage =
           'Server exception, method: ${httpMethod.methodName}, uri: ${uri.toString()}, status code: ${response.statusCode}, body: ${response.body}';
       log(exceptionMessage);

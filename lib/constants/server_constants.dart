@@ -2,9 +2,12 @@ abstract class ServerConstantsAbstract {
   bool get isHttps;
   String get apiHost;
   String? get apiPath;
-  String get corsAnywhereHost;
+  // String get corsAnywhereHost;
   ServerEnvironment get environment;
 }
+
+const corsAnywhereHost =
+    'http://cors-anywhere.eu-central-1.elasticbeanstalk.com';
 
 enum ServerEnvironment {
   dev,
@@ -20,9 +23,6 @@ class ServerConstantsProduction implements ServerConstantsAbstract {
   @override
   String? get apiPath => 'api/';
   @override
-  String get corsAnywhereHost =>
-      'http://cors-anywhere.eu-central-1.elasticbeanstalk.com';
-  @override
   ServerEnvironment get environment => ServerEnvironment.prod;
 }
 
@@ -34,9 +34,6 @@ class ServerConstantsDevelopment implements ServerConstantsAbstract {
   @override
   String? get apiPath => 'api/';
   @override
-  String get corsAnywhereHost =>
-      'http://cors-anywhere.eu-central-1.elasticbeanstalk.com';
-  @override
   ServerEnvironment get environment => ServerEnvironment.dev;
 }
 
@@ -47,9 +44,6 @@ class ServerConstantsLocal implements ServerConstantsAbstract {
   String get apiHost => 'localhost:8080';
   @override
   String? get apiPath => null;
-  @override
-  String get corsAnywhereHost =>
-      'http://cors-anywhere.eu-central-1.elasticbeanstalk.com';
   @override
   ServerEnvironment get environment => ServerEnvironment.local;
 }

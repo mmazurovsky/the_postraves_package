@@ -43,7 +43,7 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
   Future<List<EventShort>> fetchEventsForPlaceById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: '${FollowableType.PLACE.endpoint}/public/$id/events',
+        endpointWithPath: '${FollowableType.PLACE.path}/public/$id/events',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => EventShort.fromJson(json)).toList() ??
         [];
@@ -53,7 +53,7 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
   Future<List<Scene>> fetchScenesForPlaceById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: '${FollowableType.PLACE.endpoint}/public/$id/scenes',
+        endpointWithPath: '${FollowableType.PLACE.path}/public/$id/scenes',
         httpHeaders: httpHeaders) as List<dynamic>?;
     return decodedResponse?.map((json) => Scene.fromJson(json)).toList() ?? [];
   }
@@ -87,7 +87,7 @@ class PlaceRemoteDataSourceImpl implements PlaceRemoteDataSource {
       httpMethod: HttpMethod.put,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
-      endpointWithPath: '${FollowableType.PLACE.endpoint}/$placeId/scenes',
+      endpointWithPath: '${FollowableType.PLACE.path}/$placeId/scenes',
       httpHeaders: httpHeaders,
       body: scenes.map((el) => el.toJson()).toList(),
     );

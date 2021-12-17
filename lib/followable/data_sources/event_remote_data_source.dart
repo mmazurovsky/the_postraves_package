@@ -59,7 +59,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   Future<List<ArtistShort>> fetchLineupForEventById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: '${FollowableType.EVENT.endpoint}/public/$id/lineup',
+        endpointWithPath: '${FollowableType.EVENT.path}/public/$id/lineup',
         httpHeaders: httpHeaders) as List<dynamic>?;
     final list =
         decodedResponse?.map((json) => ArtistShort.fromJson(json)).toList() ??
@@ -71,7 +71,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   Future<List<UnityShort>> fetchOrganizersForEventById(
       {required int id, required Map<String, String> httpHeaders}) async {
     final decodedResponse = await _localizedGetRequest(
-        endpointWithPath: '${FollowableType.EVENT.endpoint}/public/$id/organizers',
+        endpointWithPath: '${FollowableType.EVENT.path}/public/$id/organizers',
         httpHeaders: httpHeaders) as List<dynamic>?;
     final list =
         decodedResponse?.map((json) => UnityShort.fromJson(json)).toList() ??
@@ -86,7 +86,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
     required bool isForAdmin,
   }) async {
     final decodedResponse = await _localizedGetRequest(
-            endpointWithPath: '${FollowableType.EVENT.endpoint}/public/$id/timetable',
+            endpointWithPath: '${FollowableType.EVENT.path}/public/$id/timetable',
             httpHeaders: httpHeaders,
             queryParameters: !isForAdmin ? null : {'isForAdmin': true.toString()})
         as List<dynamic>?;
@@ -108,7 +108,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
       httpMethod: HttpMethod.put,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
-      endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/organizers',
+      endpointWithPath: '${FollowableType.EVENT.path}/$eventId/organizers',
       httpHeaders: httpHeaders,
       body: orgsIds,
     );
@@ -126,7 +126,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
       httpMethod: HttpMethod.put,
       host: _serverConstantsAbstract.apiHost,
       hostPath: _serverConstantsAbstract.apiPath,
-      endpointWithPath: '${FollowableType.EVENT.endpoint}/$eventId/timetable',
+      endpointWithPath: '${FollowableType.EVENT.path}/$eventId/timetable',
       httpHeaders: httpHeaders,
       body: timetable.map((el) => el.toJson()).toList(),
     );

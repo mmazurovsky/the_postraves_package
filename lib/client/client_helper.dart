@@ -28,12 +28,12 @@ class ArtistShortClientHelper implements ClientHelper<ArtistShort> {
 
   @override
   String getEndpoint() {
-    return FollowableType.ARTIST.endpoint;
+    return FollowableType.ARTIST.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.ARTIST.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.ARTIST.path}';
   }
 }
 
@@ -45,12 +45,12 @@ class ArtistFullClientHelper implements ClientHelper<ArtistFull> {
 
   @override
   String getEndpoint() {
-    return FollowableType.ARTIST.endpoint;
+    return FollowableType.ARTIST.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.ARTIST.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.ARTIST.path}';
   }
 }
 
@@ -62,12 +62,12 @@ class EventShortClientHelper implements ClientHelper<EventShort> {
 
   @override
   String getEndpoint() {
-    return FollowableType.EVENT.endpoint;
+    return FollowableType.EVENT.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.EVENT.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.EVENT.path}';
   }
 }
 
@@ -79,12 +79,12 @@ class EventFullClientHelper implements ClientHelper<EventFull> {
 
   @override
   String getEndpoint() {
-    return FollowableType.EVENT.endpoint;
+    return FollowableType.EVENT.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.EVENT.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.EVENT.path}';
   }
 }
 
@@ -96,12 +96,12 @@ class UnityShortClientHelper implements ClientHelper<UnityShort> {
 
   @override
   String getEndpoint() {
-    return FollowableType.UNITY.endpoint;
+    return FollowableType.UNITY.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.UNITY.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.UNITY.path}';
   }
 }
 
@@ -113,12 +113,12 @@ class UnityFullClientHelper implements ClientHelper<UnityFull> {
 
   @override
   String getEndpoint() {
-    return FollowableType.UNITY.endpoint;
+    return FollowableType.UNITY.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.UNITY.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.UNITY.path}';
   }
 }
 
@@ -130,12 +130,12 @@ class PlaceShortClientHelper implements ClientHelper<PlaceShort> {
 
   @override
   String getEndpoint() {
-    return FollowableType.PLACE.endpoint;
+    return FollowableType.PLACE.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.PLACE.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.PLACE.path}';
   }
 }
 
@@ -147,12 +147,12 @@ class PlaceFullClientHelper implements ClientHelper<PlaceFull> {
 
   @override
   String getEndpoint() {
-    return FollowableType.PLACE.endpoint;
+    return FollowableType.PLACE.path;
   }
 
   @override
   String getEndpointAndPathForUserFollowing() {
-    return '${FollowableType.USER.endpoint}/myFollowing/${FollowableType.PLACE.endpoint}';
+    return '${FollowableType.USER.path}/myFollowing/${FollowableType.PLACE.path}';
   }
 }
 

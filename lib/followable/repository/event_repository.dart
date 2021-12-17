@@ -2,7 +2,6 @@ import 'package:the_postraves_package/client/request_wrapper.dart';
 import 'package:the_postraves_package/client/response_sealed.dart';
 import 'package:the_postraves_package/models/related_to_event/timetable_for_scene.dart';
 import 'package:the_postraves_package/models/shorts/artist_short.dart';
-import 'package:the_postraves_package/models/shorts/event_short.dart';
 import 'package:the_postraves_package/models/shorts/unity_short.dart';
 import 'package:the_postraves_package/models/write/timetable_performance_write.dart';
 
@@ -13,7 +12,6 @@ abstract class EventRepository {
   Future<ResponseSealed<List<ArtistShort>>> fetchLineupForEventById(int id);
   Future<ResponseSealed<List<TimetableForScene>>> fetchTimetableForEventById(
       int id, {bool isForAdmin});
-  // Future<ResponseSealed<List<EventShort>>> searchByName(String searchValue);
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(
       int eventId, List<int> orgsIds);
   Future<ResponseSealed<void>> saveOrUpdateTimetable(
@@ -26,7 +24,6 @@ class EventRepositoryImpl extends EventRepository {
   final RemoteRequestWrapper<List<ArtistShort>> _remoteRequestWrapperArtists;
   final RemoteRequestWrapper<List<TimetableForScene>>
       _remoteRequestWrapperTimetable;
-  final RemoteRequestWrapper<List<EventShort>> _remoteRequestWrapperEvents;
   final RemoteRequestWrapper<void> _remoteRequestWrapperVoid;
 
   EventRepositoryImpl(
@@ -34,7 +31,6 @@ class EventRepositoryImpl extends EventRepository {
     this._remoteRequestWrapperUnities,
     this._remoteRequestWrapperArtists,
     this._remoteRequestWrapperTimetable,
-    this._remoteRequestWrapperEvents,
     this._remoteRequestWrapperVoid,
   );
 
@@ -71,17 +67,6 @@ class EventRepositoryImpl extends EventRepository {
       ),
     );
   }
-
-  // @override
-  // Future<ResponseSealed<List<EventShort>>> searchByName(
-  //     String searchValue) async {
-  //   return await _remoteRequestWrapperEvents(
-  //     (httpHeaders) => _eventRemoteDataSource.searchByName(
-  //       searchValue: searchValue,
-  //       httpHeaders: httpHeaders,
-  //     ),
-  //   );
-  // }
 
   @override
   Future<ResponseSealed<void>> saveOrUpdateOrganizers(

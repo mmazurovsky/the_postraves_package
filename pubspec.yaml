@@ -1,6 +1,6 @@
 name: the_postraves_package
-description: A new Flutter package project.
-version: 0.0.1
+description: Postraves project package with tools used both in mobile and web apps.
+version: 0.0.2
 homepage:
 
 environment:
