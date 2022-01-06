@@ -3,23 +3,24 @@ import 'package:the_postraves_package/dto/followable_type.dart';
 
 part 'followable_params.freezed.dart';
 
-class FollowableVariables {
-  int overallFollowers;
-  int weeklyFollowers;
-  bool isFollowed;
+@freezed
+class FollowableVariables with _$FollowableVariables {
+  const FollowableVariables._();
 
-  FollowableVariables({
-    required this.overallFollowers,
-    required this.weeklyFollowers,
-    required this.isFollowed,
-  });
+  const factory FollowableVariables({
+    required int overallFollowers,
+    required int weeklyFollowers,
+    required bool isFollowed,
+  }) = _FollowableVariables;
 
-  FollowableVariables.empty()
-      : this(
-          overallFollowers: 0,
-          weeklyFollowers: 0,
-          isFollowed: false,
-        );
+  factory FollowableVariables.empty() 
+  {
+    return const FollowableVariables(
+      overallFollowers: 0,
+      weeklyFollowers: 0,
+      isFollowed: false,
+    );
+  }
 }
 
 @freezed
