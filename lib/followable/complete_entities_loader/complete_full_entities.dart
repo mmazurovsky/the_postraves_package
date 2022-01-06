@@ -1,3 +1,4 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:the_postraves_package/dto/timetable_for_scene_by_day.dart';
 import 'package:the_postraves_package/models/fulls/artist_full.dart';
 import 'package:the_postraves_package/models/fulls/event_full.dart';
@@ -8,52 +9,41 @@ import 'package:the_postraves_package/models/shorts/artist_short.dart';
 import 'package:the_postraves_package/models/shorts/event_short.dart';
 import 'package:the_postraves_package/models/shorts/unity_short.dart';
 
-class CompleteEventEntity {
-  final EventFull eventFull;
-  final List<UnityShort> orgs;
-  final List<ArtistShort> lineup;
-  final List<TimetableForSceneByDay> timetable;
+part 'complete_full_entities.freezed.dart';
 
-  CompleteEventEntity({
-    required this.eventFull,
-    required this.orgs,
-    required this.lineup,
-    required this.timetable,
-  });
+@freezed
+class CompleteEventEntity with _$CompleteEventEntity {
+  const factory CompleteEventEntity({
+    required EventFull eventFull,
+    required List<UnityShort> orgs,
+    required List<ArtistShort> lineup,
+    required List<TimetableForSceneByDay> timetable,
+  }) = _CompleteEventEntity;
 }
 
-class CompleteArtistEntity {
-  final ArtistFull artistFull;
-  final List<UnityShort> unities;
-  final List<EventShort> events;
-
-  CompleteArtistEntity({
-    required this.artistFull,
-    required this.unities,
-    required this.events,
-  });
+@freezed
+class CompleteArtistEntity with _$CompleteArtistEntity {
+  const factory CompleteArtistEntity({
+    required ArtistFull artistFull,
+    required List<UnityShort> unities,
+    required List<EventShort> events,
+  }) = _CompleteArtistEntity;
 }
 
-class CompletePlaceEntity {
-  final PlaceFull placeFull;
-  final List<Scene> scenes;
-  final List<EventShort> events;
-
-  CompletePlaceEntity({
-    required this.placeFull,
-    required this.scenes,
-    required this.events,
-  });
+@freezed
+class CompletePlaceEntity with _$CompletePlaceEntity {
+  const factory CompletePlaceEntity({
+    required PlaceFull placeFull,
+    required List<Scene> scenes,
+    required List<EventShort> events,
+  }) = _CompletePlaceEntity;
 }
 
-class CompleteUnityEntity {
-  final UnityFull unityFull;
-  final List<ArtistShort> artists;
-  final List<EventShort> events;
-
-  CompleteUnityEntity({
-    required this.unityFull,
-    required this.artists,
-    required this.events,
-  });
+@freezed
+class CompleteUnityEntity with _$CompleteUnityEntity {
+  const factory CompleteUnityEntity({
+    required UnityFull unityFull,
+    required List<ArtistShort> artists,
+    required List<EventShort> events,
+  }) = _CompleteUnityEntity;
 }
