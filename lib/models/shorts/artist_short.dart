@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/dto/followable_params.dart';
 import 'package:the_postraves_package/dto/image_dimensions.dart';
 import 'package:the_postraves_package/dto/followable_data.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
@@ -40,4 +41,17 @@ class ArtistShort
 
   @override
   FollowableType get type => FollowableType.ARTIST;
+
+  @override
+  FollowableId get followableId => FollowableId(
+        id: id,
+        type: type,
+      );
+
+  @override
+  FollowableVariables get followableVariables => FollowableVariables(
+        overallFollowers: overallFollowers,
+        weeklyFollowers: weeklyFollowers,
+        isFollowed: isFollowed,
+      );
 }

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/dto/followable_params.dart';
 import 'package:the_postraves_package/dto/image_dimensions.dart';
 import 'package:the_postraves_package/dto/followable_data.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
@@ -9,7 +10,9 @@ part 'unity_short.freezed.dart';
 part 'unity_short.g.dart';
 
 @freezed
-class UnityShort with _$UnityShort implements GeneralFollowableInterface, ShortInterface {
+class UnityShort
+    with _$UnityShort
+    implements GeneralFollowableInterface, ShortInterface {
   const UnityShort._();
   const factory UnityShort({
     required int id,
@@ -38,4 +41,17 @@ class UnityShort with _$UnityShort implements GeneralFollowableInterface, ShortI
 
   @override
   FollowableType get type => FollowableType.UNITY;
+
+  @override
+  FollowableId get followableId => FollowableId(
+        id: id,
+        type: type,
+      );
+
+  @override
+  FollowableVariables get followableVariables => FollowableVariables(
+        overallFollowers: overallFollowers,
+        weeklyFollowers: weeklyFollowers,
+        isFollowed: isFollowed,
+      );
 }

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:the_postraves_package/dto/followable_params.dart';
 import 'package:the_postraves_package/dto/image_dimensions.dart';
 import 'package:the_postraves_package/dto/followable_data.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
@@ -11,7 +12,9 @@ part 'place_short.freezed.dart';
 part 'place_short.g.dart';
 
 @freezed
-class PlaceShort with _$PlaceShort implements GeneralFollowableInterface, ShortInterface {
+class PlaceShort
+    with _$PlaceShort
+    implements GeneralFollowableInterface, ShortInterface {
   const PlaceShort._();
   const factory PlaceShort({
     required City city,
@@ -46,4 +49,17 @@ class PlaceShort with _$PlaceShort implements GeneralFollowableInterface, ShortI
 
   @override
   FollowableType get type => FollowableType.PLACE;
+
+  @override
+  FollowableId get followableId => FollowableId(
+        id: id,
+        type: type,
+      );
+
+  @override
+  FollowableVariables get followableVariables => FollowableVariables(
+        overallFollowers: overallFollowers,
+        weeklyFollowers: weeklyFollowers,
+        isFollowed: isFollowed,
+      );
 }

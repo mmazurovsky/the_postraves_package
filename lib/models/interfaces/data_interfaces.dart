@@ -1,3 +1,4 @@
+import 'package:the_postraves_package/dto/followable_params.dart';
 import 'package:the_postraves_package/dto/image_dimensions.dart';
 import 'package:the_postraves_package/dto/followable_data.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
@@ -32,17 +33,22 @@ abstract class WithTypeInterface {
   FollowableType get type;
 }
 
+abstract class WithFollowableParametersInterface {
+  FollowableId get followableId;
+  FollowableVariables get followableVariables;
+}
+
 abstract class GeneralFollowableInterface
     implements
         BaseIdInterface,
         BaseNameImageInterface,
         ConvertableToFollowableDataInterface,
-        WithTypeInterface {
+        WithTypeInterface,
+        WithFollowableParametersInterface {
   Country? get country;
   int get overallFollowers;
   int get weeklyFollowers;
   bool get isFollowed;
-  Map<String, dynamic> toJson();
 }
 
 abstract class ConvertableToFollowableDataInterface {
@@ -53,6 +59,4 @@ abstract class WriteInterface {
   Map<String, dynamic> toJson();
 }
 
-abstract class ShortInterface {
-  
-}
+abstract class ShortInterface {}

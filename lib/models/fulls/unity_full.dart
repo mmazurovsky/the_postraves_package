@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:the_postraves_package/dto/followable_data.dart';
+import 'package:the_postraves_package/dto/followable_params.dart';
 import 'package:the_postraves_package/dto/image_dimensions.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
 import 'package:the_postraves_package/models/interfaces/data_interfaces.dart';
@@ -42,4 +43,17 @@ class UnityFull with _$UnityFull implements GeneralFollowableInterface {
 
   @override
   FollowableType get type => FollowableType.UNITY;
+
+  @override
+  FollowableId get followableId => FollowableId(
+        id: id,
+        type: type,
+      );
+
+  @override
+  FollowableVariables get followableVariables => FollowableVariables(
+        overallFollowers: overallFollowers,
+        weeklyFollowers: weeklyFollowers,
+        isFollowed: isFollowed,
+      );
 }
