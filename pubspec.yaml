@@ -15,6 +15,7 @@ dependencies:
   sprintf: ^6.0.0
   freezed_annotation:
   image: ^3.1.0
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:

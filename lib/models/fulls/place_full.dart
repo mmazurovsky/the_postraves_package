@@ -52,13 +52,13 @@ class PlaceFull with _$PlaceFull implements GeneralFollowableInterface {
   FollowableType get type => FollowableType.PLACE;
 
   @override
-  FollowableId get followableId => FollowableId(
+  FollowableId get newFollowableId => FollowableId(
         id: id,
         type: type,
       );
 
   @override
-  FollowableVariables get followableVariables => FollowableVariables(
+  FollowableVariables get newFollowableVariables => FollowableVariables(
         overallFollowers: overallFollowers,
         weeklyFollowers: weeklyFollowers,
         isFollowed: isFollowed,

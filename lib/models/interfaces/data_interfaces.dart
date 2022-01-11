@@ -34,8 +34,8 @@ abstract class WithTypeInterface {
 }
 
 abstract class WithFollowableParametersInterface {
-  FollowableId get followableId;
-  FollowableVariables get followableVariables;
+  FollowableId get newFollowableId;
+  FollowableVariables get newFollowableVariables;
 }
 
 abstract class GeneralFollowableInterface

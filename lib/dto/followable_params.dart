@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:the_postraves_package/dto/followable_type.dart';
@@ -12,7 +13,7 @@ class FollowableId with _$FollowableId {
   }) = _FollowableId;
 }
 
-class FollowableVariables with ChangeNotifier {
+class FollowableVariables with ChangeNotifier, EquatableMixin {
   late int _overallFollowers;
   late int _weeklyFollowers;
   late bool _isFollowed;
@@ -50,4 +51,7 @@ class FollowableVariables with ChangeNotifier {
     _isFollowed = !_isFollowed;
     notifyListeners();
   }
+
+  @override
+  List<Object?> get props => [overallFollowers, weeklyFollowers, isFollowed];
 }

@@ -56,13 +56,13 @@ class EventShort
   FollowableType get type => FollowableType.EVENT;
 
   @override
-  FollowableId get followableId => FollowableId(
+  FollowableId get newFollowableId => FollowableId(
         id: id,
         type: type,
       );
 
   @override
-  FollowableVariables get followableVariables => FollowableVariables(
+  FollowableVariables get newFollowableVariables => FollowableVariables(
         overallFollowers: overallFollowers,
         weeklyFollowers: weeklyFollowers,
         isFollowed: isFollowed,
