@@ -17,6 +17,10 @@ class FollowableVariables with ChangeNotifier {
   late int _weeklyFollowers;
   late bool _isFollowed;
 
+  int get overallFollowers => _overallFollowers;
+  int get weeklyFollowers => _weeklyFollowers;
+  bool get isFollowed => _isFollowed;
+
   FollowableVariables({
     required int overallFollowers,
     required int weeklyFollowers,
