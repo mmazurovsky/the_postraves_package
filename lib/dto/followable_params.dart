@@ -40,6 +40,12 @@ class FollowableVariables with ChangeNotifier, EquatableMixin {
     );
   }
 
+  void setNewVariableData(FollowableVariables newData) {
+    _overallFollowers = newData.overallFollowers;
+    _weeklyFollowers = newData.weeklyFollowers;
+    _isFollowed = newData.isFollowed;
+  }
+
   void toggleFollow() {
     if (_isFollowed) {
       _overallFollowers--;
